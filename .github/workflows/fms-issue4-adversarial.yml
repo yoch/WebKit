@@ -1,0 +1,40 @@
+name: FrozenMiniSearch issue 4 adversarial reproduction
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/fms-issue4-adversarial.yml'
+      - 'Tools/InadequateCoverageResearch/scripts/run-fms-real-workload.py'
+
+jobs:
+  randomized:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v6
+        with:
+          version: '10.34.4'
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '26.7.0'
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: canary
+      - name: Checkout exact FrozenMiniSearch source
+        run: |
+          git clone https://github.com/yoch/frozenminisearch.git /tmp/fms
+          git -C /tmp/fms checkout e07e4d98adfd7d4004c6df975ba3dab42e0292b6
+      - name: Generate exact issue4 bundle
+        working-directory: /tmp/fms
+        run: |
+          pnpm install --frozen-lockfile
+          node benchmarks/engines/build.mjs
+      - name: Randomized default vs global=1
+        run: |
+          bun --revision
+          python3 Tools/InadequateCoverageResearch/scripts/run-fms-real-workload.py \
+            --mode bun \
+            --executable "$(command -v bun)" \
+            --bundle /tmp/fms/benchmarks/tmp/engines/issue4-multi-only.js \
+            --repetitions 30 \
+            --output /tmp/pr12-randomized.json
