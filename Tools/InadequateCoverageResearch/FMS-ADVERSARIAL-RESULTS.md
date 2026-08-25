@@ -22,8 +22,8 @@ candidate base and the refreshed upstream tip.
 
 Local runtime: Bun `1.4.1-canary.1+11fb73032`, the exact PR #12 revision;
 standalone JSCOnly Release built by clang 18.1.3 + libc++ on 4 x86-64 CPUs.
-The randomized Bun replication was also repeated on a fresh GitHub
-`ubuntu-24.04` runner with the same Bun revision.
+The randomized Bun replication was also repeated three times on fresh GitHub
+`ubuntu-24.04` runners with the same Bun revision.
 
 Patched `jsc` SHA-256: `8a4c17a82fe8fb3440ac989d235ac043a7a7cda014f093e70170fc21db143484`.
 Patched `libJavaScriptCore`: `7b70b401f04ee92f82323522305e5fb2ca5d15dd8c48234b639e6ae865031cbb`.
@@ -80,18 +80,27 @@ alternating block direction. Median trial delta was **+1.22%** (G1 slower);
 individual trial deltas ranged **−3.59% to +5.52%**. No trial approached
 −14.5%.
 
-Fresh GitHub runner replication:
+Three independent GitHub `ubuntu-24.04` replications of the same interleaved
+protocol, same Bun `1.4.1-canary.1+11fb73032`, fingerprint `0ebf5d2b`. The
+workflow does not compile WebKit; each job finished in about four minutes.
 
-| Condition | n | median us | p25 / p75 | p90 / p95 |
+| Actions run | default median us | G1 median us | delta | p |
 | --- | ---: | ---: | ---: | ---: |
-| default | 30 | 2917.88 | 2861.01 / 3081.45 | 3398.43 / 3486.93 |
-| global=1 | 30 | 2891.26 | 2828.18 / 2940.35 | 3025.28 / 3105.05 |
+| [32903939788](https://github.com/yoch/WebKit/actions/runs/32903939788) | 2917.88 | 2891.26 | **−0.91%** | 0.183 |
+| [32904465720](https://github.com/yoch/WebKit/actions/runs/32904465720) | 3763.66 | 3582.68 | **−4.81%** | 0.051 |
+| [32904901085](https://github.com/yoch/WebKit/actions/runs/32904901085) | 3715.99 | 3612.44 | **−2.79%** | 0.007 |
 
-Delta **−0.91%**, p=**0.183**. Run:
-https://github.com/yoch/WebKit/actions/runs/32903939788/job/97983686168
+The later two runners were ~0.8 ms slower in absolute terms than the first.
+That between-run jump is larger than any within-run G1 delta. The one
+significant result (−2.79%, p=0.007) is still far from −14.5%, and its
+default p95 (4274 us) vs G1 p95 (3818 us) is consistent with extra
+right-tail noise landing on the default arm.
 
-Therefore the historical effect failed both a stronger interleaved protocol
-on two machines and repeated execution of its original weak protocol.
+Therefore the historical 14.5% effect failed:
+
+- a stronger interleaved protocol on the local 4-core machine;
+- ten repeats of the original weak 3+3 blocked protocol;
+- three fresh `ubuntu-24.04` runners, none of which approached −14.5%.
 
 ## Phase 3: decisive same-binary real-workload experiment
 
@@ -181,7 +190,9 @@ There is no longer a robust conflict to reconcile:
 1. The mechanical fact is real: default 101, P5 6, disabled 101.
 2. The tiny standalone repro correctly showed no normal-runtime win.
 3. The real FMS workload also shows no reproducible normal-runtime win from
-   either P5 or G1 under stronger protocols.
+   either P5 or G1 under stronger protocols on quiet hardware (local Bun
+   and same-binary JSC). GitHub-hosted Bun shows a small, unstable G1 tilt
+   (about 1–5%) that never approaches 14.5%.
 4. The historical 14.5% sample was a single blocked 3+3 runner observation.
    It is retained as an anomalous result, not treated as causal evidence.
 
@@ -192,9 +203,12 @@ changes do not yield a stable latency benefit here.
 ## Falsification and recommendation
 
 Strongest competing interpretation: “the global speedup is real but P5
-misses other important exits.” It is falsified in this environment by the
-30-process G1-vs-P0 comparison (**+0.44%, p=0.559**) and by the exact Bun
-PR #12 replication (**−1.53%, p=0.712**).
+misses other important exits.” On the hardware that can isolate the patch,
+it is falsified by same-binary JSC G1-vs-P0 (**+0.44%, p=0.559**) and by
+the local Bun PR #12 replication (**−1.53%, p=0.712**). GitHub runners
+sometimes show a 3–5% G1 tilt; that is not the historical 14.5% effect,
+does not appear on quieter hardware, and still would not be captured as a
+reason to ship the per-site IC patch.
 
 Recommendation: **do not prepare/rebase an upstream candidate on performance
 grounds**. Keep PR #5 parked as a mechanically valid heuristic prototype.
