@@ -11,10 +11,11 @@ deoptimizing for ~101 calls.
 
 Count repeats of that OSR exit's m_count against a dedicated
 osrExitCountForReoptimizationFromInadequateCoverage threshold (default
-5, same unsigned `count > threshold` convention and
+3, same unsigned `count > threshold` convention and
 adjustedExitCountThreshold / retry doubling as the existing counters).
-Distinct sites keep independent counters so a spray of cold sites does
-not share an aggressive budget.
+Threshold 0/1/2 jettison a 32-site ×1/×2/×3 cold spray; 3 is the first
+value that does not. Distinct sites keep independent counters so they
+do not share this budget.
 
 The option is dedicated rather than reused from
 osrExitCountForReoptimizationFromLoop so that tuning the loop-stuck

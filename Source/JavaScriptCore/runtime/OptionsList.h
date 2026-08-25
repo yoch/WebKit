@@ -391,7 +391,7 @@ bool hasCapacityToUseLargeGigacage();
     \
     v(Unsigned, osrExitCountForReoptimization, 100, Normal, nullptr) \
     v(Unsigned, osrExitCountForReoptimizationFromLoop, 5, Normal, nullptr) \
-    v(Unsigned, osrExitCountForReoptimizationFromInadequateCoverage, 5, Normal, nullptr) \
+    v(Unsigned, osrExitCountForReoptimizationFromInadequateCoverage, 3, Normal, nullptr) \
     \
     v(Unsigned, reoptimizationRetryCounterMax, 0, Normal, nullptr)  \
     \

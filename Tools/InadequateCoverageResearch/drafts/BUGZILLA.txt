@@ -20,9 +20,12 @@ budget.
 
 Proposal:
 - Per-site trigger: OSRExit::m_count > dedicated
-  osrExitCountForReoptimizationFromInadequateCoverage (default 5),
-  using the existing unsigned `count > threshold` JIT convention and
-  adjustedExitCountThreshold exponential backoff.
+  osrExitCountForReoptimizationFromInadequateCoverage (default 3;
+  compare is unsigned `count > threshold`, so the 4th same-site hit
+  reoptimizes). 0/1/2 jettison a 32-site ×1/×2/×3 cold spray. 5 is
+  not specially justified over 3: it only additionally ignores a
+  5-then-never burst, at ~0.1 ms extra adaptation on a durable phase
+  change. Uses adjustedExitCountThreshold exponential backoff.
 - Do not reuse FromLoop: that option means "stuck in a loop", and
   changing it would unexpectedly change non-loop InadequateCoverage
   policy. JSC already has a dedicated ftlOSREntryFailureCountForReoptimization

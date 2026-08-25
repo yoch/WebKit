@@ -24,7 +24,8 @@ Do not rewrite pass-1 numbers as if they were measured on this HEAD.
 ## Design under test
 
 **Design B** (this branch): dedicated
-`osrExitCountForReoptimizationFromInadequateCoverage` (default 5) with the same
+`osrExitCountForReoptimizationFromInadequateCoverage` (default **3**, after the
+A–O sweep rejected 0/1/2 and failed to justify 5) with the same
 `adjustedExitCountThreshold` / retry doubling as the existing counters.
 
 **Design A** (pass 1): reuse `exitCountThresholdForReoptimizationFromLoop()`.
