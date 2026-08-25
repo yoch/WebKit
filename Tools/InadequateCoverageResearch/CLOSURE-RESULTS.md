@@ -111,3 +111,27 @@ the durable phase-change benefit while cutting unnecessary jettisons.
 - t=6 also avoids F / 32×5 / 6th rare hit, and A is still flat, but
   6 is the first value that refuses a 6-hit phase. Prefer 5.
 - Not chosen because FromLoop is historically 5.
+
+## 10. Clean candidate validation
+
+| Item | Value |
+| --- | --- |
+| Upstream HEAD at rebase | `f05fd6d8b3bee9719437f45a7cb1d1d7ee9c3151` |
+| Clean candidate | `e01f57903d9e389b5651a167db7c519244f45842` |
+| Branch | `cursor/jsc-inadequate-coverage-candidate-91da` |
+| Files | 8 (5 JSC + 3 JSTests), one commit |
+| Default | `osrExitCountForReoptimizationFromInadequateCoverage=5` |
+| Style on delta | `check-webkit-style --git-commit HEAD` → 0 errors / 8 files |
+| Official runner (candidate) | 3 configs silent pass |
+| Official runner (baseline) | same-site + FTL FAIL `retry=0` (right reason); distinct pass |
+| Existing OSR (`array-osr-exit-materialize-hole`, `ftl-force-osr-exit`, `int52-force-osr-exit-path`) | no FAIL |
+
+Isolated binary: `/tmp/ic-research-v2/candidate-clean` (do not run two
+`run-jsc-stress-tests` against the same `-o` / default `results/.vm`
+or a symlink can overwrite the isolated `jsc`).
+
+## Verdict
+
+**READY FOR UPSTREAM DRAFT**
+
+Not a WebKit/WebKit PR. No Bugzilla id. One architecture (x86_64 Linux).
