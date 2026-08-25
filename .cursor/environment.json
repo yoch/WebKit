@@ -1,0 +1,5 @@
+{
+  "name": "WebKit (JSCOnly)",
+  "user": "ubuntu",
+  "install": "./.cursor/install-jsc.sh"
+}
