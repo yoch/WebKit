@@ -68,3 +68,26 @@ IC≈7; t=1000 → 131 ms / IC≈1006.
 - Global dedicated threshold 5: helps same-site a lot; **fails case 2 and case 6** by treating distinct sites as one budget.
 - Per-site 5 (reuse `osrExitCountForReoptimizationFromLoop`, no new option): same-site adapts after 6; distinct once / many-cold-×3 do not share that budget; global 100 remains the fallback; retry doubling still applies via `adjustedExitCountThreshold`.
 - Delay tier-up: already exists (`desiredProfileLivenessRate` / fullness) and still left `SpecNone` on the update arm. Too global.
+
+
+## Same-toolchain HEAD A/B (`5549b366` JSCOnly, clang-18 + libc++)
+
+Unpatched binary snapshotted, then per-site patch
+`f499cf9144fb` rebuilt incrementally. Global threshold forced to **1000**
+so only `OSRExit::m_count` can fire early.
+
+| Case | Unpatched IC / time | Patched IC / time |
+| --- | ---: | ---: |
+| 1 same-site | 1003 / 70.0 ms | **8 / 5.3 ms** |
+| 2 distinct ×1 | 9, retry=0 | 9, retry=0 |
+| 3 rare once | 2, retry=0 | 2, retry=0 |
+| 4 phase B | 1003 / 80.3 ms | **8 / 5.5 ms** |
+| 5 oscillate | 1002 / 85.7 ms | **7 / 7.8 ms** |
+| 6 31 cold ×3 | 94, retry=0 | 94, retry=0 |
+| 7 sequential arms | 7005, maxOSR=4000 | **40, maxOSR=20**, retry=3 |
+| 8 inlined | 1001 / 89.1 ms | **6 / 5.4 ms** |
+| 9 FTL | 1003 / 89.0 ms | **8 / 13.0 ms** |
+
+Default t=100, same-site: 103 / 11.8 ms → **8 / 5.6 ms**.
+
+Patch branch: `cursor/jsc-inadequate-coverage-persite-91da` (`f499cf9144fb`).
