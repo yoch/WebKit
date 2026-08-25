@@ -2861,6 +2861,8 @@ uint32_t CodeBlock::exitCountThresholdForReoptimizationFromLoop()
 
 uint32_t CodeBlock::exitCountThresholdForReoptimizationFromInadequateCoverage()
 {
+    // Same formula as the generic and FromLoop helpers: EvalCode scales by
+    // evalThresholdMultiplier() (default 10); Function and Program stay 1.
     return adjustedExitCountThreshold(Options::osrExitCountForReoptimizationFromInadequateCoverage() * codeTypeThresholdMultiplier());
 }
 

@@ -1,5 +1,11 @@
 # Pass 2 results on WebKit/WebKit `3a999a1a45ed`
 
+**Superseded for the default-threshold decision.** Pass 3 closure
+measurements (same final harness, 20 reps, rare-spaced hits, regenerated
+FTL and 64-cold A/B) are in `CLOSURE-RESULTS.md`. Default is **5**, not
+3. The "3 is the first value that survives 32×1/×2/×3" argument is
+withdrawn as an overfit.
+
 Distinguish from pass 1 (`5549b366` / PRs #2/#3). JSC policy files were
 identical between those SHAs; these numbers were re-measured on this HEAD.
 
@@ -52,15 +58,14 @@ Compare is `m_count > t` after increment: **t=0 first hit, t=1 second, t=3 fourt
 
 Backoff on M (t=5) is visible in per-site counts: 6, 11, 21, 41 (5→10→20→40). Same shape at every t.
 
-## Why not 5? Why 3?
+## Why not 5? Why 3? (withdrawn)
 
-- **0, 1, 2 are rejected.** They jettison G/H/I (32 distinct sites ×1/×2/×3). That is a cold spray, not a phase change.
-- **3 is the first value that survives G/H/I.** Adaptation on A is 2.6ms vs 84ms unpatched.
-- **5 only additionally ignores E (exactly 5 then never).** Cost vs 3 on A is ~0.1ms. That is not a reason to prefer 5 over 3.
-- **10** additionally ignores F and J, and slows M (20ms vs 13ms). Still fine on A, but it delays a real 6-hit phase.
-- FromLoop's historical 5 is **not** a justification for reusing that number on a different policy.
+Pass 2 proposed 3 as the first value that survives G/H/I. Closure
+measurements (20 reps) show A is flat across t=3/4/5/6, while t=5
+avoids E and interleaved 32×4/×5 and buys slack on rare spaced hits.
+Default is **5**. See `CLOSURE-RESULTS.md`.
 
-Default proposed: **3**.
+FromLoop's historical 5 is still **not** a justification.
 
 ## Design A vs B
 
@@ -115,7 +120,9 @@ DFG compile time of the 64-arm function: ~1.0 ms candidate vs ~1.1 ms baseline w
 
 Do **not** pass `--osrExitCountForReoptimizationFromInadequateCoverage` in the tests: unpatched JSC with `--validateOptions=true` dies on the unknown option (exit 134), which would be a false baseline failure.
 
-Concurrent JIT: the official tests are `runNoCJIT` / `runFTLNoCJIT` on purpose. Direct `useConcurrentJIT=true` failed `numberOfDFGCompiles < 1` before the phase change (async tier-up), not a policy failure.
+Concurrent JIT: official tests stay `runNoCJIT` / `runFTLNoCJIT`.
+Closure added one polled concurrent run (wait for DFG, then phase2);
+it passed. Not independently validated as an EWS suite.
 
 `array-osr-exit-materialize-hole` (existing InadequateCoverage user) : no FAIL across its default/DFG/FTL variants.
 
@@ -130,8 +137,6 @@ Concurrent JIT: the official tests are `runNoCJIT` / `runFTLNoCJIT` on purpose. 
 - bun / FrozenMiniSearch product re-run on this HEAD
 - WebKit EWS
 
-## Verdict
+## Verdict (pass 2 — superseded)
 
-**READY FOR UPSTREAM DRAFT**
-
-Not READY FOR REVIEW: no Bugzilla id yet, one architecture, default changed from the pass-1 "5" after the per-site sweep.
+See `CLOSURE-RESULTS.md` for the closure verdict. Default 3 is withdrawn.

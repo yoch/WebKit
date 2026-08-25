@@ -1,7 +1,9 @@
 # InadequateCoverage research harness (v2)
 
 Per-site threshold sweep and FTL / compile-cost probes for the
-InadequateCoverage reoptimization candidate.
+InadequateCoverage reoptimization candidate. Closure pass (20-rep
+3/4/5/6, rare spaced hits, regenerated A/B): `CLOSURE-RESULTS.md`.
+Default retained: **5**.
 
 ```
 python3 Tools/InadequateCoverageResearch/scripts/run-persite-sweep.py \

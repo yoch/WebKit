@@ -20,16 +20,30 @@ budget.
 
 Proposal:
 - Per-site trigger: OSRExit::m_count > dedicated
-  osrExitCountForReoptimizationFromInadequateCoverage (default 3;
-  compare is unsigned `count > threshold`, so the 4th same-site hit
-  reoptimizes). 0/1/2 jettison a 32-site ×1/×2/×3 cold spray. 5 is
-  not specially justified over 3: it only additionally ignores a
-  5-then-never burst, at ~0.1 ms extra adaptation on a durable phase
-  change. Uses adjustedExitCountThreshold exponential backoff.
+  osrExitCountForReoptimizationFromInadequateCoverage (default 5;
+  compare is unsigned `count > threshold`, so the 6th same-site hit
+  reoptimizes). Uses adjustedExitCountThreshold exponential backoff.
+- The helper multiplies by codeTypeThresholdMultiplier() exactly as
+  the generic and FromLoop helpers do (Eval × evalThresholdMultiplier,
+  default 10; Function and Program × 1). Not a special-case divergence.
 - Do not reuse FromLoop: that option means "stuck in a loop", and
   changing it would unexpectedly change non-loop InadequateCoverage
-  policy. JSC already has a dedicated ftlOSREntryFailureCountForReoptimization
-  for a similarly distinct trigger.
+  policy. JSC already has a dedicated
+  ftlOSREntryFailureCountForReoptimization for a similarly distinct
+  trigger.
+
+Default 5 is a conservative JIT heuristic, not "because FromLoop is 5":
+
+- On a durable same-site phase change (20 reps), t=3/4/5/6 are
+  indistinguishable (median ~0.68–0.69 ms). The extra 2 hits vs t=3
+  cost a few tenths of a millisecond at most.
+- t=5 avoids jettison on a 5-then-never burst and on 32 interleaved
+  sites ×4 / ×5. t=3 jettisons both.
+- OSRExit::m_count is cumulative and never decays. Rare spaced hits
+  of the same site (10^3…10^6 warm calls between hits) fire at hit
+  t+1 for every fixed threshold. t=5 buys two extra lifetime hits of
+  slack versus t=3 before an unnecessary jettison. A decaying rate
+  would be a redesign; this patch does not add one.
 
 This is not a correctness bug. The current heuristic is safe but
 leaves a newly hot uncovered site on the deopt stub for too long

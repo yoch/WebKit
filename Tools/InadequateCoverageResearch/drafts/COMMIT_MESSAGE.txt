@@ -11,11 +11,21 @@ deoptimizing for ~101 calls.
 
 Count repeats of that OSR exit's m_count against a dedicated
 osrExitCountForReoptimizationFromInadequateCoverage threshold (default
-3, same unsigned `count > threshold` convention and
+5, same unsigned `count > threshold` convention and
 adjustedExitCountThreshold / retry doubling as the existing counters).
-Threshold 0/1/2 jettison a 32-site ×1/×2/×3 cold spray; 3 is the first
-value that does not. Distinct sites keep independent counters so they
-do not share this budget.
+The 6th same-site hit reoptimizes. Distinct sites keep independent
+counters so they do not share this budget.
+
+Default 5 is conservative: a durable phase change is indistinguishable
+from t=3/4/6 (20-rep median), while t=5 avoids jettison on a
+5-then-never burst and on interleaved 32-site ×4/×5 sprays. m_count
+is cumulative, so any fixed constant eventually fires on rare spaced
+hits of the same site; 5 buys two extra lifetime hits of slack versus
+3. This is not justified by FromLoop's historical 5.
+
+The new helper applies codeTypeThresholdMultiplier() like the generic
+and FromLoop helpers (Eval ×10, Function/Program ×1). There is no
+reason to diverge.
 
 The option is dedicated rather than reused from
 osrExitCountForReoptimizationFromLoop so that tuning the loop-stuck
