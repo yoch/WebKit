@@ -13,6 +13,11 @@ jobs:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
         with:
           fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !LayoutTests/
+            !JSTests/
 
       - name: Install JSCOnly build dependencies
         run: |
@@ -76,7 +81,7 @@ jobs:
 
           JSC=WebKitBuild/JSCOnly/Release/bin/jsc
           COMMON=(--useFTLJIT=false --useConcurrentJIT=false --printEachOSRExit=true --verboseDFGOSRExit=true --logCompilationChanges=true)
-          for threshold in 100 1 1000; do
+          for threshold in 100 20 10 5 1 1000; do
               echo "=== threshold=$threshold ==="
               "$JSC" "${COMMON[@]}" --osrExitCountForReoptimization="$threshold" /tmp/inadequate-coverage-repro.js 2>&1 | tee "/tmp/jsc-$threshold.log"
               echo "InadequateCoverage count: $(grep -c 'InadequateCoverage' "/tmp/jsc-$threshold.log" || true)"
