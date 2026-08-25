@@ -64,11 +64,29 @@ void handleExitCounts(VM& vm, CCallHelpers& jit, const OSRExitBase& exit)
     jit.loadPtr(AssemblyHelpers::Address(GPRInfo::regT0, CodeBlock::offsetOfJITData()), GPRInfo::regT5);
 
     auto isLLIntCodeBlock = jit.branchTestPtr(CCallHelpers::Zero, GPRInfo::regT5);
-    AssemblyHelpers::Jump reoptimizeNow = jit.branch32(
-        AssemblyHelpers::GreaterThanOrEqual,
-        AssemblyHelpers::Address(GPRInfo::regT5, BaselineJITData::offsetOfJITExecuteCounter()),
-        AssemblyHelpers::TrustedImm32(0));
+    AssemblyHelpers::JumpList reoptimizeNow;
+    reoptimizeNow.append(
+        jit.branch32(
+            AssemblyHelpers::GreaterThanOrEqual,
+            AssemblyHelpers::Address(GPRInfo::regT5, BaselineJITData::offsetOfJITExecuteCounter()),
+            AssemblyHelpers::TrustedImm32(0)));
     isLLIntCodeBlock.link(&jit);
+
+    // InadequateCoverage is planted as ForceOSRExit for bytecode with no value
+    // profile. Once that site runs, every subsequent execution exits until we
+    // reoptimize. Count repeats of *this* OSR exit (m_count was incremented
+    // above) and use the loop threshold: same unsigned `>` convention as the
+    // global `BelowOrEqual` compare, including retry doubling via
+    // exitCountThresholdForReoptimizationFromLoop(). Distinct sites keep
+    // independent m_count values, so they do not share this budget.
+    if (exit.m_kind == InadequateCoverage) {
+        jit.load32(&exit.m_count, GPRInfo::regT4);
+        reoptimizeNow.append(
+            jit.branch32(
+                AssemblyHelpers::Above,
+                GPRInfo::regT4,
+                AssemblyHelpers::TrustedImm32(jit.codeBlock()->exitCountThresholdForReoptimizationFromLoop())));
+    }
 
     // We want to figure out if there's a possibility that we're in a loop. For the outermost
     // code block in the inline stack, we handle this appropriately by having the loop OSR trigger

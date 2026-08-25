@@ -6623,15 +6623,22 @@ JSC_DEFINE_NOEXCEPT_JIT_OPERATION(operationTriggerReoptimizationNow, void, (Code
         }
     }
 
-    // In order to trigger reoptimization, one of two things must have happened:
+    // In order to trigger reoptimization, one of the following must have happened:
     // 1) We exited more than some number of times.
     // 2) We exited and got stuck in a loop, and now we're exiting again.
+    // 3) The same InadequateCoverage site fired more times than the loop
+    //    threshold (ForceOSRExit is deterministic until recompile). Keep in
+    //    sync with handleExitCounts: compare is `m_count > FromLoopThreshold`
+    //    after the stub has incremented m_count.
     bool didExitABunch = optimizedCodeBlock->shouldReoptimizeNow();
     bool didGetStuckInLoop =
         (codeBlock->checkIfOptimizationThresholdReached() || didTryToEnterIntoInlinedLoops)
         && optimizedCodeBlock->shouldReoptimizeFromLoopNow();
+    bool didRepeatInadequateCoverageAtSameSite =
+        exit && exit->m_kind == InadequateCoverage
+        && exit->m_count > optimizedCodeBlock->exitCountThresholdForReoptimizationFromLoop();
     
-    if (!didExitABunch && !didGetStuckInLoop) {
+    if (!didExitABunch && !didGetStuckInLoop && !didRepeatInadequateCoverageAtSameSite) {
         dataLogLnIf(Options::verboseOSR(), *codeBlock, ": Not reoptimizing ", *optimizedCodeBlock, " because it either didn't exit enough or didn't loop enough after exit.");
         codeBlock->optimizeAfterLongWarmUp();
         return;
