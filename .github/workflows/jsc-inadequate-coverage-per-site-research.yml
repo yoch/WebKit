@@ -1,0 +1,176 @@
+name: JSC InadequateCoverage Per-Site Research
+
+on:
+  push:
+    branches:
+      - research/jsc-inadequate-coverage-per-site
+
+jobs:
+  jsc-linux:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !LayoutTests/
+            !JSTests/
+
+      - name: Apply candidate patch
+        run: |
+          git apply --check .github/research/jsc-inadequate-coverage-per-site.patch
+          git apply .github/research/jsc-inadequate-coverage-per-site.patch
+          git diff --check
+          git diff -- Source/JavaScriptCore/runtime/OptionsList.h Source/JavaScriptCore/dfg/DFGOSRExitCompilerCommon.cpp Source/JavaScriptCore/dfg/DFGOperations.cpp
+
+      - name: Install JSCOnly build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang ninja-build libicu-dev bison flex gperf ruby python3
+
+      - name: Configure JSCOnly Release
+        env:
+          CC: clang
+          CXX: clang++
+        run: |
+          cmake -S . -B WebKitBuild/JSCOnly/Release -GNinja \
+            -DPORT=JSCOnly \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DENABLE_API_TESTS=OFF
+
+      - name: Build jsc
+        run: cmake --build WebKitBuild/JSCOnly/Release --target jsc -- -j2
+
+      - name: Record exact revision and source diff
+        run: |
+          echo "base=$(git rev-parse HEAD)"
+          git diff --check
+          git diff --stat
+          WebKitBuild/JSCOnly/Release/bin/jsc --version || true
+
+      - name: Write diagnostic reproducers
+        shell: bash
+        run: |
+          cat > /tmp/phase-change.js <<'EOF'
+          var INSERTS = 20000;
+          var UPDATES = 200000;
+          function makeScorer() {
+              var state = { sink: 0 };
+              function score(results, docId, termFreq) {
+                  var weightedScore = 1.7 * termFreq;
+                  var result = results.get(docId);
+                  if (result) {
+                      result.score += weightedScore;
+                      state.sink ^= result.score | 0;
+                  } else
+                      results.set(docId, { score: weightedScore });
+              }
+              score.state = state;
+              return score;
+          }
+          var score = makeScorer();
+          noInline(score);
+          noFTL(score);
+          var results = new Map();
+          for (var i = 0; i < INSERTS; ++i)
+              score(results, i, 1 + (i & 3));
+          print("DFG_COMPILES_BEFORE=" + numberOfDFGCompiles(score));
+          var start = preciseTime();
+          for (var i = 0; i < UPDATES; ++i)
+              score(results, i % INSERTS, 1 + (i & 3));
+          print("ELAPSED_MS=" + ((preciseTime() - start) * 1000).toFixed(6));
+          print("DFG_COMPILES_AFTER=" + numberOfDFGCompiles(score));
+          print("SINK=" + score.state.sink + " SIZE=" + results.size);
+          EOF
+
+          cat > /tmp/distinct-cold-sites.js <<'EOF'
+          function coldSites(mode, a, b, c, d, e, f, g, h) {
+              if (mode === 1) return a.x;
+              if (mode === 2) return b.x;
+              if (mode === 3) return c.x;
+              if (mode === 4) return d.x;
+              if (mode === 5) return e.x;
+              if (mode === 6) return f.x;
+              if (mode === 7) return g.x;
+              if (mode === 8) return h.x;
+              return 0;
+          }
+          noInline(coldSites);
+          noFTL(coldSites);
+          var a = { x: 1 }, b = { x: 2 }, c = { x: 3 }, d = { x: 4 };
+          var e = { x: 5 }, f = { x: 6 }, g = { x: 7 }, h = { x: 8 };
+          for (var i = 0; i < 20000; ++i)
+              coldSites(0, a, b, c, d, e, f, g, h);
+          print("DFG_COMPILES_BEFORE=" + numberOfDFGCompiles(coldSites));
+          var sum = 0;
+          for (var mode = 1; mode <= 8; ++mode)
+              sum += coldSites(mode, a, b, c, d, e, f, g, h);
+          print("SUM=" + sum);
+          print("DFG_COMPILES_AFTER=" + numberOfDFGCompiles(coldSites));
+          EOF
+
+          cat > /tmp/rare-once.js <<'EOF'
+          function makeScorer() {
+              var state = { sink: 0 };
+              function score(results, docId) {
+                  var result = results.get(docId);
+                  if (result) {
+                      result.score += 1;
+                      state.sink ^= result.score;
+                  } else
+                      results.set(docId, { score: 1 });
+              }
+              score.state = state;
+              return score;
+          }
+          var score = makeScorer();
+          noInline(score);
+          noFTL(score);
+          var results = new Map();
+          for (var i = 0; i < 20000; ++i)
+              score(results, i);
+          print("DFG_COMPILES_BEFORE=" + numberOfDFGCompiles(score));
+          score(results, 0);
+          print("DFG_COMPILES_AFTER=" + numberOfDFGCompiles(score));
+          print("SINK=" + score.state.sink);
+          EOF
+
+      - name: Verify same-site threshold is independent of generic exit budget
+        shell: bash
+        run: |
+          JSC=WebKitBuild/JSCOnly/Release/bin/jsc
+          COMMON=(--useFTLJIT=false --useConcurrentJIT=false --printEachOSRExit=true --verboseDFGOSRExit=true --logCompilationChanges=true --osrExitCountForReoptimization=1000)
+          for threshold in 1 5 20 1000; do
+              echo "=== inadequate-site-threshold=$threshold ==="
+              "$JSC" "${COMMON[@]}" --osrExitCountForReoptimizationFromInadequateCoverage="$threshold" /tmp/phase-change.js 2>&1 | tee "/tmp/phase-$threshold.log"
+              echo "InadequateCoverage count: $(grep -c 'InadequateCoverage' "/tmp/phase-$threshold.log" || true)"
+              echo "Jettison count: $(grep -c 'Jettisoning.*OSRExit' "/tmp/phase-$threshold.log" || true)"
+          done
+
+      - name: Verify one cold hit does not jettison
+        shell: bash
+        run: |
+          JSC=WebKitBuild/JSCOnly/Release/bin/jsc
+          "$JSC" --useFTLJIT=false --useConcurrentJIT=false --printEachOSRExit=true --verboseDFGOSRExit=true --logCompilationChanges=true --osrExitCountForReoptimization=1000 --osrExitCountForReoptimizationFromInadequateCoverage=5 /tmp/rare-once.js 2>&1 | tee /tmp/rare-once.log
+          test "$(grep -c 'InadequateCoverage' /tmp/rare-once.log || true)" -eq 1
+          test "$(grep -c 'Jettisoning.*OSRExit' /tmp/rare-once.log || true)" -eq 0
+
+      - name: Verify distinct cold sites do not share aggressive budget
+        shell: bash
+        run: |
+          JSC=WebKitBuild/JSCOnly/Release/bin/jsc
+          COMMON=(--useFTLJIT=false --useConcurrentJIT=false --printEachOSRExit=true --verboseDFGOSRExit=true --logCompilationChanges=true)
+
+          echo '=== per-site policy: generic=1000 site=5 ==='
+          "$JSC" "${COMMON[@]}" --osrExitCountForReoptimization=1000 --osrExitCountForReoptimizationFromInadequateCoverage=5 /tmp/distinct-cold-sites.js 2>&1 | tee /tmp/distinct-per-site.log
+          test "$(grep -c 'InadequateCoverage' /tmp/distinct-per-site.log || true)" -eq 8
+          test "$(grep -c 'Jettisoning.*OSRExit' /tmp/distinct-per-site.log || true)" -eq 0
+
+          echo '=== global-5 proxy: generic=5 site=1000 ==='
+          "$JSC" "${COMMON[@]}" --osrExitCountForReoptimization=5 --osrExitCountForReoptimizationFromInadequateCoverage=1000 /tmp/distinct-cold-sites.js 2>&1 | tee /tmp/distinct-global-5.log
+          echo "InadequateCoverage count: $(grep -c 'InadequateCoverage' /tmp/distinct-global-5.log || true)"
+          echo "Jettison count: $(grep -c 'Jettisoning.*OSRExit' /tmp/distinct-global-5.log || true)"
+          test "$(grep -c 'Jettisoning.*OSRExit' /tmp/distinct-global-5.log || true)" -ge 1

@@ -1,0 +1,66 @@
+diff --git a/Source/JavaScriptCore/runtime/OptionsList.h b/Source/JavaScriptCore/runtime/OptionsList.h
+--- a/Source/JavaScriptCore/runtime/OptionsList.h
++++ b/Source/JavaScriptCore/runtime/OptionsList.h
+@@ -391,6 +391,7 @@
+     \
+     v(Unsigned, osrExitCountForReoptimization, 100, Normal, nullptr) \
+     v(Unsigned, osrExitCountForReoptimizationFromLoop, 5, Normal, nullptr) \
++    v(Unsigned, osrExitCountForReoptimizationFromInadequateCoverage, 5, Normal, nullptr) \
+     \
+     v(Unsigned, reoptimizationRetryCounterMax, 0, Normal, nullptr)  \
+     \
+diff --git a/Source/JavaScriptCore/dfg/DFGOSRExitCompilerCommon.cpp b/Source/JavaScriptCore/dfg/DFGOSRExitCompilerCommon.cpp
+--- a/Source/JavaScriptCore/dfg/DFGOSRExitCompilerCommon.cpp
++++ b/Source/JavaScriptCore/dfg/DFGOSRExitCompilerCommon.cpp
+@@ -65,11 +65,21 @@ void handleExitCounts(VM& vm, CCallHelpers& jit, const OSRExitBase& exit)
+     jit.loadPtr(AssemblyHelpers::Address(GPRInfo::regT0, CodeBlock::offsetOfJITData()), GPRInfo::regT5);
+ 
+     auto isLLIntCodeBlock = jit.branchTestPtr(CCallHelpers::Zero, GPRInfo::regT5);
+-    AssemblyHelpers::Jump reoptimizeNow = jit.branch32(
+-        AssemblyHelpers::GreaterThanOrEqual,
+-        AssemblyHelpers::Address(GPRInfo::regT5, BaselineJITData::offsetOfJITExecuteCounter()),
+-        AssemblyHelpers::TrustedImm32(0));
++    AssemblyHelpers::JumpList reoptimizeNow;
++    reoptimizeNow.append(
++        jit.branch32(
++            AssemblyHelpers::GreaterThanOrEqual,
++            AssemblyHelpers::Address(GPRInfo::regT5, BaselineJITData::offsetOfJITExecuteCounter()),
++            AssemblyHelpers::TrustedImm32(0)));
+     isLLIntCodeBlock.link(&jit);
++
++    if (exit.m_kind == InadequateCoverage) {
++        jit.load32(AssemblyHelpers::AbsoluteAddress(&exit.m_count), GPRInfo::regT4);
++        reoptimizeNow.append(
++            jit.branch32(
++                AssemblyHelpers::Above,
++                GPRInfo::regT4,
++                AssemblyHelpers::TrustedImm32(jit.codeBlock()->adjustedExitCountThreshold(Options::osrExitCountForReoptimizationFromInadequateCoverage()))));
++    }
+ 
+     // We want to figure out if there's a possibility that we're in a loop. For the outermost
+     // code block in the inline stack, we handle this appropriately by having the loop OSR trigger
+diff --git a/Source/JavaScriptCore/dfg/DFGOperations.cpp b/Source/JavaScriptCore/dfg/DFGOperations.cpp
+--- a/Source/JavaScriptCore/dfg/DFGOperations.cpp
++++ b/Source/JavaScriptCore/dfg/DFGOperations.cpp
+@@ -6626,14 +6626,20 @@ JSC_DEFINE_NOEXCEPT_JIT_OPERATION(operationTriggerReoptimizationNow, void, (Code
+     }
+ 
+-    // In order to trigger reoptimization, one of two things must have happened:
++    // In order to trigger reoptimization, one of three things must have happened:
+     // 1) We exited more than some number of times.
+     // 2) We exited and got stuck in a loop, and now we're exiting again.
++    // 3) The same InadequateCoverage exit was repeatedly taken.
+     bool didExitABunch = optimizedCodeBlock->shouldReoptimizeNow();
+     bool didGetStuckInLoop =
+         (codeBlock->checkIfOptimizationThresholdReached() || didTryToEnterIntoInlinedLoops)
+         && optimizedCodeBlock->shouldReoptimizeFromLoopNow();
++    bool didExitFromSameInadequateCoverage =
++        exit->m_kind == InadequateCoverage
++        && exit->m_count > optimizedCodeBlock->adjustedExitCountThreshold(
++            Options::osrExitCountForReoptimizationFromInadequateCoverage());
+     
+-    if (!didExitABunch && !didGetStuckInLoop) {
++    if (!didExitABunch && !didGetStuckInLoop && !didExitFromSameInadequateCoverage) {
+         dataLogLnIf(Options::verboseOSR(), *codeBlock, ": Not reoptimizing ", *optimizedCodeBlock, " because it either didn't exit enough or didn't loop enough after exit.");
+         codeBlock->optimizeAfterLongWarmUp();
+         return;
