@@ -734,6 +734,7 @@ public:
     uint32_t NODELETE adjustedExitCountThreshold(uint32_t desiredThreshold);
     uint32_t NODELETE exitCountThresholdForReoptimization();
     uint32_t NODELETE exitCountThresholdForReoptimizationFromLoop();
+    uint32_t NODELETE exitCountThresholdForReoptimizationFromInadequateCoverage();
     bool NODELETE shouldReoptimizeNow();
     bool NODELETE shouldReoptimizeFromLoopNow();
 
