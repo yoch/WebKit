@@ -1,0 +1,32 @@
+Reoptimize sooner on repeated same-site InadequateCoverage exits
+https://bugs.webkit.org/show_bug.cgi?id=XXXXXX
+
+Reviewed by NOBODY (OOPS!).
+
+ForceOSRExit planted for SpecNone bytecode is deterministic: every
+subsequent execution that reaches that ForceOSRExit site exits until
+the CodeBlock is recompiled. The generic osrExitCountForReoptimization
+budget (100) therefore leaves a newly hot previously-uncovered site
+deoptimizing for ~101 calls.
+
+Count repeats of that OSR exit's m_count against a dedicated
+osrExitCountForReoptimizationFromInadequateCoverage threshold (default
+5, same unsigned `count > threshold` convention and
+adjustedExitCountThreshold / retry doubling as the existing counters).
+Distinct sites keep independent counters so a spray of cold sites does
+not share an aggressive budget.
+
+The option is dedicated rather than reused from
+osrExitCountForReoptimizationFromLoop so that tuning the loop-stuck
+budget does not silently change non-loop InadequateCoverage policy.
+This matches the existing split between the generic, FromLoop, and
+ftlOSREntryFailureCountForReoptimization knobs.
+
+* Source/JavaScriptCore/runtime/OptionsList.h:
+* Source/JavaScriptCore/bytecode/CodeBlock.h:
+* Source/JavaScriptCore/bytecode/CodeBlock.cpp:
+* Source/JavaScriptCore/dfg/DFGOSRExitCompilerCommon.cpp:
+* Source/JavaScriptCore/dfg/DFGOperations.cpp:
+* JSTests/stress/inadequate-coverage-same-site-reopt.js: Added.
+* JSTests/stress/inadequate-coverage-distinct-sites.js: Added.
+* JSTests/stress/inadequate-coverage-same-site-ftl.js: Added.

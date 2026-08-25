@@ -1,0 +1,39 @@
+Bug title:
+[JSC] Reoptimize sooner on repeated same-site InadequateCoverage OSR exits
+
+Product: WebKit
+Component: JavaScriptCore
+
+Description:
+
+DFG/FTL plant ForceOSRExit (ExitKind::InadequateCoverage) for bytecode
+whose value profile is still SpecNone. Once that site executes, every
+subsequent execution that reaches the same ForceOSRExit site exits until
+the CodeBlock is recompiled.
+
+handleExitCounts() currently only jettisons when the *global*
+CodeBlock::osrExitCounter exceeds osrExitCountForReoptimization (100)
+or, for inlined-loop cases, osrExitCountForReoptimizationFromLoop (5).
+A same-site phase change therefore burns ~101 deopts on the generic
+budget. Distinct never-again sites should not share an aggressive
+budget.
+
+Proposal:
+- Per-site trigger: OSRExit::m_count > dedicated
+  osrExitCountForReoptimizationFromInadequateCoverage (default 5),
+  using the existing unsigned `count > threshold` JIT convention and
+  adjustedExitCountThreshold exponential backoff.
+- Do not reuse FromLoop: that option means "stuck in a loop", and
+  changing it would unexpectedly change non-loop InadequateCoverage
+  policy. JSC already has a dedicated ftlOSREntryFailureCountForReoptimization
+  for a similarly distinct trigger.
+
+This is not a correctness bug. The current heuristic is safe but
+leaves a newly hot uncovered site on the deopt stub for too long
+(observed with FrozenMiniSearch-style update-after-insert workloads,
+and independently with a two-arm `if (mode) return object.x` microbench).
+
+Tests:
+- JSTests/stress/inadequate-coverage-same-site-reopt.js
+- JSTests/stress/inadequate-coverage-distinct-sites.js
+- JSTests/stress/inadequate-coverage-same-site-ftl.js

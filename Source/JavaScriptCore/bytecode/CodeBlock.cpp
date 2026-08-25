@@ -2859,6 +2859,11 @@ uint32_t CodeBlock::exitCountThresholdForReoptimizationFromLoop()
     return adjustedExitCountThreshold(Options::osrExitCountForReoptimizationFromLoop() * codeTypeThresholdMultiplier());
 }
 
+uint32_t CodeBlock::exitCountThresholdForReoptimizationFromInadequateCoverage()
+{
+    return adjustedExitCountThreshold(Options::osrExitCountForReoptimizationFromInadequateCoverage() * codeTypeThresholdMultiplier());
+}
+
 bool CodeBlock::shouldReoptimizeNow()
 {
     return osrExitCounter() >= exitCountThresholdForReoptimization();
