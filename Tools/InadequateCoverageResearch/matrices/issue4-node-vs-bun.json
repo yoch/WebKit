@@ -1,0 +1,1020 @@
+{
+  "node": "/tmp/node-26/node-v26.7.0-linux-x64/bin/node",
+  "bun": "/home/ubuntu/.bun/bin/bun",
+  "bundles": {
+    "multi-only": "aa36b88cf62c0a8be2bae0fd69a480d57ef4e053af1a89160e10c4607d1e6eb4",
+    "resident-pressure": "020adca4a18abc4cf9c26a0000282c75352976165b43d41d34253cda417d4bef"
+  },
+  "repetitions": 15,
+  "seed": 4,
+  "summaries": {
+    "bun/multi-only": {
+      "n": 15,
+      "median_us": 2553.9751999999985,
+      "p25_us": 2492.8661880952413,
+      "p75_us": 2620.6482142857144
+    },
+    "node/multi-only": {
+      "n": 15,
+      "median_us": 3807.7123333333325,
+      "p25_us": 3782.1756153846136,
+      "p75_us": 3863.140436813188
+    },
+    "bun/resident-pressure": {
+      "n": 15,
+      "median_us": 2683.881294117648,
+      "p25_us": 2616.787185672504,
+      "p75_us": 2724.0011727941273
+    },
+    "node/resident-pressure": {
+      "n": 15,
+      "median_us": 1949.2295499999957,
+      "p25_us": 1929.5071450000137,
+      "p75_us": 2181.201015384594
+    }
+  },
+  "comparisons": {
+    "multi-only": {
+      "node_median_us": 3807.7123333333325,
+      "bun_median_us": 2553.9751999999985,
+      "bun_over_node": 0.6707374340341009,
+      "mann_whitney": {
+        "u": 0.0,
+        "z": -4.666282626286914,
+        "p_two_sided": 3.066977765462278e-06
+      }
+    },
+    "resident-pressure": {
+      "node_median_us": 1949.2295499999957,
+      "bun_median_us": 2683.881294117648,
+      "bun_over_node": 1.3768933957099376,
+      "mann_whitney": {
+        "u": 209.0,
+        "z": 4.002633541659441,
+        "p_two_sided": 6.264128926276138e-05
+      }
+    }
+  },
+  "raw": [
+    {
+      "repetition": 0,
+      "runtime": "bun",
+      "bundle": "multi-only",
+      "multi_us": 2703.112785714276,
+      "timings_us": {
+        "i4-multi-only-build": 1331007.701,
+        "i4-multi-only": 2703.112785714276
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 0,
+      "runtime": "node",
+      "bundle": "multi-only",
+      "multi_us": 3778.987923076924,
+      "timings_us": {
+        "i4-multi-only-build": 1431548.318,
+        "i4-multi-only": 3778.987923076924
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 0,
+      "runtime": "bun",
+      "bundle": "resident-pressure",
+      "multi_us": 2720.9334705882397,
+      "timings_us": {
+        "resident-build": 1208306.905,
+        "resident-brand": 470.84943478260857,
+        "resident-substance": 847.3857343749991,
+        "resident-multi": 2720.9334705882397,
+        "resident-fuzzy": 1088.6170512820593
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 0,
+      "runtime": "node",
+      "bundle": "resident-pressure",
+      "multi_us": 2097.863799999959,
+      "timings_us": {
+        "resident-build": 1393845.805,
+        "resident-brand": 1404.6133076923036,
+        "resident-substance": 1887.9990769230778,
+        "resident-multi": 2097.863799999959,
+        "resident-fuzzy": 1569.0762727272986
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 1,
+      "runtime": "bun",
+      "bundle": "multi-only",
+      "multi_us": 2668.0348750000035,
+      "timings_us": {
+        "i4-multi-only-build": 1361961.546,
+        "i4-multi-only": 2668.0348750000035
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 1,
+      "runtime": "node",
+      "bundle": "multi-only",
+      "multi_us": 3772.5864999999885,
+      "timings_us": {
+        "i4-multi-only-build": 1418921.2739999997,
+        "i4-multi-only": 3772.5864999999885
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 1,
+      "runtime": "node",
+      "bundle": "resident-pressure",
+      "multi_us": 1949.2295499999957,
+      "timings_us": {
+        "resident-build": 1395096.8930000002,
+        "resident-brand": 1320.6203823529397,
+        "resident-substance": 1459.6104210526344,
+        "resident-multi": 1949.2295499999957,
+        "resident-fuzzy": 1780.6881818181946
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 1,
+      "runtime": "bun",
+      "bundle": "resident-pressure",
+      "multi_us": 2683.881294117648,
+      "timings_us": {
+        "resident-build": 1349715.334,
+        "resident-brand": 486.3942222222249,
+        "resident-substance": 808.4309473684227,
+        "resident-multi": 2683.881294117648,
+        "resident-fuzzy": 975.5448723404272
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 2,
+      "runtime": "node",
+      "bundle": "resident-pressure",
+      "multi_us": 2385.145874999978,
+      "timings_us": {
+        "resident-build": 1434997.992,
+        "resident-brand": 1308.53875,
+        "resident-substance": 1406.7678611111078,
+        "resident-multi": 2385.145874999978,
+        "resident-fuzzy": 1607.7468888889025
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 2,
+      "runtime": "bun",
+      "bundle": "multi-only",
+      "multi_us": 2553.9751999999985,
+      "timings_us": {
+        "i4-multi-only-build": 1192323.049,
+        "i4-multi-only": 2553.9751999999985
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 2,
+      "runtime": "bun",
+      "bundle": "resident-pressure",
+      "multi_us": 2660.791999999977,
+      "timings_us": {
+        "resident-build": 1337929.522,
+        "resident-brand": 552.5027346938751,
+        "resident-substance": 843.6219454545443,
+        "resident-multi": 2660.791999999977,
+        "resident-fuzzy": 1130.6042631578962
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 2,
+      "runtime": "node",
+      "bundle": "multi-only",
+      "multi_us": 3841.0748461538406,
+      "timings_us": {
+        "i4-multi-only-build": 1414738.857,
+        "i4-multi-only": 3841.0748461538406
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 3,
+      "runtime": "node",
+      "bundle": "multi-only",
+      "multi_us": 4037.5436000000036,
+      "timings_us": {
+        "i4-multi-only-build": 1409621.6290000002,
+        "i4-multi-only": 4037.5436000000036
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 3,
+      "runtime": "node",
+      "bundle": "resident-pressure",
+      "multi_us": 1922.8116500000172,
+      "timings_us": {
+        "resident-build": 1576123.289,
+        "resident-brand": 1383.7856571428606,
+        "resident-substance": 1550.2684285714297,
+        "resident-multi": 1922.8116500000172,
+        "resident-fuzzy": 1072.8305000000091
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 3,
+      "runtime": "bun",
+      "bundle": "multi-only",
+      "multi_us": 2608.675285714282,
+      "timings_us": {
+        "i4-multi-only-build": 1207257.57,
+        "i4-multi-only": 2608.675285714282
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 3,
+      "runtime": "bun",
+      "bundle": "resident-pressure",
+      "multi_us": 2612.5983157894552,
+      "timings_us": {
+        "resident-build": 1162944.4880000001,
+        "resident-brand": 545.52232,
+        "resident-substance": 835.5232000000001,
+        "resident-multi": 2612.5983157894552,
+        "resident-fuzzy": 1024.2606530612238
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 4,
+      "runtime": "bun",
+      "bundle": "multi-only",
+      "multi_us": 2517.980733333328,
+      "timings_us": {
+        "i4-multi-only-build": 1323506.0929999999,
+        "i4-multi-only": 2517.980733333328
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 4,
+      "runtime": "node",
+      "bundle": "resident-pressure",
+      "multi_us": 1856.0447499999857,
+      "timings_us": {
+        "resident-build": 1400101.912,
+        "resident-brand": 1405.7946944444413,
+        "resident-substance": 1461.3302500000095,
+        "resident-multi": 1856.0447499999857,
+        "resident-fuzzy": 1722.2573448275868
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 4,
+      "runtime": "bun",
+      "bundle": "resident-pressure",
+      "multi_us": 2603.7238333333335,
+      "timings_us": {
+        "resident-build": 1216118.6109999998,
+        "resident-brand": 475.3089523809512,
+        "resident-substance": 826.4124531250019,
+        "resident-multi": 2603.7238333333335,
+        "resident-fuzzy": 1051.7596666666577
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 4,
+      "runtime": "node",
+      "bundle": "multi-only",
+      "multi_us": 3856.9782307692303,
+      "timings_us": {
+        "i4-multi-only-build": 1394700.3830000001,
+        "i4-multi-only": 3856.9782307692303
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 5,
+      "runtime": "node",
+      "bundle": "resident-pressure",
+      "multi_us": 2578.574714285748,
+      "timings_us": {
+        "resident-build": 1381464.961,
+        "resident-brand": 1400.98476923077,
+        "resident-substance": 1660.120074074072,
+        "resident-multi": 2578.574714285748,
+        "resident-fuzzy": 1572.084250000005
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 5,
+      "runtime": "bun",
+      "bundle": "resident-pressure",
+      "multi_us": 2620.9760555555526,
+      "timings_us": {
+        "resident-build": 1148986.3750000002,
+        "resident-brand": 464.8604366197182,
+        "resident-substance": 798.3840476190452,
+        "resident-multi": 2620.9760555555526,
+        "resident-fuzzy": 1029.864595238093
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 5,
+      "runtime": "node",
+      "bundle": "multi-only",
+      "multi_us": 3871.6879230769164,
+      "timings_us": {
+        "i4-multi-only-build": 1392107.555,
+        "i4-multi-only": 3871.6879230769164
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 5,
+      "runtime": "bun",
+      "bundle": "multi-only",
+      "multi_us": 2444.8597058823557,
+      "timings_us": {
+        "i4-multi-only-build": 1151238.101,
+        "i4-multi-only": 2444.8597058823557
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 6,
+      "runtime": "node",
+      "bundle": "resident-pressure",
+      "multi_us": 1902.4621818181747,
+      "timings_us": {
+        "resident-build": 1439680.7829999998,
+        "resident-brand": 1444.3797027027026,
+        "resident-substance": 2096.604228571427,
+        "resident-multi": 1902.4621818181747,
+        "resident-fuzzy": 2499.1169999999934
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 6,
+      "runtime": "bun",
+      "bundle": "resident-pressure",
+      "multi_us": 2557.0474000000104,
+      "timings_us": {
+        "resident-build": 1168308.3720000002,
+        "resident-brand": 514.5045555555548,
+        "resident-substance": 804.7104999999988,
+        "resident-multi": 2557.0474000000104,
+        "resident-fuzzy": 1031.836615384621
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 6,
+      "runtime": "node",
+      "bundle": "multi-only",
+      "multi_us": 3785.363307692303,
+      "timings_us": {
+        "i4-multi-only-build": 1369798.832,
+        "i4-multi-only": 3785.363307692303
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 6,
+      "runtime": "bun",
+      "bundle": "multi-only",
+      "multi_us": 2604.5762499999987,
+      "timings_us": {
+        "i4-multi-only-build": 1195366.4949999999,
+        "i4-multi-only": 2604.5762499999987
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 7,
+      "runtime": "bun",
+      "bundle": "resident-pressure",
+      "multi_us": 2727.0688750000145,
+      "timings_us": {
+        "resident-build": 1348386.64,
+        "resident-brand": 542.0057555555559,
+        "resident-substance": 889.3289491525446,
+        "resident-multi": 2727.0688750000145,
+        "resident-fuzzy": 1052.0208666666701
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 7,
+      "runtime": "node",
+      "bundle": "multi-only",
+      "multi_us": 3807.7123333333325,
+      "timings_us": {
+        "i4-multi-only-build": 1402000.1360000002,
+        "i4-multi-only": 3807.7123333333325
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 7,
+      "runtime": "node",
+      "bundle": "resident-pressure",
+      "multi_us": 1944.8501538461535,
+      "timings_us": {
+        "resident-build": 1392798.836,
+        "resident-brand": 1343.568928571423,
+        "resident-substance": 1634.483269230766,
+        "resident-multi": 1944.8501538461535,
+        "resident-fuzzy": 2353.908925925916
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 7,
+      "runtime": "bun",
+      "bundle": "multi-only",
+      "multi_us": 2467.7516428571544,
+      "timings_us": {
+        "i4-multi-only-build": 1349874.0760000001,
+        "i4-multi-only": 2467.7516428571544
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 8,
+      "runtime": "node",
+      "bundle": "multi-only",
+      "multi_us": 3951.859857142868,
+      "timings_us": {
+        "i4-multi-only-build": 1436958.136,
+        "i4-multi-only": 3951.859857142868
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 8,
+      "runtime": "bun",
+      "bundle": "multi-only",
+      "multi_us": 3417.1913750000017,
+      "timings_us": {
+        "i4-multi-only-build": 1221831.161,
+        "i4-multi-only": 3417.1913750000017
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 8,
+      "runtime": "bun",
+      "bundle": "resident-pressure",
+      "multi_us": 2717.3934117646936,
+      "timings_us": {
+        "resident-build": 1202969.568,
+        "resident-brand": 482.9702786885263,
+        "resident-substance": 838.9138500000021,
+        "resident-multi": 2717.3934117646936,
+        "resident-fuzzy": 1034.45365116279
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 8,
+      "runtime": "node",
+      "bundle": "resident-pressure",
+      "multi_us": 1893.1542499999978,
+      "timings_us": {
+        "resident-build": 1396669.907,
+        "resident-brand": 1303.7394285714265,
+        "resident-substance": 1485.9527714285703,
+        "resident-multi": 1893.1542499999978,
+        "resident-fuzzy": 1101.081666666687
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 9,
+      "runtime": "bun",
+      "bundle": "resident-pressure",
+      "multi_us": 2753.997125000012,
+      "timings_us": {
+        "resident-build": 1276364.9349999998,
+        "resident-brand": 487.08564444444465,
+        "resident-substance": 788.1116833333332,
+        "resident-multi": 2753.997125000012,
+        "resident-fuzzy": 1064.0843255813877
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 9,
+      "runtime": "node",
+      "bundle": "resident-pressure",
+      "multi_us": 1993.7628076923093,
+      "timings_us": {
+        "resident-build": 1433525.311,
+        "resident-brand": 1589.236000000006,
+        "resident-substance": 1397.868942857141,
+        "resident-multi": 1993.7628076923093,
+        "resident-fuzzy": 2215.7492499999958
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 9,
+      "runtime": "node",
+      "bundle": "multi-only",
+      "multi_us": 3685.628833333321,
+      "timings_us": {
+        "i4-multi-only-build": 1408884.919,
+        "i4-multi-only": 3685.628833333321
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 9,
+      "runtime": "bun",
+      "bundle": "multi-only",
+      "multi_us": 2413.6776874999982,
+      "timings_us": {
+        "i4-multi-only-build": 1149576.32,
+        "i4-multi-only": 2413.6776874999982
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 10,
+      "runtime": "node",
+      "bundle": "resident-pressure",
+      "multi_us": 1936.2026400000104,
+      "timings_us": {
+        "resident-build": 1357697.047,
+        "resident-brand": 1306.1757272727336,
+        "resident-substance": 1467.910414634145,
+        "resident-multi": 1936.2026400000104,
+        "resident-fuzzy": 1702.987607142859
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 10,
+      "runtime": "node",
+      "bundle": "multi-only",
+      "multi_us": 3805.582000000007,
+      "timings_us": {
+        "i4-multi-only-build": 1362974.8009999997,
+        "i4-multi-only": 3805.582000000007
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 10,
+      "runtime": "bun",
+      "bundle": "multi-only",
+      "multi_us": 2551.0015000000026,
+      "timings_us": {
+        "i4-multi-only-build": 1289344.327,
+        "i4-multi-only": 2551.0015000000026
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 10,
+      "runtime": "bun",
+      "bundle": "resident-pressure",
+      "multi_us": 2608.612624999978,
+      "timings_us": {
+        "resident-build": 1358367.789,
+        "resident-brand": 533.0261794871814,
+        "resident-substance": 814.6723500000007,
+        "resident-multi": 2608.612624999978,
+        "resident-fuzzy": 1028.3244883720895
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 11,
+      "runtime": "bun",
+      "bundle": "multi-only",
+      "multi_us": 2580.0589999999916,
+      "timings_us": {
+        "i4-multi-only-build": 1476081.4849999999,
+        "i4-multi-only": 2580.0589999999916
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 11,
+      "runtime": "bun",
+      "bundle": "resident-pressure",
+      "multi_us": 2681.1412941176377,
+      "timings_us": {
+        "resident-build": 1329030.477,
+        "resident-brand": 505.1678478260912,
+        "resident-substance": 829.3160645161291,
+        "resident-multi": 2681.1412941176377,
+        "resident-fuzzy": 1016.6215789473714
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 11,
+      "runtime": "node",
+      "bundle": "multi-only",
+      "multi_us": 3846.1431538461547,
+      "timings_us": {
+        "i4-multi-only-build": 1397695.849,
+        "i4-multi-only": 3846.1431538461547
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 11,
+      "runtime": "node",
+      "bundle": "resident-pressure",
+      "multi_us": 2264.538230769229,
+      "timings_us": {
+        "resident-build": 1398150.145,
+        "resident-brand": 1413.7374324324344,
+        "resident-substance": 2479.068341463417,
+        "resident-multi": 2264.538230769229,
+        "resident-fuzzy": 1673.9954000000032
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 12,
+      "runtime": "bun",
+      "bundle": "resident-pressure",
+      "multi_us": 2782.6880588235167,
+      "timings_us": {
+        "resident-build": 1334295.8910000003,
+        "resident-brand": 562.1407708333331,
+        "resident-substance": 876.8984576271178,
+        "resident-multi": 2782.6880588235167,
+        "resident-fuzzy": 1022.5656041666676
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 12,
+      "runtime": "node",
+      "bundle": "resident-pressure",
+      "multi_us": 1936.6117307692302,
+      "timings_us": {
+        "resident-build": 1395827.339,
+        "resident-brand": 1344.6158918918934,
+        "resident-substance": 2254.2254390243947,
+        "resident-multi": 1936.6117307692302,
+        "resident-fuzzy": 1752.0648620689542
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 12,
+      "runtime": "node",
+      "bundle": "multi-only",
+      "multi_us": 3798.074769230757,
+      "timings_us": {
+        "i4-multi-only-build": 1341644.1450000003,
+        "i4-multi-only": 3798.074769230757
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 12,
+      "runtime": "bun",
+      "bundle": "multi-only",
+      "multi_us": 2417.3441333333362,
+      "timings_us": {
+        "i4-multi-only-build": 1302018.1320000002,
+        "i4-multi-only": 2417.3441333333362
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 13,
+      "runtime": "bun",
+      "bundle": "resident-pressure",
+      "multi_us": 2776.4615625000033,
+      "timings_us": {
+        "resident-build": 1316847.348,
+        "resident-brand": 498.42251111111483,
+        "resident-substance": 820.5760476190472,
+        "resident-multi": 2776.4615625000033,
+        "resident-fuzzy": 1018.3945111111117
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 13,
+      "runtime": "bun",
+      "bundle": "multi-only",
+      "multi_us": 2632.621142857147,
+      "timings_us": {
+        "i4-multi-only-build": 1318672.738,
+        "i4-multi-only": 2632.621142857147
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 13,
+      "runtime": "node",
+      "bundle": "resident-pressure",
+      "multi_us": 2812.2770800000035,
+      "timings_us": {
+        "resident-build": 1446666.6579999998,
+        "resident-brand": 1661.9885000000068,
+        "resident-substance": 1822.0798148148097,
+        "resident-multi": 2812.2770800000035,
+        "resident-fuzzy": 1936.5824999999859
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 13,
+      "runtime": "node",
+      "bundle": "multi-only",
+      "multi_us": 3869.302642857146,
+      "timings_us": {
+        "i4-multi-only-build": 1427442.0720000002,
+        "i4-multi-only": 3869.302642857146
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 14,
+      "runtime": "node",
+      "bundle": "multi-only",
+      "multi_us": 3742.4966153846003,
+      "timings_us": {
+        "i4-multi-only-build": 1463936.9160000002,
+        "i4-multi-only": 3742.4966153846003
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 14,
+      "runtime": "bun",
+      "bundle": "multi-only",
+      "multi_us": 2543.2876874999974,
+      "timings_us": {
+        "i4-multi-only-build": 1213336.4340000001,
+        "i4-multi-only": 2543.2876874999974
+      },
+      "fingerprints": {
+        "i4-multi-only": "0ebf5d2b"
+      }
+    },
+    {
+      "repetition": 14,
+      "runtime": "bun",
+      "bundle": "resident-pressure",
+      "multi_us": 2696.517555555576,
+      "timings_us": {
+        "resident-build": 1193541.033,
+        "resident-brand": 472.76645454545275,
+        "resident-substance": 827.8346774193581,
+        "resident-multi": 2696.517555555576,
+        "resident-fuzzy": 1055.8950937499958
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    },
+    {
+      "repetition": 14,
+      "runtime": "node",
+      "bundle": "resident-pressure",
+      "multi_us": 1976.1929354838742,
+      "timings_us": {
+        "resident-build": 1405233.665,
+        "resident-brand": 1329.0271714285673,
+        "resident-substance": 2703.8549047619026,
+        "resident-multi": 1976.1929354838742,
+        "resident-fuzzy": 1555.821249999992
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      }
+    }
+  ]
+}
