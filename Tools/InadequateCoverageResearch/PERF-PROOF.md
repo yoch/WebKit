@@ -60,10 +60,10 @@ decisive same-codegen control is **B vs C**.
 | 200000 | 3.304 | 3.286 | 3.308 | −0.022 | −0.7 | 0.73 |
 
 There is **no** region where t=5 is both faster and robust. At 64–256
-(where unpatched/disabled have not yet hit the global 100, so the
-per-site trigger is the only difference that should matter) t=5 is
-slightly *slower* (recompile paid inside the window). Above ~512 the
-delta is noise around zero. t=3 / t=10 match t=5 within the same noise.
+(the global fallback has not fired at 64, but does around the 101st exit
+at 128/256) t=5 is slightly *slower* (recompile paid inside the window).
+Above ~512 the delta is noise around zero. t=3 / t=10 match t=5 within
+the same noise.
 
 Do not cite older 50–90% figures: those were verbose-OSR artifacts.
 

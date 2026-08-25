@@ -15,7 +15,7 @@ single-run 14.5% number as established normal-runtime performance evidence.
 | FMS PR #13 | `f9b7b8fbbc683170a30a969bca85d45c94ee3ffb` |
 | WebKit candidate | `e01f57903d9e389b5651a167db7c519244f45842` |
 | Candidate base | `f05fd6d8b3bee9719437f45a7cb1d1d7ee9c3151` |
-| WebKit upstream at final refresh | `aca22be814e23246ea548d231fdb1defb7ee535f` |
+| WebKit upstream at final refresh | `11b32a9eb61ff839e2fbfb3c58fc54df3b3813c3` |
 
 The four policy files relevant to this patch are unchanged between the
 candidate base and the refreshed upstream tip.
