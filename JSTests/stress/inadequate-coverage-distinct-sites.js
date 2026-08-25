@@ -1,5 +1,5 @@
 //@ skip if not $jitTests
-//@ runNoCJIT("--useFTLJIT=false", "--osrExitCountForReoptimization=1000")
+//@ runNoCJIT("--useFTLJIT=false", "--osrExitCountForReoptimization=1000", "--osrExitCountForReoptimizationFromLoop=1000")
 
 // Distinct previously uncovered sites, each hit once, must not share a
 // per-site InadequateCoverage budget. Global threshold is 1000, so this

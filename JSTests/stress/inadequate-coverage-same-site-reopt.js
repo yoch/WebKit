@@ -1,5 +1,5 @@
 //@ skip if not $jitTests
-//@ runNoCJIT("--useFTLJIT=false", "--osrExitCountForReoptimization=1000")
+//@ runNoCJIT("--useFTLJIT=false", "--osrExitCountForReoptimization=1000", "--osrExitCountForReoptimizationFromLoop=1000")
 
 // Warm up only the mode=0 arm so `object.x` is compiled as ForceOSRExit
 // (SpecNone). Switching to mode=1 must reoptimize from repeated same-site

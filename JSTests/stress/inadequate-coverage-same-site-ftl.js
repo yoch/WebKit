@@ -1,19 +1,17 @@
-//@ if isFTLEnabled then runFTLNoCJIT("--osrExitCountForReoptimization=1000", "--thresholdForFTLOptimizeAfterWarmUp=1000", "--thresholdForFTLOptimizeSoon=1000") else skip end
+//@ if isFTLEnabled then runFTLNoCJIT("--osrExitCountForReoptimization=1000", "--osrExitCountForReoptimizationFromLoop=1000", "--thresholdForFTLOptimizeAfterWarmUp=1000", "--thresholdForFTLOptimizeSoon=1000") else skip end
 
 // Same-site InadequateCoverage must reoptimize even when the ForceOSRExit
-// is in FTL code. `$vm.ftlTrue()` is constant-folded only in FTL, so the
-// mode=0 warmup is required to reach FTL before the phase change.
-//
-// The FTL flag is a replace-store to a pre-existing property on a closure
-// object so a structure transition cannot jettison the CodeBlock.
+// is in FTL code. `$vm.ftlTrue()` is constant-folded only in FTL.
+// Assign the flag on every call so the store is not itself a SpecNone
+// ForceOSRExit. FromLoop is raised to 1000 so a loop-stuck budget cannot
+// make this pass without the per-site policy.
 
 (function () {
-    var saw = { ftl: 0 };
+    var saw = { ftl: false };
     var object = { x: 1 };
 
     function f(mode, object) {
-        if ($vm.ftlTrue())
-            saw.ftl = 1;
+        saw.ftl = $vm.ftlTrue();
         if (mode)
             return object.x;
         return 0;
@@ -29,6 +27,8 @@
 
     if (!saw.ftl)
         throw new Error("expected FTL compile of f before the phase change");
+    if (reoptimizationRetryCount(f) !== 0)
+        throw new Error("warmup must not jettison, retry=" + reoptimizationRetryCount(f));
 
     var retryBefore = reoptimizationRetryCount(f);
     var sum = 0;

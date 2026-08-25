@@ -477,8 +477,7 @@ var nowMs = (typeof preciseTime === "function") ? function () { return preciseTi
     var saw = { ftl: 0 };
     var object = { x: 1 };
     function score(mode, object) {
-        if ($vm.ftlTrue())
-            saw.ftl = 1;
+        saw.ftl = $vm.ftlTrue();
         if (mode)
             return object.x;
         return 0;
@@ -493,6 +492,8 @@ var nowMs = (typeof preciseTime === "function") ? function () { return preciseTi
     out("FTL_PROOF warmup_done sawFTL=" + saw.ftl + " dfg=" + numberOfDFGCompiles(score) + " retry=" + reoptimizationRetryCount(score));
     if (!saw.ftl)
         throw new Error("FTL_PROOF failed: score was not FTL before phase change");
+    if (reoptimizationRetryCount(score) !== 0)
+        throw new Error("FTL_PROOF failed: warmup jettisoned, retry=" + reoptimizationRetryCount(score));
     out("FTL_PROOF PHASE2_START");
     var retryBefore = reoptimizationRetryCount(score);
     var t0 = nowMs();
@@ -521,7 +522,11 @@ var out = (typeof print === "function") ? print : function (s) { console.log(s);
         objects.push({ x: i + 1 });
     for (var i = 0; i < 8000; ++i)
         f(0, objects);
-    out("REPRO name=many-cold-compile dfg=" + numberOfDFGCompiles(f) + " retry=" + reoptimizationRetryCount(f));
+    // Compile one InadequateCoverage stub per cold arm (first hit only).
+    var sum = 0;
+    for (var mode = 1; mode <= 64; ++mode)
+        sum += f(mode, objects);
+    out("REPRO name=many-cold-compile dfg=" + numberOfDFGCompiles(f) + " retry=" + reoptimizationRetryCount(f) + " sum=" + sum);
 })();
 """
 
@@ -614,9 +619,9 @@ def run_jsc(jsc: str, source: str, extra: list[str], work: Path, tag: str) -> tu
     script.write_text(source)
     cmd = [jsc, *extra, str(script)]
     t0 = time.perf_counter()
-    proc = subprocess.run(cmd, capture_output=True, text=True)
+    proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
     elapsed = time.perf_counter() - t0
-    log = proc.stdout + proc.stderr
+    log = proc.stdout or ""
     return proc.returncode, log, elapsed
 
 
@@ -709,6 +714,7 @@ def main() -> int:
             "--useFTLJIT=true",
             "--useDollarVM=true",
             "--osrExitCountForReoptimization=1000",
+            "--osrExitCountForReoptimizationFromLoop=1000",
             "--thresholdForFTLOptimizeAfterWarmUp=1000",
             "--thresholdForFTLOptimizeSoon=1000",
             "--osrExitCountForReoptimizationFromInadequateCoverage=5",
