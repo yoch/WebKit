@@ -1,0 +1,82 @@
+{
+  "tag": "bun40477",
+  "inserts": 20000,
+  "updates": 400,
+  "cases": {
+    "unpatched": {
+      "repro": "elapsed_ms=7.240479 sink=0 size=20000 inserts=20000 updates=400 mode=phase2 settled=0",
+      "probes": [
+        "after_inserts dfg=1 retry=0",
+        "after_phase2 dfg=2 retry=1"
+      ],
+      "ic": 101,
+      "kinds": {
+        "InadequateCoverage": 101
+      },
+      "top_sites": [
+        {
+          "fn": "scorePostingDoc",
+          "bc": "77",
+          "kind": "InadequateCoverage",
+          "n": 101
+        }
+      ],
+      "compiles": [],
+      "ftl_compile_line": 100,
+      "probe_after_inserts_line": 1,
+      "ftl_before_phase2": false,
+      "installs_ftl": 0,
+      "log_chars": 142530
+    },
+    "patched-t5": {
+      "repro": "elapsed_ms=1.366699 sink=0 size=20000 inserts=20000 updates=400 mode=phase2 settled=0",
+      "probes": [
+        "after_inserts dfg=1 retry=0",
+        "after_phase2 dfg=2 retry=1"
+      ],
+      "ic": 6,
+      "kinds": {
+        "InadequateCoverage": 6
+      },
+      "top_sites": [
+        {
+          "fn": "scorePostingDoc",
+          "bc": "77",
+          "kind": "InadequateCoverage",
+          "n": 6
+        }
+      ],
+      "compiles": [],
+      "ftl_compile_line": 100,
+      "probe_after_inserts_line": 1,
+      "ftl_before_phase2": false,
+      "installs_ftl": 0,
+      "log_chars": 36062
+    },
+    "patched-disabled": {
+      "repro": "elapsed_ms=7.398682 sink=0 size=20000 inserts=20000 updates=400 mode=phase2 settled=0",
+      "probes": [
+        "after_inserts dfg=1 retry=0",
+        "after_phase2 dfg=2 retry=1"
+      ],
+      "ic": 101,
+      "kinds": {
+        "InadequateCoverage": 101
+      },
+      "top_sites": [
+        {
+          "fn": "scorePostingDoc",
+          "bc": "77",
+          "kind": "InadequateCoverage",
+          "n": 101
+        }
+      ],
+      "compiles": [],
+      "ftl_compile_line": 100,
+      "probe_after_inserts_line": 1,
+      "ftl_before_phase2": false,
+      "installs_ftl": 0,
+      "log_chars": 141997
+    }
+  }
+}

@@ -1,0 +1,56 @@
+3:FTL_PROOF warmup_start
+4:Installing score#EUKxOA:[0x7f6f0e0e43a0->0x7f6f0e0b9c80, LLIntFunctionCall, 65 (NeverInline)]
+6:DFG(Plan) compiling score#EUKxOA:[0x7f6f0e0e43a0->0x7f6f0e0b9c80, LLIntFunctionCall, 65 (NeverInline)] with Baseline, instructions size = 65
+10:Installing score#EUKxOA:[0x7f6f0e0e43a0->0x7f6f0e0b9c80, BaselineFunctionCall, 65 (NeverInline)]
+15:DFG(Driver) compiling score#EUKxOA:[0x7f6f0e0e4480->0x7f6f0e0e43a0->0x7f6f0e0b9c80, NoneFunctionCall, 65 (NeverInline)] with DFG, instructions size = 65
+16:DFG(Plan) compiling score#EUKxOA:[0x7f6f0e0e4480->0x7f6f0e0e43a0->0x7f6f0e0b9c80, NoneFunctionCall, 65 (NeverInline)] with DFG, instructions size = 65
+60:Installing score#EUKxOA:[0x7f6f0e0e4480->0x7f6f0e0e43a0->0x7f6f0e0b9c80, DFGFunctionCall, 65 (NeverInline)]
+70:DFG(Driver) compiling score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, NoneFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] with FTL, instructions size = 65
+71:DFG(Plan) compiling score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, NoneFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] with FTL, instructions size = 65
+143:Installing score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)]
+185:FTL_PROOF warmup_done sawFTL=true dfg=1 retry=0
+186:FTL_PROOF PHASE2_START
+197:Generated JIT code for FTL OSR exit #1 (D@55, bc#55, InadequateCoverage) from score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)], wi
+376:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+379:score#EUKxOA:[0x7f6f0e0e43a0->0x7f6f0e0b9c80, BaselineFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop) (HadFTLReplacement)]: Entered reoptimize
+380:score#EUKxOA:[0x7f6f0e0e43a0->0x7f6f0e0b9c80, BaselineFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop) (HadFTLReplacement)]: Not reoptimizing score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e
+383:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+386:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+389:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+392:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+395:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+398:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+401:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+404:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+407:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+410:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+413:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+416:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+419:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+422:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+425:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+428:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+431:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+434:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+437:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+440:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+443:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+446:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+449:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+452:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+455:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+458:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+461:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+464:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+467:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+470:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+473:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+476:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+479:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+482:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+485:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+488:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+491:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+494:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+497:Speculation failure in score#EUKxOA:[0x7f6f0e0e4560->0x7f6f0e0e43a0->0x7f6f0e0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+500:FTL_PROOF PHASE2_DONE sum=40 phase_ms=3.906 retry_before=0 retry_after=0 dfg=1

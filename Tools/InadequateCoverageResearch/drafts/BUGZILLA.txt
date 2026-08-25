@@ -1,0 +1,104 @@
+Bug title:
+[JSC] Reoptimize sooner on repeated same-site InadequateCoverage OSR exits
+
+STATUS: DO NOT SUBMIT AS A PERFORMANCE BUG/PATCH.
+
+Adversarial replication on the exact FrozenMiniSearch `issue4-multi-only`
+workload did not reproduce the historical 14.5% result:
+
+- exact Bun/source, 30 interleaved processes: global=1 was −1.53%, p=0.712;
+- same patched JSC binary: P5 vs disabled +0.47%, p=0.183;
+- same patched JSC binary: G1 vs P0 +0.44%, p=0.559;
+- PR #13 specialization normal runtime: −1.46%, p=0.243.
+
+The 101→6 exit reduction is independently verified, but has no demonstrated
+normal-runtime latency benefit. Full report:
+`Tools/InadequateCoverageResearch/FMS-ADVERSARIAL-RESULTS.md`.
+
+Product: WebKit
+Component: JavaScriptCore
+
+Description:
+
+Downstream report:
+https://github.com/oven-sh/bun/issues/40477
+
+Exact / dependency-free reproducer from that report
+(FrozenMiniSearch insert→update of scorePostingDoc):
+https://github.com/yoch/frozenminisearch/blob/61d4ee365fd31369bd07fa89cf9d26c596926dfb/benchmarks/jsc/inadequate-coverage-repro.js
+
+DFG/FTL plant ForceOSRExit (ExitKind::InadequateCoverage) for bytecode
+whose value profile is still SpecNone. Once that site executes, every
+subsequent execution that reaches the same ForceOSRExit site exits until
+the CodeBlock is recompiled.
+
+handleExitCounts() currently only jettisons when the *global*
+CodeBlock::osrExitCounter exceeds osrExitCountForReoptimization (100)
+or, for inlined-loop cases, osrExitCountForReoptimizationFromLoop (5).
+A same-site phase change therefore pays ~101 deterministic deopts on the
+generic budget. Distinct never-again sites should not share an aggressive
+budget.
+
+Downstream proxy (not this patch): on a FrozenMiniSearch multi-term
+workload under normal Bun (1.4.1-canary.1+11fb73032, no diagnostic JSC
+flags), changing only the existing global osrExitCountForReoptimization
+from default to 1 reduced the multi-only median from 4255.36 us to
+3639.15 us (-14.5%). The resident workload went 4435.32 → 4357.49 us
+(-1.8%). That shows the generic delay can have end-to-end cost; it does
+not measure the final per-site threshold.
+
+Standalone JSC proof of the final patch (clang-18, JSCOnly Release,
+x86_64 Linux, FTL+concurrent ON, global budget 100 untouched):
+
+Diagnostic (no-CJIT, printEachOSRExit), same function scorePostingDoc
+bc#77, INSERTS=20k UPDATES=400:
+
+  unpatched:             101 InadequateCoverage, then global reopt
+  patched default t=5:     6 InadequateCoverage, then per-site reopt
+  same patched binary
+    with option=1000000: 101 InadequateCoverage (control)
+
+Normal-runtime UPDATES sweep 64…200k (60/30 reps): no statistically
+robust wall-time win. At 64–256, t=5 is slightly slower (recompile
+paid inside the window). At ≥512 the delta vs the disabled-trigger
+control is noise around 0%. Older 50–90% figures were verbose-OSR
+artifacts and must not be cited.
+
+The same-site behavior is reproduced in standalone jsc when state is
+kept off the shell global object; a naive top-level `sink` can be
+masked by an unrelated global watchpoint jettison.
+
+Proposal:
+- Per-site trigger: OSRExit::m_count > dedicated
+  osrExitCountForReoptimizationFromInadequateCoverage (default 5;
+  unsigned `count > threshold`, so the 6th same-site hit reoptimizes).
+  Uses adjustedExitCountThreshold exponential backoff.
+- The existing global exit budget remains an independent fallback.
+- The helper multiplies by codeTypeThresholdMultiplier() exactly as
+  the generic and FromLoop helpers do (Eval ×10, Function/Program ×1).
+- Do not reuse FromLoop.
+
+Default 5 is conservative (not because FromLoop is 5): durable
+phase-change flat vs t=3/4/6; avoids 5-then-never and interleaved
+32×4/×5 sprays; two extra lifetime hits of slack on the cumulative
+m_count. A decaying rate is out of scope.
+
+Candidate SHA (fork, 8 files): e01f57903d9e389b5651a167db7c519244f45842
+on WebKit/WebKit f05fd6d8b3be (policy still identical at f198e8af3b2a).
+
+This is a heuristic, not a correctness bug. Do not advertise a
+standalone-JSC speedup on this repro.
+
+Tests:
+- JSTests/stress/inadequate-coverage-same-site-reopt.js
+- JSTests/stress/inadequate-coverage-distinct-sites.js
+- JSTests/stress/inadequate-coverage-same-site-ftl.js
+
+Validated clean candidate:
+- upstream base: f05fd6d8b3bee9719437f45a7cb1d1d7ee9c3151
+- candidate: e01f57903d9e389b5651a167db7c519244f45842
+- JSCOnly Release, x86_64 Linux, clang-18 + libc++
+- official inadequate-coverage stress configs pass on candidate;
+  same-site DFG and FTL tests fail on unpatched baseline for retry=0,
+  while the distinct-site negative control passes
+- check-webkit-style --git-commit HEAD: 0 errors on the 8-file delta

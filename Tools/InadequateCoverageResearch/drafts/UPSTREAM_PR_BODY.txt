@@ -1,0 +1,54 @@
+DO NOT SUBMIT — performance premise did not survive adversarial replication.
+
+The exact FrozenMiniSearch `issue4-multi-only` workload was rerun with 30
+randomized process-level repetitions:
+
+- Bun global=1 vs default: −1.53%, p=0.712 (not the historical −14.5%);
+- same patched JSC P5 vs P0: +0.47%, p=0.183;
+- same patched JSC G1 vs P0: +0.44%, p=0.559;
+- PR #13 specialization, global=1 vs default: −1.46%, p=0.243.
+
+Mechanically the patch still changes scorer InadequateCoverage exits from
+101 to 6, but that has no demonstrated normal-runtime benefit. See
+`FMS-ADVERSARIAL-RESULTS.md`.
+
+Historical draft below, retained only for reference:
+
+Reoptimize sooner on repeated same-site InadequateCoverage OSR exits.
+
+Downstream: https://github.com/oven-sh/bun/issues/40477
+Reproducer: https://github.com/yoch/frozenminisearch/blob/61d4ee365fd31369bd07fa89cf9d26c596926dfb/benchmarks/jsc/inadequate-coverage-repro.js
+
+## What
+
+DFG/FTL plant `ForceOSRExit` / `InadequateCoverage` for `SpecNone`
+bytecode. That site then exits on every subsequent hit until recompile.
+Today only the global `osrExitCountForReoptimization` (100) or
+FromLoop (5) can jettison, so a newly hot uncovered site burns ~101
+deopts.
+
+This adds a dedicated per-site budget
+`osrExitCountForReoptimizationFromInadequateCoverage` (default 5,
+`m_count > threshold` after increment, plus the existing
+`adjustedExitCountThreshold` backoff). FromLoop is not reused.
+`codeTypeThresholdMultiplier()` is applied like the other helpers.
+
+## What this is not
+
+Not a correctness fix. Not a measured standalone-JSC wall-time win
+on the Bun #40477 repro (FTL+concurrent, no tracing): 101→6 exits
+are real; phase2 median across 64…200k updates is noise / slightly
+slower at small N because the recompile sits in the window. Do not
+cite verbose-OSR percentages.
+
+## Tests
+
+`JSTests/stress/inadequate-coverage-{same-site-reopt,distinct-sites,same-site-ftl}.js`
+
+Do not pass the new option in the tests (`--validateOptions=true`
+kills unpatched `jsc`).
+
+## Process
+
+Bugzilla URL goes in the commit once filed, then
+`git webkit pr --issue <id>`.

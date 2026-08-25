@@ -1,0 +1,24 @@
+3:FTL_PROOF warmup_start
+4:Installing score#EUKxOA:[0x7fd80d0e43a0->0x7fd80d0b9c80, LLIntFunctionCall, 65 (NeverInline)]
+6:DFG(Plan) compiling score#EUKxOA:[0x7fd80d0e43a0->0x7fd80d0b9c80, LLIntFunctionCall, 65 (NeverInline)] with Baseline, instructions size = 65
+10:Installing score#EUKxOA:[0x7fd80d0e43a0->0x7fd80d0b9c80, BaselineFunctionCall, 65 (NeverInline)]
+15:DFG(Driver) compiling score#EUKxOA:[0x7fd80d0e4480->0x7fd80d0e43a0->0x7fd80d0b9c80, NoneFunctionCall, 65 (NeverInline)] with DFG, instructions size = 65
+16:DFG(Plan) compiling score#EUKxOA:[0x7fd80d0e4480->0x7fd80d0e43a0->0x7fd80d0b9c80, NoneFunctionCall, 65 (NeverInline)] with DFG, instructions size = 65
+60:Installing score#EUKxOA:[0x7fd80d0e4480->0x7fd80d0e43a0->0x7fd80d0b9c80, DFGFunctionCall, 65 (NeverInline)]
+70:DFG(Driver) compiling score#EUKxOA:[0x7fd80d0e4560->0x7fd80d0e43a0->0x7fd80d0b9c80, NoneFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] with FTL, instructions size = 65
+71:DFG(Plan) compiling score#EUKxOA:[0x7fd80d0e4560->0x7fd80d0e43a0->0x7fd80d0b9c80, NoneFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] with FTL, instructions size = 65
+143:Installing score#EUKxOA:[0x7fd80d0e4560->0x7fd80d0e43a0->0x7fd80d0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)]
+185:FTL_PROOF warmup_done sawFTL=true dfg=1 retry=0
+186:FTL_PROOF PHASE2_START
+197:Generated JIT code for FTL OSR exit #1 (D@55, bc#55, InadequateCoverage) from score#EUKxOA:[0x7fd80d0e4560->0x7fd80d0e43a0->0x7fd80d0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)], wi
+389:Speculation failure in score#EUKxOA:[0x7fd80d0e4560->0x7fd80d0e43a0->0x7fd80d0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+392:score#EUKxOA:[0x7fd80d0e43a0->0x7fd80d0b9c80, BaselineFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop) (HadFTLReplacement)]: Entered reoptimize
+393:score#EUKxOA:[0x7fd80d0e43a0->0x7fd80d0b9c80, BaselineFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop) (HadFTLReplacement)]: Not reoptimizing score#EUKxOA:[0x7fd80d0e4560->0x7fd80d0e43a0->0x7fd80d
+396:Speculation failure in score#EUKxOA:[0x7fd80d0e4560->0x7fd80d0e43a0->0x7fd80d0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+399:Speculation failure in score#EUKxOA:[0x7fd80d0e4560->0x7fd80d0e43a0->0x7fd80d0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+402:Speculation failure in score#EUKxOA:[0x7fd80d0e4560->0x7fd80d0e43a0->0x7fd80d0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+405:Speculation failure in score#EUKxOA:[0x7fd80d0e4560->0x7fd80d0e43a0->0x7fd80d0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+408:Speculation failure in score#EUKxOA:[0x7fd80d0e4560->0x7fd80d0e43a0->0x7fd80d0b9c80, FTLFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop)] @ exit #1 (bc#55, InadequateCoverage) with executeCounter 
+411:score#EUKxOA:[0x7fd80d0e43a0->0x7fd80d0b9c80, BaselineFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop) (HadFTLReplacement)]: Entered reoptimize
+416:Installing score#EUKxOA:[0x7fd80d0e43a0->0x7fd80d0b9c80, BaselineFunctionCall, 65 (NeverInline) (DidTryToEnterInLoop) (HadFTLReplacement)]
+417:FTL_PROOF PHASE2_DONE sum=40 phase_ms=0.921 retry_before=0 retry_after=1 dfg=1

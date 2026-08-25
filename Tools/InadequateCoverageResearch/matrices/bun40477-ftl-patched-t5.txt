@@ -1,0 +1,17 @@
+1:FTL_PROOF warmup_done sawFTL=true dfg=1 retry=0
+2:FTL_PROOF PHASE2_START
+3:FTL_PROOF PHASE2_DONE ms=0.685 retry_before=0 retry_after=1 dfg=1 sink=3
+6:Installing scorePostingDoc#B9w2Jj:[0x7f66b20e43a0->0x7f66b20b9b80, LLIntFunctionCall, 219]
+11:Installing scorePostingDoc#B9w2Jj:[0x7f66b20e43a0->0x7f66b20b9b80, BaselineFunctionCall, 219]
+65:Installing scorePostingDoc#B9w2Jj:[0x7f66b20e4480->0x7f66b20e43a0->0x7f66b20b9b80, DFGFunctionCall, 219]
+107:Optimizing compilation of scorePostingDoc#B9w2Jj:[0x7f66b20e4560->0x7f66b20e43a0->0x7f66b20b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] (for scorePostingDoc#B9w2Jj:[0x7f66b20
+108:Installing scorePostingDoc#B9w2Jj:[0x7f66b20e4560->0x7f66b20e43a0->0x7f66b20b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)]
+289:Speculation failure in #EFfMbs:[0x7f66b20e4640->0x7f66b20e42c0->0x7f66b20b9b00, DFGFunctionCall, 612 (DidTryToEnterInLoop)] @ exit #10 (bc#167, InadequateCoverage) with executeCoun
+294:    Owning block: scorePostingDoc#B9w2Jj:[0x7f66b20e4560->0x7f66b20e43a0->0x7f66b20b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)]
+496:Speculation failure in scorePostingDoc#B9w2Jj:[0x7f66b20e4560->0x7f66b20e43a0->0x7f66b20b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+499:Speculation failure in scorePostingDoc#B9w2Jj:[0x7f66b20e4560->0x7f66b20e43a0->0x7f66b20b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+502:Speculation failure in scorePostingDoc#B9w2Jj:[0x7f66b20e4560->0x7f66b20e43a0->0x7f66b20b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+505:Speculation failure in scorePostingDoc#B9w2Jj:[0x7f66b20e4560->0x7f66b20e43a0->0x7f66b20b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+508:Speculation failure in scorePostingDoc#B9w2Jj:[0x7f66b20e4560->0x7f66b20e43a0->0x7f66b20b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+511:Speculation failure in scorePostingDoc#B9w2Jj:[0x7f66b20e4560->0x7f66b20e43a0->0x7f66b20b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+519:Installing scorePostingDoc#B9w2Jj:[0x7f66b20e43a0->0x7f66b20b9b80, BaselineFunctionCall, 219 (DidTryToEnterInLoop) (HadFTLReplacement)]

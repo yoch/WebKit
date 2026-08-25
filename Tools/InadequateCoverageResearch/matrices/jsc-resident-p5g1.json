@@ -1,0 +1,506 @@
+[
+ {
+  "rep": 0,
+  "cond": "P5",
+  "bundle": "resident",
+  "multi": 3041.333333333326,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 0,
+  "cond": "P0",
+  "bundle": "resident",
+  "multi": 2328.8888888888805,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 0,
+  "cond": "G1",
+  "bundle": "resident",
+  "multi": 2978.5714285714157,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 0,
+  "cond": "P0",
+  "bundle": "multi-only",
+  "multi": 2222.500000000011,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 0,
+  "cond": "P5",
+  "bundle": "multi-only",
+  "multi": 2705.4545454545446,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 0,
+  "cond": "G1",
+  "bundle": "multi-only",
+  "multi": 2264.705882352941,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 1,
+  "cond": "G1",
+  "bundle": "multi-only",
+  "multi": 2329.230769230767,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 1,
+  "cond": "P0",
+  "bundle": "resident",
+  "multi": 2501.176470588234,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 1,
+  "cond": "G1",
+  "bundle": "resident",
+  "multi": 2803.750000000008,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 1,
+  "cond": "P5",
+  "bundle": "multi-only",
+  "multi": 2212.0000000000045,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 1,
+  "cond": "P5",
+  "bundle": "resident",
+  "multi": 2879.9999999999955,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 1,
+  "cond": "P0",
+  "bundle": "multi-only",
+  "multi": 2204.999999999998,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 2,
+  "cond": "P5",
+  "bundle": "multi-only",
+  "multi": 2227.7777777777856,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 2,
+  "cond": "P0",
+  "bundle": "multi-only",
+  "multi": 2298.6666666666674,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 2,
+  "cond": "P5",
+  "bundle": "resident",
+  "multi": 2851.999999999998,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 2,
+  "cond": "P0",
+  "bundle": "resident",
+  "multi": 2494.0000000000055,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 2,
+  "cond": "G1",
+  "bundle": "resident",
+  "multi": 2908.888888888896,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 2,
+  "cond": "G1",
+  "bundle": "multi-only",
+  "multi": 2237.6470588235275,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 3,
+  "cond": "P5",
+  "bundle": "multi-only",
+  "multi": 2558.461538461538,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 3,
+  "cond": "P5",
+  "bundle": "resident",
+  "multi": 3042.666666666658,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 3,
+  "cond": "G1",
+  "bundle": "multi-only",
+  "multi": 2234.117647058811,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 3,
+  "cond": "P0",
+  "bundle": "multi-only",
+  "multi": 2476.66666666665,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 3,
+  "cond": "G1",
+  "bundle": "resident",
+  "multi": 2825.7142857142817,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 3,
+  "cond": "P0",
+  "bundle": "resident",
+  "multi": 2822.6666666666765,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 4,
+  "cond": "G1",
+  "bundle": "multi-only",
+  "multi": 2263.333333333334,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 4,
+  "cond": "P5",
+  "bundle": "resident",
+  "multi": 2852.5000000000064,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 4,
+  "cond": "P0",
+  "bundle": "resident",
+  "multi": 2926.6666666666724,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 4,
+  "cond": "G1",
+  "bundle": "resident",
+  "multi": 2821.111111111122,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 4,
+  "cond": "P5",
+  "bundle": "multi-only",
+  "multi": 2371.0000000000036,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 4,
+  "cond": "P0",
+  "bundle": "multi-only",
+  "multi": 2258.5714285714207,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 5,
+  "cond": "P5",
+  "bundle": "resident",
+  "multi": 2977.142857142862,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 5,
+  "cond": "P0",
+  "bundle": "multi-only",
+  "multi": 2203.1578947368366,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 5,
+  "cond": "G1",
+  "bundle": "multi-only",
+  "multi": 2216.842105263164,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 5,
+  "cond": "P0",
+  "bundle": "resident",
+  "multi": 2591.2500000000023,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 5,
+  "cond": "P5",
+  "bundle": "multi-only",
+  "multi": 2251.999999999998,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 5,
+  "cond": "G1",
+  "bundle": "resident",
+  "multi": 2893.7499999999827,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 6,
+  "cond": "G1",
+  "bundle": "multi-only",
+  "multi": 2209.4117647058924,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 6,
+  "cond": "G1",
+  "bundle": "resident",
+  "multi": 2935.7142857142794,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 6,
+  "cond": "P5",
+  "bundle": "resident",
+  "multi": 2923.999999999978,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 6,
+  "cond": "P0",
+  "bundle": "multi-only",
+  "multi": 2179.9999999999955,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 6,
+  "cond": "P0",
+  "bundle": "resident",
+  "multi": 2450.0000000000027,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 6,
+  "cond": "P5",
+  "bundle": "multi-only",
+  "multi": 2196.470588235303,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 7,
+  "cond": "G1",
+  "bundle": "multi-only",
+  "multi": 2271.4285714285684,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 7,
+  "cond": "P5",
+  "bundle": "resident",
+  "multi": 2885.000000000005,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 7,
+  "cond": "P0",
+  "bundle": "resident",
+  "multi": 2538.823529411756,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 7,
+  "cond": "P0",
+  "bundle": "multi-only",
+  "multi": 2213.333333333336,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 7,
+  "cond": "P5",
+  "bundle": "multi-only",
+  "multi": 2462.6666666666706,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 7,
+  "cond": "G1",
+  "bundle": "resident",
+  "multi": 2766.6666666666642,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 8,
+  "cond": "P0",
+  "bundle": "multi-only",
+  "multi": 2209.9999999999936,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 8,
+  "cond": "P0",
+  "bundle": "resident",
+  "multi": 2472.6315789473692,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 8,
+  "cond": "G1",
+  "bundle": "resident",
+  "multi": 2862.6666666666706,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 8,
+  "cond": "P5",
+  "bundle": "resident",
+  "multi": 2876.666666666678,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 8,
+  "cond": "G1",
+  "bundle": "multi-only",
+  "multi": 2205.3333333333285,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 8,
+  "cond": "P5",
+  "bundle": "multi-only",
+  "multi": 2256.9999999999936,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 9,
+  "cond": "P0",
+  "bundle": "multi-only",
+  "multi": 2203.7499999999995,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 9,
+  "cond": "P5",
+  "bundle": "multi-only",
+  "multi": 2235.294117647059,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 9,
+  "cond": "P0",
+  "bundle": "resident",
+  "multi": 2781.052631578931,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 9,
+  "cond": "G1",
+  "bundle": "resident",
+  "multi": 2880.0000000000045,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 9,
+  "cond": "P5",
+  "bundle": "resident",
+  "multi": 2922.6666666666615,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 9,
+  "cond": "G1",
+  "bundle": "multi-only",
+  "multi": 2286.2499999999955,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 10,
+  "cond": "G1",
+  "bundle": "resident",
+  "multi": 3029.999999999989,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 10,
+  "cond": "P5",
+  "bundle": "multi-only",
+  "multi": 2278.94736842105,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 10,
+  "cond": "P0",
+  "bundle": "resident",
+  "multi": 2603.157894736844,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 10,
+  "cond": "P5",
+  "bundle": "resident",
+  "multi": 3058.823529411765,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 10,
+  "cond": "P0",
+  "bundle": "multi-only",
+  "multi": 2203.999999999996,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 10,
+  "cond": "G1",
+  "bundle": "multi-only",
+  "multi": 2163.529411764704,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 11,
+  "cond": "G1",
+  "bundle": "resident",
+  "multi": 2834.9999999999936,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 11,
+  "cond": "P0",
+  "bundle": "multi-only",
+  "multi": 2214.1176470588157,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 11,
+  "cond": "P5",
+  "bundle": "multi-only",
+  "multi": 2271.111111111117,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 11,
+  "cond": "P0",
+  "bundle": "resident",
+  "multi": 2660.952380952386,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 11,
+  "cond": "G1",
+  "bundle": "multi-only",
+  "multi": 2201.1764705882397,
+  "fp": "0ebf5d2b"
+ },
+ {
+  "rep": 11,
+  "cond": "P5",
+  "bundle": "resident",
+  "multi": 2929.999999999999,
+  "fp": "0ebf5d2b"
+ }
+]

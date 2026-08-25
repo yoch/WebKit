@@ -1,0 +1,40 @@
+1:FTL_PROOF warmup_done sawFTL=true dfg=1 retry=0
+2:FTL_PROOF PHASE2_START
+3:FTL_PROOF PHASE2_DONE ms=2.717 retry_before=0 retry_after=0 dfg=1 sink=3
+6:Installing scorePostingDoc#B9w2Jj:[0x7fc58f0e43a0->0x7fc58f0b9b80, LLIntFunctionCall, 219]
+11:Installing scorePostingDoc#B9w2Jj:[0x7fc58f0e43a0->0x7fc58f0b9b80, BaselineFunctionCall, 219]
+65:Installing scorePostingDoc#B9w2Jj:[0x7fc58f0e4480->0x7fc58f0e43a0->0x7fc58f0b9b80, DFGFunctionCall, 219]
+107:Optimizing compilation of scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] (for scorePostingDoc#B9w2Jj:[0x7fc58f0
+108:Installing scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)]
+308:Speculation failure in #EFfMbs:[0x7fc58f0e4640->0x7fc58f0e42c0->0x7fc58f0b9b00, DFGFunctionCall, 612 (DidTryToEnterInLoop)] @ exit #10 (bc#167, InadequateCoverage) with executeCoun
+313:    Owning block: scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)]
+534:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+537:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+540:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+543:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+546:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+549:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+552:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+555:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+558:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+561:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+564:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+567:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+570:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+573:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+576:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+579:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+582:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+585:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+588:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+591:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+594:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+597:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+600:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+603:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+606:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+609:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+612:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+615:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+618:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
+621:Speculation failure in scorePostingDoc#B9w2Jj:[0x7fc58f0e4560->0x7fc58f0e43a0->0x7fc58f0b9b80, FTLFunctionCall, 219 (DidTryToEnterInLoop)] @ exit #1 (bc#128, InadequateCoverage) wi
