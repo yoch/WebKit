@@ -68,14 +68,87 @@ Falsified explanations for the V8 unlock (all left multi at ~3600–3800):
 
 What does unlock it, deterministically (n=6+: 1878–2349): **one single
 brand search invoked directly from `main` before the measured warmup**, in
-addition to any bulk warmup. `--trace-deopt` shows no deopt loop (deopt
-counts are identical in both variants and dominated by the build phase),
-and `%GetOptimizationStatus` shows the same final tiers. The degraded state
-is therefore permanently worse optimized code, selected by V8's early
-tier-up/OSR heuristics depending on the exact first execution context —
-not a deopt cycle, not GC sizing, not the harness call sites.
+addition to any bulk warmup. `--trace-deopt` shows no deopt loop, and the
+gap **survives `--no-turbofan` and `--no-maglev`**. The degraded state is
+therefore not a bad TurboFan compile. See §3.1.
 
-CPU profiles of the multi phase (windowed, per-search):
+## 3.1 V8 mechanism: allocation-site pretenuring lock-in
+
+Result cardinalities on this corpus (concatenated across the 3 target
+indexes):
+
+| query | results | terms/result | uses `combinators[AND]`? |
+| --- | ---: | ---: | --- |
+| brand `doliprane` | **5762** | 1 | no (single spec) |
+| substance `paracetamol` | 4609 | 1 | no |
+| fuzzy `paracetmol` | 4609 | 1 | no |
+| multi `amoxicilline 500` | **464** | 2 | **yes** (gated AND) |
+
+Brand never executes the AND combinator. It still unlocks multi because
+brand and multi share the object-literal allocation sites in
+`scorePostingDoc` / `finalizeSearchResults`.
+
+V8 tracks each bytecode allocation site and, after a scavenge, looks at
+the fraction of objects from that site that survived (`--trace-pretenuring-statistics`,
+threshold 0.85). Once a site is classified it **does not go back**.
+
+Cold multi, first search-phase scavenges:
+
+```
+(4947 created, 1369 survived, ratio 0.277)  undecided => don't tenure   ×4 sites
+(440, 440, 1.000)                           undecided => tenure         ×1 site
+```
+
+AND deletes most `scorePostingDoc` temporaries before the search returns,
+so those sites lock in **don't tenure**. Later multi iterations stay in
+the nursery; scavenges dominate. The one tenured site is the 464 final
+result objects.
+
+Brand-first, first search-phase scavenges:
+
+```
+(5738, 5738, 1.000)  undecided => tenure   ×4 sites
+```
+
+Every posting becomes a surviving result (no AND). The same four sites
+lock in **tenure**. Multi then allocates its short-lived AND temporaries
+straight into old space (`(4293, 464, ratio 0.108) tenure => tenure` —
+already tenured, not reconsidered). Nursery pressure collapses.
+
+Causal flag, n=6:
+
+| | Node multi median us |
+| --- | ---: |
+| default, multi-only | ~3800 |
+| default, after brand | ~1950 |
+| `--no-allocation-site-pretenuring`, multi-only | 3594–3719 |
+| `--no-allocation-site-pretenuring`, after brand | 3587–3832 |
+
+The 2× gap **disappears** when pretenuring is disabled. `--no-use-ic`
+makes both ~18 ms (ICs are required for the fast path, but do not
+*differentiate* the two histories). `--no-inline-new` makes the unlocked
+path *slower* than cold (9300 vs 7400), consistent with old-space
+free-list allocation without the inline bump path.
+
+This also explains the previously puzzling negatives:
+
+- 1–4096 `consume(runSearch(brand))` in a hot loop in `main` does **not**
+  unlock: Maglev/OSR inlines `scorePostingDoc` into `main`, so the
+  surviving allocations attach to `main`'s sites, not to the shared
+  function. Multi then hits still-undecided `scorePostingDoc` sites and
+  locks in don't-tenure.
+- `measureSearch(brand)` alone does **not** unlock for the same inlining
+  reason (sites land in `measureSearch`).
+- `fingerprint(brand())` from `main` (one non-inlined call) plus any
+  bulk warmup **does** unlock: the 5762 live objects are attributed to
+  `scorePostingDoc`'s own sites.
+- 512 extra multi iterations never recover: the don't-tenure decision is
+  already sticky, and AND keeps the survival ratio ~0.28–0.50, below 0.85.
+
+CPU profiles of the multi phase remain compatible with this (AND and
+finalize look 5× slower because they run under nursery scavenges and
+un-pretentured allocation, not because AND was trained on a different
+query):
 
 | function | cold multi (us/search) | unlocked (us/search) | ratio |
 | --- | ---: | ---: | ---: |
@@ -83,9 +156,6 @@ CPU profiles of the multi phase (windowed, per-search):
 | `finalizeSearchResults` | 465 | 93 | 5.0x |
 | GC | 1232 | 709 | 1.7x |
 | `scorePostingDoc` | 790 | 578 | 1.4x |
-
-The permanent cold-start deficit is concentrated in the AND intersection
-combiner and result finalization, plus proportionally heavier GC.
 
 ## 4. JSC side: reoptimization thresholds make the real workload worse
 
@@ -115,25 +185,31 @@ candidate (fork PR #5) and closes the historical 14.5% claim.
    crossover: it is a process-history effect. Multi measured alone flips to
    Bun-faster on this machine; multi measured after any other workload in
    the same process flips to Node-faster.
-2. **Which phase?** On the V8 side the cold-start penalty sits in the AND
-   intersection combiner (5x), result finalization (5x), scoring (1.4x)
-   and GC (1.7x). Fingerprints are identical, so the work done is the
-   same; only the generated code and GC behavior differ.
-3. **Is GC involved?** Partially (1.7x per-search GC cost when cold), but
-   inert allocation does not reproduce the effect and a large fixed
-   new-space recovers only ~15%.
+2. **Which phase?** On the V8 side the apparent 5× AND / finalize
+   penalty is a *consequence* of allocation-site pretenuring, not a
+   combinator trained on the wrong query. Brand (5762 survivors, no AND)
+   pretentures the shared `scorePostingDoc` literals; multi alone
+   (survival ~0.28 because AND deletes temporaries) locks the same sites
+   as don't-tenure. Fingerprints are identical; the work is the same.
+3. **Is GC involved?** Yes, as the *mediator*, not as a threshold
+   crossing during the measured query. `--no-allocation-site-pretenuring`
+   equalizes Node at ~3650 µs. Inert allocation churn does not unlock
+   because it does not go through those bytecode sites. A larger
+   new-space (`--max-semi-space-size=128`) helps both sides ~15% and
+   leaves the gap.
 4. **Runtime vs engine?** Engine-level on both sides: reproduced in
    standalone JSC (pollution, threshold sensitivity) and in Node/V8
    (cold-start lock-in). Not a Bun/Node runtime-layer artifact.
 
 ## 6. Open follow-ups
 
-- V8 mechanism: identify which early tier-up decision produces the
-  permanently slower `combinators[AND]`/`finalizeSearchResults` code
-  (needs feedback-vector/inlining dumps; possibly reportable upstream).
-- JSC mechanism: trace which exit kinds accumulate on the shared functions
-  under the full profile (BadCache/BadIdent seen previously) and why
-  early recompilation makes it worse.
+- V8: the pretenuring lock-in is now identified. Remaining product
+  question is whether FMS should stop mutating result objects after
+  allocation (so AND temporaries are not the same literals as
+  long-lived brand results), or whether the benchmark should not
+  concatenate unrelated workloads in one process.
+- JSC: still a different mechanism — cumulative type-feedback pollution
+  on the shared functions. Early recompilation (P5/G1) makes that worse.
 - Both engines leave real latency on the table on this workload: best
-  observed multi is ~1600 us (unlocked V8) vs ~2200 us (JSC multi-only)
-  vs ~2565–2900 us (JSC full profile).
+  observed multi is ~1600 us (pretentured V8) vs ~2200 us (JSC
+  multi-only) vs ~2565–2900 us (JSC full profile).
