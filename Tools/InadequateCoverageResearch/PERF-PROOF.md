@@ -1,5 +1,9 @@
 # Bun #40477 patch performance proof
 
+> Superseded by `FMS-ADVERSARIAL-RESULTS.md`, which runs the exact real
+> `issue4-multi-only` workload. The historical 14.5% global-threshold result
+> did not reproduce, and P0/P5/G1/G1P5 were indistinguishable.
+
 This is the normal-runtime proof of the **final** patch (`e01f5790`,
 default t=5). Tracing numbers are in a separate section and must not
 be quoted as wall-time speedup.

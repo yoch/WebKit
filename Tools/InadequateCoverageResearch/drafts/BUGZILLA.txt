@@ -1,6 +1,20 @@
 Bug title:
 [JSC] Reoptimize sooner on repeated same-site InadequateCoverage OSR exits
 
+STATUS: DO NOT SUBMIT AS A PERFORMANCE BUG/PATCH.
+
+Adversarial replication on the exact FrozenMiniSearch `issue4-multi-only`
+workload did not reproduce the historical 14.5% result:
+
+- exact Bun/source, 30 interleaved processes: global=1 was −1.53%, p=0.712;
+- same patched JSC binary: P5 vs disabled +0.47%, p=0.183;
+- same patched JSC binary: G1 vs P0 +0.44%, p=0.559;
+- PR #13 specialization normal runtime: −1.46%, p=0.243.
+
+The 101→6 exit reduction is independently verified, but has no demonstrated
+normal-runtime latency benefit. Full report:
+`Tools/InadequateCoverageResearch/FMS-ADVERSARIAL-RESULTS.md`.
+
 Product: WebKit
 Component: JavaScriptCore
 

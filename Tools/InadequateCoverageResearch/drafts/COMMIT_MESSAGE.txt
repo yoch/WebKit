@@ -1,3 +1,10 @@
+DO NOT SUBMIT — retained as a historical draft.
+
+The exact real FrozenMiniSearch workload did not reproduce the 14.5% global
+threshold result, and same-binary P0/P5/G1/G1P5 were indistinguishable under
+normal FTL/concurrent execution. The mechanical 101→6 exit reduction has no
+demonstrated latency benefit. See `FMS-ADVERSARIAL-RESULTS.md`.
+
 Reoptimize sooner on repeated same-site InadequateCoverage exits
 https://bugs.webkit.org/show_bug.cgi?id=XXXXXX
 

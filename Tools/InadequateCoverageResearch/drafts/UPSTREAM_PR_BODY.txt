@@ -1,3 +1,19 @@
+DO NOT SUBMIT — performance premise did not survive adversarial replication.
+
+The exact FrozenMiniSearch `issue4-multi-only` workload was rerun with 30
+randomized process-level repetitions:
+
+- Bun global=1 vs default: −1.53%, p=0.712 (not the historical −14.5%);
+- same patched JSC P5 vs P0: +0.47%, p=0.183;
+- same patched JSC G1 vs P0: +0.44%, p=0.559;
+- PR #13 specialization, global=1 vs default: −1.46%, p=0.243.
+
+Mechanically the patch still changes scorer InadequateCoverage exits from
+101 to 6, but that has no demonstrated normal-runtime benefit. See
+`FMS-ADVERSARIAL-RESULTS.md`.
+
+Historical draft below, retained only for reference:
+
 Reoptimize sooner on repeated same-site InadequateCoverage OSR exits.
 
 Downstream: https://github.com/oven-sh/bun/issues/40477
