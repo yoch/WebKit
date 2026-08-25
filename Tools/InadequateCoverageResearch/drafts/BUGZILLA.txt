@@ -6,6 +6,12 @@ Component: JavaScriptCore
 
 Description:
 
+Downstream report:
+https://github.com/oven-sh/bun/issues/40477
+
+Dependency-free reproducer from that report:
+https://github.com/yoch/frozenminisearch/blob/61d4ee365fd31369bd07fa89cf9d26c596926dfb/benchmarks/jsc/inadequate-coverage-repro.js
+
 DFG/FTL plant ForceOSRExit (ExitKind::InadequateCoverage) for bytecode
 whose value profile is still SpecNone. Once that site executes, every
 subsequent execution that reaches the same ForceOSRExit site exits until
