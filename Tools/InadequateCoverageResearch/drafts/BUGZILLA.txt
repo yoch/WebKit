@@ -14,43 +14,71 @@ the CodeBlock is recompiled.
 handleExitCounts() currently only jettisons when the *global*
 CodeBlock::osrExitCounter exceeds osrExitCountForReoptimization (100)
 or, for inlined-loop cases, osrExitCountForReoptimizationFromLoop (5).
-A same-site phase change therefore burns ~101 deopts on the generic
-budget. Distinct never-again sites should not share an aggressive
+A same-site phase change therefore pays ~101 deterministic deopts on the
+generic budget. Distinct never-again sites should not share an aggressive
 budget.
+
+This is observable outside synthetic JIT tracing. On a real
+FrozenMiniSearch multi-term workload under normal Bun runtime
+(1.4.1-canary.1+11fb73032, no diagnostic JSC flags), changing only the
+existing global osrExitCountForReoptimization from its default to 1
+reduced the multi-only median from 4255.36 us to 3639.15 us (-14.5%)
+across fresh processes. The longer-lived resident workload changed from
+4435.32 us to 4357.49 us (-1.8%), consistent with the phase-change cost
+being more strongly amortized there. This downstream control does not
+benchmark the final per-site threshold directly; it establishes that the
+current generic reoptimization delay can have material end-to-end cost.
 
 Proposal:
 - Per-site trigger: OSRExit::m_count > dedicated
   osrExitCountForReoptimizationFromInadequateCoverage (default 5;
   compare is unsigned `count > threshold`, so the 6th same-site hit
   reoptimizes). Uses adjustedExitCountThreshold exponential backoff.
+- The existing global exit budget remains an independent fallback.
 - The helper multiplies by codeTypeThresholdMultiplier() exactly as
-  the generic and FromLoop helpers do (Eval × evalThresholdMultiplier,
-  default 10; Function and Program × 1). Not a special-case divergence.
+  the generic and FromLoop helpers do (Eval x evalThresholdMultiplier,
+  default 10; Function and Program x 1).
 - Do not reuse FromLoop: that option means "stuck in a loop", and
-  changing it would unexpectedly change non-loop InadequateCoverage
+  changing it should not silently change non-loop InadequateCoverage
   policy. JSC already has a dedicated
-  ftlOSREntryFailureCountForReoptimization for a similarly distinct
+  ftlOSREntryFailureCountForReoptimization for a distinct reoptimization
   trigger.
 
-Default 5 is a conservative JIT heuristic, not "because FromLoop is 5":
+Default 5 is a conservative JIT heuristic, not chosen because FromLoop
+also happens to use 5:
 
-- On a durable same-site phase change (20 reps), t=3/4/5/6 are
-  indistinguishable (median ~0.68–0.69 ms). The extra 2 hits vs t=3
-  cost a few tenths of a millisecond at most.
-- t=5 avoids jettison on a 5-then-never burst and on 32 interleaved
-  sites ×4 / ×5. t=3 jettisons both.
-- OSRExit::m_count is cumulative and never decays. Rare spaced hits
-  of the same site (10^3…10^6 warm calls between hits) fire at hit
-  t+1 for every fixed threshold. t=5 buys two extra lifetime hits of
-  slack versus t=3 before an unnecessary jettison. A decaying rate
-  would be a redesign; this patch does not add one.
+- In a 20-repetition synthetic durable phase-change sweep, t=3/4/5/6
+  were indistinguishable without verbose OSR logging (~0.68-0.69 ms
+  median). Those micros are used to select policy, not as the performance
+  justification for this change.
+- t=5 avoids jettison on a 5-then-never burst and on interleaved 32-site
+  x4 / x5 cold sprays where t=3 would jettison.
+- OSRExit::m_count is cumulative and never decays. Rare spaced hits of
+  the same site (10^3...10^6 warm calls between hits) eventually fire
+  for every fixed threshold. t=5 provides two additional lifetime hits
+  of slack versus t=3 before that happens. A decaying/rate-based policy
+  would be a larger redesign and is intentionally out of scope.
 
-This is not a correctness bug. The current heuristic is safe but
-leaves a newly hot uncovered site on the deopt stub for too long
-(observed with FrozenMiniSearch-style update-after-insert workloads,
-and independently with a two-arm `if (mode) return object.x` microbench).
+The same-site behavior is reproduced in standalone jsc (not only Bun)
+when state is kept off the shell global object; a naive top-level script
+can be masked by an unrelated global watchpoint jettison. The patch has
+separate DFG and FTL regression coverage, plus a negative distinct-site
+test.
+
+This is not a correctness bug. The current heuristic is safe but can
+leave newly hot previously-uncovered bytecode repeatedly taking the same
+deterministic deopt path much longer than necessary.
 
 Tests:
 - JSTests/stress/inadequate-coverage-same-site-reopt.js
 - JSTests/stress/inadequate-coverage-distinct-sites.js
 - JSTests/stress/inadequate-coverage-same-site-ftl.js
+
+Validated clean candidate:
+- upstream base: f05fd6d8b3bee9719437f45a7cb1d1d7ee9c3151
+- candidate: e01f57903d9e389b5651a167db7c519244f45842
+- JSCOnly Release, x86_64 Linux, clang-18 + libc++
+- official inadequate-coverage stress configs pass on candidate;
+  same-site DFG and FTL tests fail on unpatched baseline for retry=0,
+  while the distinct-site negative control passes
+- check-webkit-style --git-commit HEAD: 0 errors on the 8-file delta
