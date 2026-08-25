@@ -9,29 +9,36 @@ the CodeBlock is recompiled. The generic osrExitCountForReoptimization
 budget (100) therefore leaves a newly hot previously-uncovered site
 deoptimizing for ~101 calls.
 
+This was observed downstream as oven-sh/bun#40477 on FrozenMiniSearch
+scorePostingDoc (insert-only warmup, then update of existing Map
+entries). Standalone JSC reproduces 101 same-site InadequateCoverage
+exits at scorePostingDoc bc#77; with this patch the same site
+reoptimizes on the 6th hit. Disabling the new option on the same
+binary restores the 101-exit path. That is a heuristic change: under
+normal FTL+concurrent JSC the wall-time of that repro is not
+measurably improved.
+
 Count repeats of that OSR exit's m_count against a dedicated
 osrExitCountForReoptimizationFromInadequateCoverage threshold (default
 5, same unsigned `count > threshold` convention and
 adjustedExitCountThreshold / retry doubling as the existing counters).
-The 6th same-site hit reoptimizes. Distinct sites keep independent
-counters so they do not share this budget.
+Distinct sites keep independent counters so they do not share this
+budget.
 
 Default 5 is conservative: a durable phase change is indistinguishable
-from t=3/4/6 (20-rep median), while t=5 avoids jettison on a
-5-then-never burst and on interleaved 32-site ×4/×5 sprays. m_count
-is cumulative, so any fixed constant eventually fires on rare spaced
-hits of the same site; 5 buys two extra lifetime hits of slack versus
-3. This is not justified by FromLoop's historical 5.
+from t=3/4/6, while t=5 avoids jettison on a 5-then-never burst and
+on interleaved 32-site x4/x5 sprays. m_count is cumulative, so any
+fixed constant eventually fires on rare spaced hits; 5 buys two extra
+lifetime hits of slack versus 3. This is not justified by FromLoop's
+historical 5.
 
 The new helper applies codeTypeThresholdMultiplier() like the generic
-and FromLoop helpers (Eval ×10, Function/Program ×1). There is no
+and FromLoop helpers (Eval x10, Function/Program x1). There is no
 reason to diverge.
 
 The option is dedicated rather than reused from
 osrExitCountForReoptimizationFromLoop so that tuning the loop-stuck
 budget does not silently change non-loop InadequateCoverage policy.
-This matches the existing split between the generic, FromLoop, and
-ftlOSREntryFailureCountForReoptimization knobs.
 
 * Source/JavaScriptCore/runtime/OptionsList.h:
 * Source/JavaScriptCore/bytecode/CodeBlock.h:

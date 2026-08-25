@@ -50,6 +50,10 @@ That argument is an overfit and is withdrawn. 5 is retained because a
 durable phase change is flat across t=3..6 while 5 resists 5-then-never
 and rare spaced hits better. Not because FromLoop is 5.
 
+Normal-runtime proof of the final patch on the Bun #40477 reproducer:
+`PERF-PROOF.md`. Mechanism 101→6 is real; standalone JSC wall time is
+not a win. FrozenMiniSearch end-to-end was not executed.
+
 ## load32 form
 
 `jit.load32(&exit.m_count, GPRInfo::regT4)` is intentional.

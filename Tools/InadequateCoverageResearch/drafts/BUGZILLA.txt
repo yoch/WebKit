@@ -9,7 +9,8 @@ Description:
 Downstream report:
 https://github.com/oven-sh/bun/issues/40477
 
-Dependency-free reproducer from that report:
+Exact / dependency-free reproducer from that report
+(FrozenMiniSearch insert→update of scorePostingDoc):
 https://github.com/yoch/frozenminisearch/blob/61d4ee365fd31369bd07fa89cf9d26c596926dfb/benchmarks/jsc/inadequate-coverage-repro.js
 
 DFG/FTL plant ForceOSRExit (ExitKind::InadequateCoverage) for bytecode
@@ -24,56 +25,55 @@ A same-site phase change therefore pays ~101 deterministic deopts on the
 generic budget. Distinct never-again sites should not share an aggressive
 budget.
 
-This is observable outside synthetic JIT tracing. On a real
-FrozenMiniSearch multi-term workload under normal Bun runtime
-(1.4.1-canary.1+11fb73032, no diagnostic JSC flags), changing only the
-existing global osrExitCountForReoptimization from its default to 1
-reduced the multi-only median from 4255.36 us to 3639.15 us (-14.5%)
-across fresh processes. The longer-lived resident workload changed from
-4435.32 us to 4357.49 us (-1.8%), consistent with the phase-change cost
-being more strongly amortized there. This downstream control does not
-benchmark the final per-site threshold directly; it establishes that the
-current generic reoptimization delay can have material end-to-end cost.
+Downstream proxy (not this patch): on a FrozenMiniSearch multi-term
+workload under normal Bun (1.4.1-canary.1+11fb73032, no diagnostic JSC
+flags), changing only the existing global osrExitCountForReoptimization
+from default to 1 reduced the multi-only median from 4255.36 us to
+3639.15 us (-14.5%). The resident workload went 4435.32 → 4357.49 us
+(-1.8%). That shows the generic delay can have end-to-end cost; it does
+not measure the final per-site threshold.
+
+Standalone JSC proof of the final patch (clang-18, JSCOnly Release,
+x86_64 Linux, FTL+concurrent ON, global budget 100 untouched):
+
+Diagnostic (no-CJIT, printEachOSRExit), same function scorePostingDoc
+bc#77, INSERTS=20k UPDATES=400:
+
+  unpatched:             101 InadequateCoverage, then global reopt
+  patched default t=5:     6 InadequateCoverage, then per-site reopt
+  same patched binary
+    with option=1000000: 101 InadequateCoverage (control)
+
+Normal-runtime UPDATES sweep 64…200k (60/30 reps): no statistically
+robust wall-time win. At 64–256, t=5 is slightly slower (recompile
+paid inside the window). At ≥512 the delta vs the disabled-trigger
+control is noise around 0%. Older 50–90% figures were verbose-OSR
+artifacts and must not be cited.
+
+The same-site behavior is reproduced in standalone jsc when state is
+kept off the shell global object; a naive top-level `sink` can be
+masked by an unrelated global watchpoint jettison.
 
 Proposal:
 - Per-site trigger: OSRExit::m_count > dedicated
   osrExitCountForReoptimizationFromInadequateCoverage (default 5;
-  compare is unsigned `count > threshold`, so the 6th same-site hit
-  reoptimizes). Uses adjustedExitCountThreshold exponential backoff.
+  unsigned `count > threshold`, so the 6th same-site hit reoptimizes).
+  Uses adjustedExitCountThreshold exponential backoff.
 - The existing global exit budget remains an independent fallback.
 - The helper multiplies by codeTypeThresholdMultiplier() exactly as
-  the generic and FromLoop helpers do (Eval x evalThresholdMultiplier,
-  default 10; Function and Program x 1).
-- Do not reuse FromLoop: that option means "stuck in a loop", and
-  changing it should not silently change non-loop InadequateCoverage
-  policy. JSC already has a dedicated
-  ftlOSREntryFailureCountForReoptimization for a distinct reoptimization
-  trigger.
+  the generic and FromLoop helpers do (Eval ×10, Function/Program ×1).
+- Do not reuse FromLoop.
 
-Default 5 is a conservative JIT heuristic, not chosen because FromLoop
-also happens to use 5:
+Default 5 is conservative (not because FromLoop is 5): durable
+phase-change flat vs t=3/4/6; avoids 5-then-never and interleaved
+32×4/×5 sprays; two extra lifetime hits of slack on the cumulative
+m_count. A decaying rate is out of scope.
 
-- In a 20-repetition synthetic durable phase-change sweep, t=3/4/5/6
-  were indistinguishable without verbose OSR logging (~0.68-0.69 ms
-  median). Those micros are used to select policy, not as the performance
-  justification for this change.
-- t=5 avoids jettison on a 5-then-never burst and on interleaved 32-site
-  x4 / x5 cold sprays where t=3 would jettison.
-- OSRExit::m_count is cumulative and never decays. Rare spaced hits of
-  the same site (10^3...10^6 warm calls between hits) eventually fire
-  for every fixed threshold. t=5 provides two additional lifetime hits
-  of slack versus t=3 before that happens. A decaying/rate-based policy
-  would be a larger redesign and is intentionally out of scope.
+Candidate SHA (fork, 8 files): e01f57903d9e389b5651a167db7c519244f45842
+on WebKit/WebKit f05fd6d8b3be (policy still identical at f198e8af3b2a).
 
-The same-site behavior is reproduced in standalone jsc (not only Bun)
-when state is kept off the shell global object; a naive top-level script
-can be masked by an unrelated global watchpoint jettison. The patch has
-separate DFG and FTL regression coverage, plus a negative distinct-site
-test.
-
-This is not a correctness bug. The current heuristic is safe but can
-leave newly hot previously-uncovered bytecode repeatedly taking the same
-deterministic deopt path much longer than necessary.
+This is a heuristic, not a correctness bug. Do not advertise a
+standalone-JSC speedup on this repro.
 
 Tests:
 - JSTests/stress/inadequate-coverage-same-site-reopt.js
