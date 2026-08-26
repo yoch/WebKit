@@ -74,7 +74,7 @@ preserved. Scripts: `scripts/make-history-bundle.py`,
 | Claim | Experiment | Result | Confidence | Not eliminated |
 | --- | --- | --- | --- | --- |
 | Isolated multi: Bun/JSC faster than Node | Node/Bun/jsc M, n=30 | Node 3798 µs; Bun 2419; jsc 2283 | high | machine-specific constants |
-| After any other complete query, Node ~2× | Node BM/SM/FM/BSM/SBM/FULL vs M, n=30 | −48.5% to −49.5%, U=0, p≈3e-11 | high | which *shared* allocation sites, beyond `scorePostingDoc` literals |
+| After any other complete query, Node ~2× | Node BM/SM/FM/BSM/SBM/FULL vs M, n=30 | −48.5% to −49.5%, U=0, p≈3e-11 | high | Maglev inlining of a one-off brand into `main` (sites would then not be `scorePostingDoc`'s) |
 | Extra multi does **not** reach the fast Node state | Node MM vs M, n=30 | −14.5% only (3247 vs 3798) | high | Maglev/TurboFan contribution to the leftover 14% |
 | Minimal V8 prefix is **one** other complete query | BM ≡ SM ≡ FM ≡ FULL on Node | all ≈1920 µs | high | a smaller-than-one-search brand invocation that is **not** inlined (prior work; not re-run here) |
 | V8 unlock is allocation-site pretenuring | Node `--no-allocation-site-pretenuring` M vs BM, n=30 | +0.33%, p=0.91 | high | MM still −11% without pretenuring (second effect) |
@@ -116,13 +116,62 @@ most of them (464 final hits).
 
 ## 4. V8 slow vs fast: distinguishing event
 
-Not “both end optimized.” Distinguishing event:
+Not “both end optimized.” The accepted chain is:
 
-> After the first search-phase scavenge, V8 classifies the shared
-> bytecode allocation sites as **tenure** or **don't tenure** (sticky,
-> threshold 0.85). Isolated multi locks **don't tenure**. One prior
-> high-survival query locks **tenure**. Multi then allocates short-lived
-> AND temporaries in old space; nursery scavenges collapse.
+```
+brand / substance / fuzzy
+  → every posting becomes a live result (no AND)
+  → allocation sites in scorePostingDoc's else-branch see survival ≈ 1.0
+  → V8 locks those sites TENURE (threshold 0.85, sticky)
+
+isolated multi
+  → combinators[AND] does a.delete(docId) for docs missing a term
+  → the same sites see survival ≈ 0.38–0.50
+  → V8 locks those sites DON'T TENURE
+
+later multi:
+  TENURE        → short-lived AND objects allocated in old space
+                  → few nursery scavenges on the measured query
+                  → ~1.9 ms
+  DON'T TENURE  → same objects stay in the nursery
+                  → scavenges dominate
+                  → ~3.8 ms
+```
+
+The four sites are the literals in `src/scoring.ts` `scorePostingDoc`
+when inserting a new doc (`{score, terms, match}`, `[sourceTerm]`,
+`{ [derived]: [field] }`, `[field]`). A fifth site (464 survivors) is
+the finalized `SearchResult` object; it tenures in **both** histories
+and does not distinguish them.
+
+Fresh diagnostic traces (not timing evidence; raw in
+`matrices/v8-M-pretenure-gc.txt` and `v8-BM-pretenure-gc.txt`):
+
+Isolated multi, first search-phase scavenge:
+
+| site | created, found, ratio | decision |
+| --- | --- | --- |
+| 4× `scorePostingDoc` | 3930, 1489, **0.379** (one site 0.497) | undecided ⇒ **don't tenure** |
+| 1× finalize | 440, 440, 1.000 | undecided ⇒ tenure |
+
+Brand then multi. Brand's first search-phase scavenge:
+
+| site | created, found, ratio | decision |
+| --- | --- | --- |
+| 4× `scorePostingDoc` | 3053–4840, same, **1.000** | undecided ⇒ **tenure** |
+
+Then during multi, those same four sites show survival **0.11–0.14**
+but stay `tenure => tenure`. Sticky. AND is now killing temporaries;
+V8 does not reverse the brand decision. One additional multi-only site
+locks `don't tenure` at 6827/464 = 0.068 (does not undo the four).
+
+`--trace-pretenuring-statistics` prints `threshold=0.85`.
+
+Caveat: Maglev OSR can inline `scorePostingDoc` into `main`. Then
+survivors attach to `main`'s sites and a later multi still hits
+undecided `scorePostingDoc` sites and locks don't-tenure. That is why
+`runSearch(brand)` from `main` in a hot loop does **not** unlock, while
+one non-inlined `runSearch` through the shared function does.
 
 Causal ablation (this session, n=30, interleaved):
 
