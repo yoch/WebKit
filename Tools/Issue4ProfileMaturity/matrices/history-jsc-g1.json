@@ -1,0 +1,1063 @@
+{
+  "runtime": "jsc-g1",
+  "executable": "/tmp/ic-research-v2/unpatched-f05/bin/jsc",
+  "flags": [
+    "--osrExitCountForReoptimization=1"
+  ],
+  "env": {},
+  "bundles": {
+    "M": "5cc070fb385b26294909c48c61f296a531deba16fb80d403aacab29742344b5d",
+    "BM": "3fccd9f818f59ab41b5cdbb903c3d87a2c63ffcae873fd957ab078f737de9b53",
+    "FULL": "020adca4a18abc4cf9c26a0000282c75352976165b43d41d34253cda417d4bef"
+  },
+  "repetitions": 20,
+  "seed": 41,
+  "fingerprints": [
+    "0ebf5d2b"
+  ],
+  "summaries": {
+    "M": {
+      "n": 20,
+      "median_us": 2242.2499999999945,
+      "p25_us": 2220.222222222217,
+      "p75_us": 2265.687499999989,
+      "mean_us": 2277.4386671335174
+    },
+    "BM": {
+      "n": 20,
+      "median_us": 2304.7727272727216,
+      "p25_us": 2269.1590909090846,
+      "p75_us": 2349.9999999999986,
+      "mean_us": 2356.0580314422405
+    },
+    "FULL": {
+      "n": 20,
+      "median_us": 2879.9999999999955,
+      "p25_us": 2832.1875000000055,
+      "p75_us": 2932.9999999999973,
+      "mean_us": 2873.396153846154
+    }
+  },
+  "comparisons": {
+    "BM-vs-M": {
+      "delta_us": 62.522727272727025,
+      "delta_percent": 2.7883923412967855,
+      "mann_whitney": {
+        "u": 297.0,
+        "z": 2.6238586368822276,
+        "p_two_sided": 0.008693986098127496
+      }
+    },
+    "FULL-vs-M": {
+      "delta_us": 637.7500000000009,
+      "delta_percent": 28.442412755045265,
+      "mann_whitney": {
+        "u": 396.0,
+        "z": 5.302066147458863,
+        "p_two_sided": 1.1449933592048861e-07
+      }
+    }
+  },
+  "raw": [
+    {
+      "repetition": 0,
+      "runtime": "jsc-g1",
+      "history": "M",
+      "multi_us": 2261.333333333323,
+      "timings_us": {
+        "resident-build": 1252940,
+        "resident-multi": 2261.333333333323
+      },
+      "fingerprints": {
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 0,
+      "runtime": "jsc-g1",
+      "history": "FULL",
+      "multi_us": 2926.666666666658,
+      "timings_us": {
+        "resident-build": 1202120,
+        "resident-brand": 464.84848484848584,
+        "resident-substance": 996.4444444444476,
+        "resident-multi": 2926.666666666658,
+        "resident-fuzzy": 549.5454545454509
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 0,
+      "runtime": "jsc-g1",
+      "history": "BM",
+      "multi_us": 2314.9999999999977,
+      "timings_us": {
+        "resident-build": 1215400,
+        "resident-brand": 456.176470588235,
+        "resident-multi": 2314.9999999999977
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 1,
+      "runtime": "jsc-g1",
+      "history": "BM",
+      "multi_us": 2346.666666666665,
+      "timings_us": {
+        "resident-build": 1222020,
+        "resident-brand": 468.4444444444428,
+        "resident-multi": 2346.666666666665
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 1,
+      "runtime": "jsc-g1",
+      "history": "FULL",
+      "multi_us": 2836.250000000007,
+      "timings_us": {
+        "resident-build": 1212720,
+        "resident-brand": 497.33333333333076,
+        "resident-substance": 982.4999999999989,
+        "resident-multi": 2836.250000000007,
+        "resident-fuzzy": 695.789473684212
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 1,
+      "runtime": "jsc-g1",
+      "history": "M",
+      "multi_us": 2238.571428571439,
+      "timings_us": {
+        "resident-build": 1226660,
+        "resident-multi": 2238.571428571439
+      },
+      "fingerprints": {
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 2,
+      "runtime": "jsc-g1",
+      "history": "M",
+      "multi_us": 2189.9999999999914,
+      "timings_us": {
+        "resident-build": 1239140,
+        "resident-multi": 2189.9999999999914
+      },
+      "fingerprints": {
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 2,
+      "runtime": "jsc-g1",
+      "history": "FULL",
+      "multi_us": 2879.9999999999955,
+      "timings_us": {
+        "resident-build": 1199200,
+        "resident-brand": 457.87878787878486,
+        "resident-substance": 1004.1860465116295,
+        "resident-multi": 2879.9999999999955,
+        "resident-fuzzy": 552.3076923076914
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 2,
+      "runtime": "jsc-g1",
+      "history": "BM",
+      "multi_us": 2327.6190476190422,
+      "timings_us": {
+        "resident-build": 1205500,
+        "resident-brand": 474.3283582089548,
+        "resident-multi": 2327.6190476190422
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 3,
+      "runtime": "jsc-g1",
+      "history": "M",
+      "multi_us": 2241.999999999996,
+      "timings_us": {
+        "resident-build": 1212780,
+        "resident-multi": 2241.999999999996
+      },
+      "fingerprints": {
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 3,
+      "runtime": "jsc-g1",
+      "history": "BM",
+      "multi_us": 2407.14285714286,
+      "timings_us": {
+        "resident-build": 1217080,
+        "resident-brand": 481.30434782608916,
+        "resident-multi": 2407.14285714286
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 3,
+      "runtime": "jsc-g1",
+      "history": "FULL",
+      "multi_us": 2971.1111111111118,
+      "timings_us": {
+        "resident-build": 1221540,
+        "resident-brand": 471.3846153846134,
+        "resident-substance": 1013.4782608695629,
+        "resident-multi": 2971.1111111111118,
+        "resident-fuzzy": 544.5569620253162
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 4,
+      "runtime": "jsc-g1",
+      "history": "FULL",
+      "multi_us": 2841.249999999988,
+      "timings_us": {
+        "resident-build": 1208360,
+        "resident-brand": 464.927536231883,
+        "resident-substance": 970.6382978723381,
+        "resident-multi": 2841.249999999988,
+        "resident-fuzzy": 553.8271604938232
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 4,
+      "runtime": "jsc-g1",
+      "history": "M",
+      "multi_us": 2280.000000000005,
+      "timings_us": {
+        "resident-build": 1229260,
+        "resident-multi": 2280.000000000005
+      },
+      "fingerprints": {
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 4,
+      "runtime": "jsc-g1",
+      "history": "BM",
+      "multi_us": 2359.9999999999995,
+      "timings_us": {
+        "resident-build": 1227880,
+        "resident-brand": 477.3134328358212,
+        "resident-multi": 2359.9999999999995
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 5,
+      "runtime": "jsc-g1",
+      "history": "BM",
+      "multi_us": 2290.000000000005,
+      "timings_us": {
+        "resident-build": 1214200,
+        "resident-brand": 456.73469387755324,
+        "resident-multi": 2290.000000000005
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 5,
+      "runtime": "jsc-g1",
+      "history": "FULL",
+      "multi_us": 2701.1764705882397,
+      "timings_us": {
+        "resident-build": 1212060,
+        "resident-brand": 457.6119402985053,
+        "resident-substance": 952.5000000000006,
+        "resident-multi": 2701.1764705882397,
+        "resident-fuzzy": 566.3157894736837
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 5,
+      "runtime": "jsc-g1",
+      "history": "M",
+      "multi_us": 2444.999999999993,
+      "timings_us": {
+        "resident-build": 1214560,
+        "resident-multi": 2444.999999999993
+      },
+      "fingerprints": {
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 6,
+      "runtime": "jsc-g1",
+      "history": "FULL",
+      "multi_us": 2856.923076923085,
+      "timings_us": {
+        "resident-build": 1230640,
+        "resident-brand": 441.7777777777752,
+        "resident-substance": 959.6078431372515,
+        "resident-multi": 2856.923076923085,
+        "resident-fuzzy": 544.7272727272734
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 6,
+      "runtime": "jsc-g1",
+      "history": "M",
+      "multi_us": 2235.7142857142826,
+      "timings_us": {
+        "resident-build": 1218880,
+        "resident-multi": 2235.7142857142826
+      },
+      "fingerprints": {
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 6,
+      "runtime": "jsc-g1",
+      "history": "BM",
+      "multi_us": 2263.6363636363617,
+      "timings_us": {
+        "resident-build": 1257980,
+        "resident-brand": 452.3076923076937,
+        "resident-multi": 2263.6363636363617
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 7,
+      "runtime": "jsc-g1",
+      "history": "FULL",
+      "multi_us": 2925.33333333331,
+      "timings_us": {
+        "resident-build": 1214740,
+        "resident-brand": 457.1874999999999,
+        "resident-substance": 997.3584905660358,
+        "resident-multi": 2925.33333333331,
+        "resident-fuzzy": 1077.948717948717
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 7,
+      "runtime": "jsc-g1",
+      "history": "BM",
+      "multi_us": 2201.8181818181843,
+      "timings_us": {
+        "resident-build": 1218300,
+        "resident-brand": 455.34883720930065,
+        "resident-multi": 2201.8181818181843
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 7,
+      "runtime": "jsc-g1",
+      "history": "M",
+      "multi_us": 2258.666666666659,
+      "timings_us": {
+        "resident-build": 1217160,
+        "resident-multi": 2258.666666666659
+      },
+      "fingerprints": {
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 8,
+      "runtime": "jsc-g1",
+      "history": "FULL",
+      "multi_us": 3007.5000000000073,
+      "timings_us": {
+        "resident-build": 1259040,
+        "resident-brand": 450.4761904761922,
+        "resident-substance": 986.1224489795904,
+        "resident-multi": 3007.5000000000073,
+        "resident-fuzzy": 613.3333333333385
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 8,
+      "runtime": "jsc-g1",
+      "history": "BM",
+      "multi_us": 2284.545454545454,
+      "timings_us": {
+        "resident-build": 1249700,
+        "resident-brand": 498.57142857142986,
+        "resident-multi": 2284.545454545454
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 8,
+      "runtime": "jsc-g1",
+      "history": "M",
+      "multi_us": 2240.000000000009,
+      "timings_us": {
+        "resident-build": 1208160,
+        "resident-multi": 2240.000000000009
+      },
+      "fingerprints": {
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 9,
+      "runtime": "jsc-g1",
+      "history": "BM",
+      "multi_us": 3385.0000000000023,
+      "timings_us": {
+        "resident-build": 1209140,
+        "resident-brand": 456.41791044776346,
+        "resident-multi": 3385.0000000000023
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 9,
+      "runtime": "jsc-g1",
+      "history": "M",
+      "multi_us": 2197.142857142862,
+      "timings_us": {
+        "resident-build": 1240220,
+        "resident-multi": 2197.142857142862
+      },
+      "fingerprints": {
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 9,
+      "runtime": "jsc-g1",
+      "history": "FULL",
+      "multi_us": 2965.3333333333344,
+      "timings_us": {
+        "resident-build": 1228920,
+        "resident-brand": 451.21212121212426,
+        "resident-substance": 990,
+        "resident-multi": 2965.3333333333344,
+        "resident-fuzzy": 561.2500000000011
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 10,
+      "runtime": "jsc-g1",
+      "history": "BM",
+      "multi_us": 2237.0000000000005,
+      "timings_us": {
+        "resident-build": 1210040,
+        "resident-brand": 466.6666666666645,
+        "resident-multi": 2237.0000000000005
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 10,
+      "runtime": "jsc-g1",
+      "history": "FULL",
+      "multi_us": 2952.0000000000136,
+      "timings_us": {
+        "resident-build": 1230940,
+        "resident-brand": 463.2558139534901,
+        "resident-substance": 1006.53846153846,
+        "resident-multi": 2952.0000000000136,
+        "resident-fuzzy": 690.1587301587304
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 10,
+      "runtime": "jsc-g1",
+      "history": "M",
+      "multi_us": 2278.749999999988,
+      "timings_us": {
+        "resident-build": 1236560,
+        "resident-multi": 2278.749999999988
+      },
+      "fingerprints": {
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 11,
+      "runtime": "jsc-g1",
+      "history": "M",
+      "multi_us": 2208.8888888888887,
+      "timings_us": {
+        "resident-build": 1215080,
+        "resident-multi": 2208.8888888888887
+      },
+      "fingerprints": {
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 11,
+      "runtime": "jsc-g1",
+      "history": "FULL",
+      "multi_us": 2841.2500000000023,
+      "timings_us": {
+        "resident-build": 1233660,
+        "resident-brand": 457.0149253731327,
+        "resident-substance": 1006.0869565217384,
+        "resident-multi": 2841.2500000000023,
+        "resident-fuzzy": 550.1960784313715
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 11,
+      "runtime": "jsc-g1",
+      "history": "BM",
+      "multi_us": 2270.9999999999923,
+      "timings_us": {
+        "resident-build": 1232700,
+        "resident-brand": 476.74418604651163,
+        "resident-multi": 2270.9999999999923
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 12,
+      "runtime": "jsc-g1",
+      "history": "BM",
+      "multi_us": 2428.181818181811,
+      "timings_us": {
+        "resident-build": 1203600,
+        "resident-brand": 443.66666666666487,
+        "resident-multi": 2428.181818181811
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 12,
+      "runtime": "jsc-g1",
+      "history": "M",
+      "multi_us": 2257.7777777777833,
+      "timings_us": {
+        "resident-build": 1211080,
+        "resident-multi": 2257.7777777777833
+      },
+      "fingerprints": {
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 12,
+      "runtime": "jsc-g1",
+      "history": "FULL",
+      "multi_us": 2781.3333333333503,
+      "timings_us": {
+        "resident-build": 1214240,
+        "resident-brand": 486.66666666666794,
+        "resident-substance": 1054.3396226415116,
+        "resident-multi": 2781.3333333333503,
+        "resident-fuzzy": 1061.538461538458
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 13,
+      "runtime": "jsc-g1",
+      "history": "FULL",
+      "multi_us": 2758.82352941177,
+      "timings_us": {
+        "resident-build": 1207240,
+        "resident-brand": 463.8709677419354,
+        "resident-substance": 1040.0000000000016,
+        "resident-multi": 2758.82352941177,
+        "resident-fuzzy": 1047.2340425531872
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 13,
+      "runtime": "jsc-g1",
+      "history": "BM",
+      "multi_us": 2228.1818181818176,
+      "timings_us": {
+        "resident-build": 1227540,
+        "resident-brand": 464.1860465116288,
+        "resident-multi": 2228.1818181818176
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 13,
+      "runtime": "jsc-g1",
+      "history": "M",
+      "multi_us": 2242.4999999999927,
+      "timings_us": {
+        "resident-build": 1225560,
+        "resident-multi": 2242.4999999999927
+      },
+      "fingerprints": {
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 14,
+      "runtime": "jsc-g1",
+      "history": "M",
+      "multi_us": 2182.222222222221,
+      "timings_us": {
+        "resident-build": 1248220,
+        "resident-multi": 2182.222222222221
+      },
+      "fingerprints": {
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 14,
+      "runtime": "jsc-g1",
+      "history": "BM",
+      "multi_us": 2369.999999999994,
+      "timings_us": {
+        "resident-build": 1229160,
+        "resident-brand": 475.0000000000014,
+        "resident-multi": 2369.999999999994
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 14,
+      "runtime": "jsc-g1",
+      "history": "FULL",
+      "multi_us": 2820.000000000001,
+      "timings_us": {
+        "resident-build": 1264680,
+        "resident-brand": 481.1764705882357,
+        "resident-substance": 1004.0909090909106,
+        "resident-multi": 2820.000000000001,
+        "resident-fuzzy": 582.6086956521779
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 15,
+      "runtime": "jsc-g1",
+      "history": "BM",
+      "multi_us": 2294.545454545445,
+      "timings_us": {
+        "resident-build": 1231860,
+        "resident-brand": 465.9649122807008,
+        "resident-multi": 2294.545454545445
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 15,
+      "runtime": "jsc-g1",
+      "history": "FULL",
+      "multi_us": 2981.33333333332,
+      "timings_us": {
+        "resident-build": 1220160,
+        "resident-brand": 490.000000000002,
+        "resident-substance": 994.7169811320761,
+        "resident-multi": 2981.33333333332,
+        "resident-fuzzy": 1139.4999999999982
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 15,
+      "runtime": "jsc-g1",
+      "history": "M",
+      "multi_us": 2200.000000000005,
+      "timings_us": {
+        "resident-build": 1243160,
+        "resident-multi": 2200.000000000005
+      },
+      "fingerprints": {
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 16,
+      "runtime": "jsc-g1",
+      "history": "BM",
+      "multi_us": 2328.421052631579,
+      "timings_us": {
+        "resident-build": 1217960,
+        "resident-brand": 458.6666666666689,
+        "resident-multi": 2328.421052631579
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 16,
+      "runtime": "jsc-g1",
+      "history": "FULL",
+      "multi_us": 2918.7500000000173,
+      "timings_us": {
+        "resident-build": 1224540,
+        "resident-brand": 495.81395348837054,
+        "resident-substance": 1019.047619047618,
+        "resident-multi": 2918.7500000000173,
+        "resident-fuzzy": 570.2702702702678
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 16,
+      "runtime": "jsc-g1",
+      "history": "M",
+      "multi_us": 2304.705882352932,
+      "timings_us": {
+        "resident-build": 1212800,
+        "resident-multi": 2304.705882352932
+      },
+      "fingerprints": {
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 17,
+      "runtime": "jsc-g1",
+      "history": "BM",
+      "multi_us": 2315.454545454548,
+      "timings_us": {
+        "resident-build": 1223920,
+        "resident-brand": 491.4285714285711,
+        "resident-multi": 2315.454545454548
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 17,
+      "runtime": "jsc-g1",
+      "history": "FULL",
+      "multi_us": 2710.666666666657,
+      "timings_us": {
+        "resident-build": 1216380,
+        "resident-brand": 475.75757575757365,
+        "resident-substance": 1007.5471698113224,
+        "resident-multi": 2710.666666666657,
+        "resident-fuzzy": 1059.999999999995
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 17,
+      "runtime": "jsc-g1",
+      "history": "M",
+      "multi_us": 2817.4999999999955,
+      "timings_us": {
+        "resident-build": 1219120,
+        "resident-multi": 2817.4999999999955
+      },
+      "fingerprints": {
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 18,
+      "runtime": "jsc-g1",
+      "history": "FULL",
+      "multi_us": 2912.2222222222135,
+      "timings_us": {
+        "resident-build": 1210620,
+        "resident-brand": 463.9393939393923,
+        "resident-substance": 1034.34782608696,
+        "resident-multi": 2912.2222222222135,
+        "resident-fuzzy": 639.7752808988771
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 18,
+      "runtime": "jsc-g1",
+      "history": "BM",
+      "multi_us": 2178.947368421045,
+      "timings_us": {
+        "resident-build": 1208960,
+        "resident-brand": 490.32258064516276,
+        "resident-multi": 2178.947368421045
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 18,
+      "runtime": "jsc-g1",
+      "history": "M",
+      "multi_us": 2243.9999999999905,
+      "timings_us": {
+        "resident-build": 1216960,
+        "resident-multi": 2243.9999999999905
+      },
+      "fingerprints": {
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 19,
+      "runtime": "jsc-g1",
+      "history": "FULL",
+      "multi_us": 2879.9999999999955,
+      "timings_us": {
+        "resident-build": 1215520,
+        "resident-brand": 503.07692307692025,
+        "resident-substance": 972.1052631578963,
+        "resident-multi": 2879.9999999999955,
+        "resident-fuzzy": 571.707317073172
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-substance": "8f1af0b2",
+        "resident-multi": "0ebf5d2b",
+        "resident-fuzzy": "8f1af0b2"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 19,
+      "runtime": "jsc-g1",
+      "history": "M",
+      "multi_us": 2223.999999999993,
+      "timings_us": {
+        "resident-build": 1222240,
+        "resident-multi": 2223.999999999993
+      },
+      "fingerprints": {
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    },
+    {
+      "repetition": 19,
+      "runtime": "jsc-g1",
+      "history": "BM",
+      "multi_us": 2287.9999999999995,
+      "timings_us": {
+        "resident-build": 1213020,
+        "resident-brand": 459.9999999999979,
+        "resident-multi": 2287.9999999999995
+      },
+      "fingerprints": {
+        "resident-brand": "6c5d387b",
+        "resident-multi": "0ebf5d2b"
+      },
+      "fingerprint": "0ebf5d2b"
+    }
+  ]
+}

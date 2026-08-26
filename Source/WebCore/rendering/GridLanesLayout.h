@@ -41,10 +41,8 @@ class RenderGrid;
 
 class GridLanesLayout {
 public:
-    GridLanesLayout(RenderGrid& renderGrid)
-        : m_renderGrid(renderGrid)
-    {
-    }
+    // Construction repopulates the grid, so it has to happen immediately before placement.
+    GridLanesLayout(RenderGrid&, unsigned gridAxisTracksCount, Style::GridTrackSizingDirection stackingAxisDirection);
 
     enum class Phase : uint8_t {
         Layout,
@@ -52,11 +50,9 @@ public:
         MaxContent
     };
 
-    void initializeGridLanes(unsigned gridAxisTracks, Style::GridTrackSizingDirection stackingAxisDirection);
-    void performGridLanesPlacement(const GridTrackSizingAlgorithm&, unsigned gridAxisTracks, Style::GridTrackSizingDirection stackingAxisDirection, Phase);
+    void performGridLanesPlacement(const GridTrackSizingAlgorithm&, Phase);
     LayoutUnit NODELETE offsetForGridItem(const RenderBox&) const;
     LayoutUnit gridContentSize() const { return m_gridContentSize; };
-    LayoutUnit gridGap() const { return m_stackingAxisGridGap; };
 
 private:
     GridArea gridAreaForIndefiniteGridAxisItem(const RenderBox& item);
@@ -67,7 +63,6 @@ private:
     void insertIntoGridAndLayoutItem(const GridTrackSizingAlgorithm&, RenderBox&, const GridArea&, Phase);
     LayoutUnit calculateGridLanesIntrinsicLogicalWidth(RenderBox&, Phase);
 
-    void resizeAndResetRunningPositions();
     LayoutUnit stackingAxisMarginBoxForItem(const RenderBox& gridItem);
     void updateRunningPositions(const RenderBox& gridItem, const GridArea&);
     void updateItemOffset(const RenderBox& gridItem, LayoutUnit offset);
@@ -78,18 +73,18 @@ private:
     GridArea NODELETE gridAreaFromGridAxisSpan(const GridSpan&) const;
     GridSpan NODELETE gridAxisSpanFromArea(const GridArea&) const;
 
-    unsigned m_gridAxisTracksCount;
+    const unsigned m_gridAxisTracksCount;
 
     Vector<LayoutUnit> m_runningPositions;
     HashMap<SingleThreadWeakRef<const RenderBox>, LayoutUnit> m_itemOffsets;
     const CheckedRef<RenderGrid> m_renderGrid;
-    LayoutUnit m_stackingAxisGridGap;
+    const LayoutUnit m_stackingAxisGridGap;
     LayoutUnit m_gridContentSize;
 
-    Style::GridTrackSizingDirection m_stackingAxisDirection;
+    const Style::GridTrackSizingDirection m_stackingAxisDirection;
     const GridSpan m_stackingAxisSpan = GridSpan::stackingAxisTranslatedDefiniteGridSpan();
 
-    unsigned m_autoFlowNextCursor;
+    unsigned m_autoFlowNextCursor { 0 };
 };
 
 } // end namespace WebCore

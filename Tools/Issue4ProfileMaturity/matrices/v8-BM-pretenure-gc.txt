@@ -1,0 +1,133 @@
+[78539:0x1415e000] pretenuring: AllocationSite(0x23f34c2b9a19): (created, found, ratio) (552, 552, 1.000000) undecided => maybe tenure
+[78539:0x1415e000] pretenuring: threshold=0.85 deopt_maybe_tenured=0 visited_sites=1 active_sites=1 mementos=552 tenured=0 not_tenured=1
+[78539:0x1415e000]       19 ms: Scavenge 5.0 (5.6) -> 4.7 (6.3) MB, pooled: 0.0 MB, 0.64 / 0.00 ms (average mu = 1.000, current mu = 1.000) allocation failure; 
+[78539:0x1415e000] pretenuring: AllocationSite(0x23f34c2b9a19): (created, found, ratio) (233, 233, 1.000000) maybe tenure => maybe tenure
+[78539:0x1415e000] pretenuring: threshold=0.85 deopt_maybe_tenured=0 visited_sites=1 active_sites=1 mementos=233 tenured=0 not_tenured=1
+[78539:0x1415e000]       20 ms: Scavenge 5.0 (6.6) -> 4.8 (7.6) MB, pooled: 0.0 MB, 0.80 / 0.00 ms (average mu = 1.000, current mu = 1.000) allocation failure; 
+[78539:0x1415e000] pretenuring: AllocationSite(0x23f34c2b9a19): (created, found, ratio) (1218, 1218, 1.000000) maybe tenure => maybe tenure
+[78539:0x1415e000] pretenuring: threshold=0.85 deopt_maybe_tenured=0 visited_sites=1 active_sites=1 mementos=1218 tenured=0 not_tenured=1
+[78539:0x1415e000]       26 ms: Scavenge 6.9 (8.6) -> 6.2 (8.8) MB, pooled: 0.0 MB, 3.88 / 0.00 ms (average mu = 1.000, current mu = 1.000) allocation failure; 
+[78539:0x1415e000]       27 ms: Scavenge 7.0 (9.6) -> 6.7 (11.1) MB, pooled: 0.0 MB, 0.75 / 0.00 ms (average mu = 1.000, current mu = 1.000) allocation failure; 
+[78539:0x1415e000]       31 ms: Scavenge 10.5 (13.3) -> 9.2 (14.3) MB, pooled: 0.0 MB, 0.90 / 0.00 ms (average mu = 1.000, current mu = 1.000) allocation failure; 
+[78539:0x1415e000]       34 ms: Scavenge 11.0 (16.1) -> 10.3 (18.6) MB, pooled: 0.0 MB, 0.99 / 0.00 ms (average mu = 1.000, current mu = 1.000) allocation failure; 
+[78539:0x1415e000] pretenuring: AllocationSite(0x23f34c2b9a19): (created, found, ratio) (1503, 1503, 1.000000) maybe tenure => tenure
+[78539:0x1415e000] pretenuring: threshold=0.85 deopt_maybe_tenured=0 visited_sites=1 active_sites=1 mementos=1503 tenured=1 not_tenured=0
+[78539:0x1415e000]       42 ms: Scavenge 17.8 (23.0) -> 15.3 (24.0) MB, pooled: 0.0 MB, 1.70 / 0.00 ms (average mu = 1.000, current mu = 1.000) allocation failure; 
+[78539:0x1415e000] pretenuring: AllocationSite(0x23f34c2b9a19): (created, found, ratio) (1204, 1204, 1.000000) tenure => tenure
+[78539:0x1415e000] pretenuring: threshold=0.85 deopt_maybe_tenured=0 visited_sites=1 active_sites=1 mementos=1204 tenured=1 not_tenured=0
+[78539:0x1415e000]       48 ms: Scavenge 19.2 (27.9) -> 17.6 (32.4) MB, pooled: 0.0 MB, 1.81 / 0.00 ms (average mu = 1.000, current mu = 1.000) allocation failure; 
+[78539:0x1415e000]       62 ms: Scavenge 32.9 (41.6) -> 25.7 (43.6) MB, pooled: 0.0 MB, 1.91 / 0.00 ms (average mu = 1.000, current mu = 1.000) allocation failure; 
+[78539:0x1415e000]       74 ms: Scavenge 35.0 (51.6) -> 30.6 (59.1) MB, pooled: 0.0 MB, 2.54 / 0.00 ms (average mu = 1.000, current mu = 1.000) allocation failure; 
+[78539:0x1415e000]      106 ms: Scavenge 61.7 (78.1) -> 49.3 (82.9) MB, pooled: 0.0 MB, 4.39 / 0.00 ms (average mu = 1.000, current mu = 1.000) allocation failure; 
+[78539:0x1415e000]      128 ms: Incremental Mark-Compact 51.2 (84.5) -> 49.3 (82.9) MB, pooled: 0.5 MB, 19.17 / 0.00 ms (+ 0.3 ms in 16 steps since start of marking, biggest step 0.1 ms, walltime since start of marking 22 ms) (average mu = 0.839, current mu = 0.839) finalize incremental marking via stack guard; GC in old space requested
+[78539:0x1415e000]      163 ms: Scavenge 84.2 (85.1) -> 70.0 (102.9) MB, pooled: 0.0 MB, 9.43 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]      184 ms: Scavenge 85.0 (117.6) -> 78.4 (136.1) MB, pooled: 0.0 MB, 6.22 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]      206 ms: Scavenge 106.2 (138.9) -> 95.2 (146.4) MB, pooled: 0.0 MB, 4.20 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]      226 ms: Scavenge 115.9 (148.5) -> 107.9 (163.0) MB, pooled: 0.0 MB, 5.04 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]      246 ms: Scavenge 131.5 (164.2) -> 122.4 (175.0) MB, pooled: 0.0 MB, 4.80 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]      269 ms: Scavenge 143.3 (176.1) -> 126.6 (189.3) MB, pooled: 0.0 MB, 3.57 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]      300 ms: Scavenge 158.1 (190.8) -> 128.9 (194.1) MB, pooled: 0.0 MB, 1.11 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]      333 ms: Scavenge 161.9 (194.8) -> 130.0 (194.8) MB, pooled: 0.0 MB, 0.42 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000] pretenuring: AllocationSite(0x7f237d6f8b1): (created, found, ratio) (1303, 1303, 1.000000) undecided => tenure
+[78539:0x1415e000] pretenuring: AllocationSite(0x7f237d6f8e1): (created, found, ratio) (1303, 1303, 1.000000) undecided => tenure
+[78539:0x1415e000] pretenuring: AllocationSite(0x7f237d6f931): (created, found, ratio) (1348, 1348, 1.000000) undecided => tenure
+[78539:0x1415e000] pretenuring: threshold=0.85 deopt_maybe_tenured=0 visited_sites=3 active_sites=3 mementos=3954 tenured=3 not_tenured=0
+[78539:0x1415e000]      371 ms: Scavenge 165.1 (198.7) -> 135.6 (196.6) MB, pooled: 0.0 MB, 1.25 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]      400 ms: Scavenge 164.7 (198.0) -> 137.4 (203.3) MB, pooled: 0.0 MB, 1.96 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]      431 ms: Scavenge 170.5 (203.9) -> 138.7 (204.4) MB, pooled: 0.0 MB, 0.70 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]      461 ms: Scavenge 172.5 (205.8) -> 140.5 (205.8) MB, pooled: 0.0 MB, 0.18 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]      491 ms: Scavenge 173.4 (206.8) -> 141.4 (206.8) MB, pooled: 0.0 MB, 0.14 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]      521 ms: Scavenge 174.5 (207.8) -> 142.6 (207.8) MB, pooled: 0.0 MB, 0.19 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]      550 ms: Scavenge 175.4 (208.8) -> 143.5 (208.8) MB, pooled: 0.0 MB, 0.13 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]      580 ms: Scavenge 176.3 (209.8) -> 144.4 (209.8) MB, pooled: 0.0 MB, 0.22 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]      620 ms: Scavenge 183.6 (216.9) -> 149.5 (214.2) MB, pooled: 0.0 MB, 0.57 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]      649 ms: Scavenge 182.4 (215.6) -> 150.8 (216.3) MB, pooled: 0.0 MB, 0.79 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]      680 ms: Scavenge 184.4 (217.7) -> 152.4 (217.7) MB, pooled: 0.0 MB, 0.14 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]      710 ms: Scavenge 185.5 (218.7) -> 153.5 (218.7) MB, pooled: 0.0 MB, 0.19 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]      741 ms: Scavenge 186.3 (219.5) -> 154.3 (219.5) MB, pooled: 0.0 MB, 0.26 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]      774 ms: Scavenge 189.2 (222.4) -> 157.2 (222.4) MB, pooled: 0.0 MB, 0.21 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]      805 ms: Scavenge 190.0 (223.1) -> 158.0 (223.1) MB, pooled: 0.0 MB, 0.13 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]      849 ms: Scavenge 202.1 (235.4) -> 166.3 (230.5) MB, pooled: 0.0 MB, 0.55 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]      876 ms: Scavenge 198.5 (231.7) -> 167.5 (232.9) MB, pooled: 0.0 MB, 0.69 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]      906 ms: Scavenge 201.2 (234.5) -> 169.2 (234.5) MB, pooled: 0.0 MB, 0.35 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]      934 ms: Scavenge 202.0 (235.2) -> 170.0 (235.2) MB, pooled: 0.0 MB, 0.14 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]      962 ms: Scavenge 203.0 (236.2) -> 171.1 (236.2) MB, pooled: 0.0 MB, 0.19 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]      992 ms: Scavenge 210.2 (244.4) -> 176.6 (241.1) MB, pooled: 0.0 MB, 0.31 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]     1020 ms: Scavenge 209.1 (242.5) -> 177.6 (243.6) MB, pooled: 0.0 MB, 0.66 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]     1050 ms: Scavenge 211.2 (244.6) -> 179.3 (244.6) MB, pooled: 0.0 MB, 0.41 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]     1082 ms: Scavenge 216.0 (249.8) -> 183.5 (248.6) MB, pooled: 0.0 MB, 0.35 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]     1109 ms: Scavenge 216.9 (250.5) -> 185.2 (250.6) MB, pooled: 0.0 MB, 0.49 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]     1139 ms: Scavenge 218.6 (252.2) -> 186.8 (252.9) MB, pooled: 0.0 MB, 0.40 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]     1176 ms: Scavenge 225.0 (259.6) -> 192.2 (257.6) MB, pooled: 0.0 MB, 0.60 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]     1210 ms: Scavenge 226.1 (260.1) -> 194.5 (261.1) MB, pooled: 0.0 MB, 0.51 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]     1244 ms: Scavenge 227.4 (261.4) -> 195.5 (261.4) MB, pooled: 0.0 MB, 0.33 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]     1278 ms: Scavenge 228.6 (262.4) -> 196.6 (262.4) MB, pooled: 0.0 MB, 0.46 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]     1311 ms: Scavenge 229.5 (263.4) -> 197.5 (263.4) MB, pooled: 0.0 MB, 0.34 / 0.00 ms (average mu = 0.839, current mu = 0.839) allocation failure; 
+[78539:0x1415e000]     1365 ms: Incremental Mark-Compact 210.2 (265.4) -> 105.8 (225.4) MB, pooled: 19.5 MB, 39.47 / 0.00 ms (+ 0.0 ms in 2 steps since start of marking, biggest step 0.0 ms, walltime since start of marking 41 ms) (average mu = 0.957, current mu = 0.968) finalize incremental marking via stack guard; GC in old space requested
+[78539:0x1415e000] pretenuring: AllocationSite(0x7f237d6f8b1): (created, found, ratio) (31072, 13825, 0.444934) tenure => tenure
+[78539:0x1415e000] pretenuring: AllocationSite(0x7f237d6f8e1): (created, found, ratio) (31072, 13825, 0.444934) tenure => tenure
+[78539:0x1415e000] pretenuring: AllocationSite(0x7f237d6f931): (created, found, ratio) (31143, 13865, 0.445204) tenure => tenure
+[78539:0x1415e000] pretenuring: threshold=0.85 deopt_maybe_tenured=0 visited_sites=3 active_sites=3 mementos=41515 tenured=3 not_tenured=0
+[78539:0x1415e000]     1431 ms: Scavenge 158.4 (231.0) -> 125.7 (227.3) MB, pooled: 18.2 MB, 1.04 / 0.00 ms (average mu = 0.957, current mu = 0.968) allocation failure; 
+[78539:0x1415e000]     1465 ms: Scavenge 160.9 (229.7) -> 130.5 (228.9) MB, pooled: 17.2 MB, 1.24 / 0.00 ms (average mu = 0.957, current mu = 0.968) allocation failure; 
+[78539:0x1415e000]     1498 ms: Scavenge 163.7 (230.0) -> 132.5 (230.8) MB, pooled: 16.5 MB, 0.96 / 0.00 ms (average mu = 0.957, current mu = 0.968) allocation failure; 
+[78539:0x1415e000]     1543 ms: Scavenge 170.8 (234.0) -> 138.0 (231.0) MB, pooled: 16.2 MB, 0.69 / 0.00 ms (average mu = 0.957, current mu = 0.968) allocation failure; 
+[78539:0x1415e000] pretenuring: AllocationSite(0x472cc487679): (created, found, ratio) (4840, 4840, 1.000000) undecided => tenure
+[78539:0x1415e000] pretenuring: AllocationSite(0x472cc484d61): (created, found, ratio) (3054, 3054, 1.000000) undecided => tenure
+[78539:0x1415e000] pretenuring: AllocationSite(0x472cc484e19): (created, found, ratio) (3053, 3053, 1.000000) undecided => tenure
+[78539:0x1415e000] pretenuring: AllocationSite(0x472cc484db1): (created, found, ratio) (3054, 3054, 1.000000) undecided => tenure
+[78539:0x1415e000] pretenuring: threshold=0.85 deopt_maybe_tenured=0 visited_sites=4 active_sites=4 mementos=14001 tenured=4 not_tenured=0
+[78539:0x1415e000]     1575 ms: Scavenge 171.7 (233.0) -> 144.4 (233.0) MB, pooled: 15.2 MB, 1.69 / 0.00 ms (average mu = 0.957, current mu = 0.968) allocation failure; 
+[78539:0x1415e000]     1611 ms: Scavenge 184.3 (233.0) -> 157.1 (234.0) MB, pooled: 14.2 MB, 2.30 / 0.00 ms (average mu = 0.957, current mu = 0.968) allocation failure; 
+[78539:0x1415e000]     1629 ms: Scavenge 204.9 (250.3) -> 180.1 (250.5) MB, pooled: 0.0 MB, 3.80 / 0.00 ms (average mu = 0.957, current mu = 0.968) allocation failure; 
+[78539:0x1415e000]     1650 ms: Scavenge 229.3 (272.0) -> 206.6 (272.5) MB, pooled: 0.0 MB, 3.86 / 0.00 ms (average mu = 0.957, current mu = 0.968) allocation failure; 
+[78539:0x1415e000]     1671 ms: Scavenge 254.6 (293.8) -> 232.4 (294.8) MB, pooled: 0.0 MB, 3.64 / 0.00 ms (average mu = 0.957, current mu = 0.968) allocation failure; 
+[78539:0x1415e000]     1693 ms: Scavenge 280.7 (315.8) -> 258.4 (321.0) MB, pooled: 0.0 MB, 5.02 / 0.00 ms (average mu = 0.957, current mu = 0.968) allocation failure; 
+[78539:0x1415e000]     1712 ms: Scavenge 306.5 (341.5) -> 284.2 (346.8) MB, pooled: 0.0 MB, 2.87 / 0.00 ms (average mu = 0.957, current mu = 0.968) allocation failure; 
+[78539:0x1415e000]     1733 ms: Scavenge 332.5 (367.5) -> 310.2 (372.8) MB, pooled: 0.0 MB, 3.59 / 0.00 ms (average mu = 0.957, current mu = 0.968) allocation failure; 
+[78539:0x1415e000]     1753 ms: Scavenge 358.3 (393.5) -> 336.0 (398.5) MB, pooled: 0.0 MB, 3.44 / 0.00 ms (average mu = 0.957, current mu = 0.968) allocation failure; 
+[78539:0x1415e000]     1773 ms: Scavenge 384.3 (419.3) -> 362.0 (424.5) MB, pooled: 0.0 MB, 3.50 / 0.00 ms (average mu = 0.957, current mu = 0.968) allocation failure; 
+[78539:0x1415e000]     1793 ms: Scavenge 410.1 (445.3) -> 387.8 (450.3) MB, pooled: 0.0 MB, 2.96 / 0.00 ms (average mu = 0.957, current mu = 0.968) allocation failure; 
+[78539:0x1415e000]     1813 ms: Scavenge 436.1 (471.3) -> 413.8 (476.3) MB, pooled: 0.0 MB, 3.90 / 0.00 ms (average mu = 0.957, current mu = 0.968) allocation failure; 
+[78539:0x1415e000]     1833 ms: Scavenge 461.9 (497.0) -> 439.7 (502.3) MB, pooled: 0.0 MB, 2.97 / 0.00 ms (average mu = 0.957, current mu = 0.968) allocation failure; 
+[78539:0x1415e000]     1896 ms: Incremental Mark-Compact 474.8 (517.0) -> 104.1 (242.0) MB, pooled: 269.8 MB, 48.75 / 0.00 ms (+ 1.5 ms in 17 steps since start of marking, biggest step 1.2 ms, walltime since start of marking 52 ms) (average mu = 0.934, current mu = 0.906) finalize incremental marking via stack guard; GC in old space requested
+[78539:0x1415e000]     1917 ms: Scavenge 161.2 (242.0) -> 135.2 (242.0) MB, pooled: 269.8 MB, 1.65 / 0.00 ms (average mu = 0.934, current mu = 0.906) allocation failure; 
+[78539:0x1415e000]     1959 ms: Scavenge 181.4 (242.2) -> 160.0 (242.5) MB, pooled: 269.2 MB, 3.98 / 0.00 ms (average mu = 0.934, current mu = 0.906) allocation failure; 
+[78539:0x1415e000]     1989 ms: Scavenge 208.5 (254.5) -> 186.2 (254.5) MB, pooled: 257.2 MB, 4.80 / 0.00 ms (average mu = 0.934, current mu = 0.906) allocation failure; 
+[78539:0x1415e000]     2003 ms: Scavenge 234.5 (275.7) -> 212.3 (275.7) MB, pooled: 236.0 MB, 4.00 / 0.00 ms (average mu = 0.934, current mu = 0.906) allocation failure; 
+[78539:0x1415e000]     2015 ms: Scavenge 260.7 (297.2) -> 238.5 (301.7) MB, pooled: 210.0 MB, 2.88 / 0.00 ms (average mu = 0.934, current mu = 0.906) allocation failure; 
+[78539:0x1415e000]     2027 ms: Scavenge 286.6 (322.5) -> 264.3 (327.7) MB, pooled: 184.0 MB, 2.68 / 0.00 ms (average mu = 0.934, current mu = 0.906) allocation failure; 
+[78539:0x1415e000]     2040 ms: Scavenge 312.5 (348.5) -> 290.3 (353.7) MB, pooled: 158.0 MB, 2.75 / 0.00 ms (average mu = 0.934, current mu = 0.906) allocation failure; 
+[78539:0x1415e000] pretenuring: AllocationSite(0x472cc484d11): (created, found, ratio) (6827, 464, 0.067965) undecided => don't tenure
+[78539:0x1415e000] pretenuring: AllocationSite(0x472cc487679): (created, found, ratio) (4284, 464, 0.108310) tenure => tenure
+[78539:0x1415e000] pretenuring: AllocationSite(0x472cc484d61): (created, found, ratio) (3773, 464, 0.122979) tenure => tenure
+[78539:0x1415e000] pretenuring: AllocationSite(0x472cc484e19): (created, found, ratio) (3773, 464, 0.122979) tenure => tenure
+[78539:0x1415e000] pretenuring: AllocationSite(0x472cc484db1): (created, found, ratio) (3773, 514, 0.136231) tenure => tenure
+[78539:0x1415e000] pretenuring: threshold=0.85 deopt_maybe_tenured=0 visited_sites=5 active_sites=5 mementos=2370 tenured=4 not_tenured=1
+[78539:0x1415e000]     2058 ms: Scavenge 325.7 (361.5) -> 308.9 (366.5) MB, pooled: 145.2 MB, 2.32 / 0.00 ms (average mu = 0.934, current mu = 0.906) allocation failure; 
+[78539:0x1415e000]     2076 ms: Scavenge 338.4 (374.2) -> 325.9 (384.5) MB, pooled: 127.2 MB, 2.81 / 0.00 ms (average mu = 0.934, current mu = 0.906) allocation failure; 
+[78539:0x1415e000]     2094 ms: Scavenge 356.7 (392.5) -> 344.5 (402.2) MB, pooled: 109.5 MB, 2.58 / 0.00 ms (average mu = 0.934, current mu = 0.906) allocation failure; 
+[78539:0x1415e000]     2112 ms: Scavenge 373.9 (409.7) -> 361.8 (420.5) MB, pooled: 91.2 MB, 2.83 / 0.00 ms (average mu = 0.934, current mu = 0.906) allocation failure; 
+[78539:0x1415e000]     2130 ms: Scavenge 392.4 (428.2) -> 380.2 (437.7) MB, pooled: 74.0 MB, 2.55 / 0.00 ms (average mu = 0.934, current mu = 0.906) allocation failure; 
+[78539:0x1415e000]     2147 ms: Scavenge 409.5 (445.5) -> 397.3 (456.0) MB, pooled: 55.8 MB, 2.90 / 0.00 ms (average mu = 0.934, current mu = 0.906) allocation failure; 
+[78539:0x1415e000]     2165 ms: Scavenge 428.1 (464.0) -> 415.8 (473.7) MB, pooled: 38.0 MB, 2.52 / 0.00 ms (average mu = 0.934, current mu = 0.906) allocation failure; 
+[78539:0x1415e000]     2182 ms: Scavenge 445.2 (481.0) -> 433.0 (491.5) MB, pooled: 20.2 MB, 2.66 / 0.00 ms (average mu = 0.934, current mu = 0.906) allocation failure; 
+[78539:0x1415e000]     2200 ms: Scavenge 463.6 (499.5) -> 451.4 (509.0) MB, pooled: 2.8 MB, 2.78 / 0.00 ms (average mu = 0.934, current mu = 0.906) allocation failure; 
+[78539:0x1415e000]     2261 ms: Incremental Mark-Compact 469.7 (513.5) -> 105.3 (253.0) MB, pooled: 260.5 MB, 48.61 / 0.00 ms (+ 0.2 ms in 19 steps since start of marking, biggest step 0.1 ms, walltime since start of marking 51 ms) (average mu = 0.909, current mu = 0.866) finalize incremental marking via stack guard; GC in old space requested
+[78539:0x1415e000]     2285 ms: Scavenge 149.3 (253.0) -> 132.2 (253.0) MB, pooled: 260.5 MB, 1.92 / 0.00 ms (average mu = 0.909, current mu = 0.866) allocation failure; 
+[78539:0x1415e000]     2301 ms: Scavenge 155.6 (254.5) -> 145.7 (254.5) MB, pooled: 259.0 MB, 4.47 / 0.00 ms (average mu = 0.909, current mu = 0.866) allocation failure; 
+[78539:0x1415e000]     2324 ms: Scavenge 179.1 (254.5) -> 165.9 (255.2) MB, pooled: 258.2 MB, 3.10 / 0.00 ms (average mu = 0.909, current mu = 0.866) allocation failure; 
+[78539:0x1415e000]     2349 ms: Scavenge 194.3 (255.2) -> 183.0 (266.7) MB, pooled: 246.8 MB, 3.17 / 0.00 ms (average mu = 0.909, current mu = 0.866) allocation failure; 
+[78539:0x1415e000]     2388 ms: Scavenge 214.0 (267.5) -> 201.7 (277.2) MB, pooled: 236.2 MB, 2.90 / 0.00 ms (average mu = 0.909, current mu = 0.866) allocation failure; 
+[78539:0x1415e000]     2406 ms: Scavenge 231.5 (285.2) -> 220.3 (295.5) MB, pooled: 218.0 MB, 2.90 / 0.00 ms (average mu = 0.909, current mu = 0.866) allocation failure; 
+[78539:0x1415e000]     2424 ms: Scavenge 250.2 (303.5) -> 238.4 (314.2) MB, pooled: 199.2 MB, 2.73 / 0.00 ms (average mu = 0.909, current mu = 0.866) allocation failure; 
+[78539:0x1415e000]     2442 ms: Scavenge 268.7 (322.0) -> 256.8 (332.0) MB, pooled: 181.5 MB, 2.58 / 0.00 ms (average mu = 0.909, current mu = 0.866) allocation failure; 
+[78539:0x1415e000]     2460 ms: Scavenge 286.6 (340.0) -> 274.8 (350.2) MB, pooled: 163.2 MB, 2.62 / 0.00 ms (average mu = 0.909, current mu = 0.866) allocation failure; 
+[78539:0x1415e000]     2478 ms: Scavenge 305.2 (358.5) -> 293.6 (368.5) MB, pooled: 145.0 MB, 2.56 / 0.00 ms (average mu = 0.909, current mu = 0.866) allocation failure; 
+[78539:0x1415e000]     2496 ms: Scavenge 323.3 (376.5) -> 311.5 (387.0) MB, pooled: 126.5 MB, 2.63 / 0.00 ms (average mu = 0.909, current mu = 0.866) allocation failure; 
+[78539:0x1415e000]     2514 ms: Scavenge 341.8 (395.0) -> 329.9 (405.0) MB, pooled: 108.5 MB, 2.63 / 0.00 ms (average mu = 0.909, current mu = 0.866) allocation failure; 
+[78539:0x1415e000]     2531 ms: Scavenge 359.9 (413.0) -> 348.2 (423.2) MB, pooled: 90.2 MB, 2.71 / 0.00 ms (average mu = 0.909, current mu = 0.866) allocation failure; 
+[78539:0x1415e000]     2550 ms: Scavenge 378.3 (431.2) -> 366.7 (441.5) MB, pooled: 72.0 MB, 2.65 / 0.00 ms (average mu = 0.909, current mu = 0.866) allocation failure; 
+[78539:0x1415e000]     2567 ms: Scavenge 396.3 (449.2) -> 384.5 (460.0) MB, pooled: 53.5 MB, 2.72 / 0.00 ms (average mu = 0.909, current mu = 0.866) allocation failure; 
+[78539:0x1415e000]     2585 ms: Scavenge 414.9 (467.7) -> 403.0 (478.0) MB, pooled: 35.5 MB, 2.59 / 0.00 ms (average mu = 0.909, current mu = 0.866) allocation failure; 
+@@FROZEN_ENGINE_BENCH@@{"schema":1,"profile":"resident-pressure","corpus":{"documents":148746,"terms":243637},"resident":{"corpusCount":11,"targetIndexes":["specialites","presentations","compositions"]},"timer":"performance.now","fingerprints":{"resident-brand":"6c5d387b","resident-multi":"0ebf5d2b"},"timings":{"resident-build":{"medianUs":1314628.5459999999,"minUs":1314628.5459999999,"maxUs":1314628.5459999999,"batch":1,"samples":1},"resident-brand":{"medianUs":1278.359631578951,"minUs":836.1289473684194,"maxUs":3332.991342105258,"batch":38,"samples":7},"resident-multi":{"medianUs":1897.844218749995,"minUs":1810.614812500006,"maxUs":3412.084437499999,"batch":32,"samples":7}},"sink":3674725647}

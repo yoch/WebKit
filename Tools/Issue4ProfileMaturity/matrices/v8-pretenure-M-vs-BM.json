@@ -1,0 +1,327 @@
+{
+  "M": {
+    "search_phase_site_events": [
+      {
+        "site": "0x434eb979941",
+        "created": 552,
+        "found": 552,
+        "ratio": 1.0,
+        "from": "undecided",
+        "to": "maybe tenure"
+      },
+      {
+        "site": "0x434eb979941",
+        "created": 1649,
+        "found": 1649,
+        "ratio": 1.0,
+        "from": "maybe tenure",
+        "to": "maybe tenure"
+      },
+      {
+        "site": "0x434eb979941",
+        "created": 708,
+        "found": 708,
+        "ratio": 1.0,
+        "from": "maybe tenure",
+        "to": "maybe tenure"
+      },
+      {
+        "site": "0x434eb979941",
+        "created": 1500,
+        "found": 1500,
+        "ratio": 1.0,
+        "from": "maybe tenure",
+        "to": "tenure"
+      },
+      {
+        "site": "0x434eb979941",
+        "created": 939,
+        "found": 939,
+        "ratio": 1.0,
+        "from": "tenure",
+        "to": "tenure"
+      },
+      {
+        "site": "0xfeae053f559",
+        "created": 1425,
+        "found": 1425,
+        "ratio": 1.0,
+        "from": "undecided",
+        "to": "tenure"
+      },
+      {
+        "site": "0xfeae053f589",
+        "created": 1425,
+        "found": 1425,
+        "ratio": 1.0,
+        "from": "undecided",
+        "to": "tenure"
+      },
+      {
+        "site": "0xfeae053f5d9",
+        "created": 1468,
+        "found": 1468,
+        "ratio": 1.0,
+        "from": "undecided",
+        "to": "tenure"
+      },
+      {
+        "site": "0xfeae053f5d9",
+        "created": 30443,
+        "found": 13785,
+        "ratio": 0.452813,
+        "from": "tenure",
+        "to": "tenure"
+      },
+      {
+        "site": "0xfeae053f559",
+        "created": 30370,
+        "found": 13741,
+        "ratio": 0.452453,
+        "from": "tenure",
+        "to": "tenure"
+      },
+      {
+        "site": "0xfeae053f589",
+        "created": 30370,
+        "found": 13741,
+        "ratio": 0.452453,
+        "from": "tenure",
+        "to": "tenure"
+      },
+      {
+        "site": "0x142ba71c9351",
+        "created": 440,
+        "found": 440,
+        "ratio": 1.0,
+        "from": "undecided",
+        "to": "tenure"
+      },
+      {
+        "site": "0x142ba71c5041",
+        "created": 3930,
+        "found": 1489,
+        "ratio": 0.37888,
+        "from": "undecided",
+        "to": "don't tenure"
+      },
+      {
+        "site": "0x142ba71c5091",
+        "created": 3930,
+        "found": 1489,
+        "ratio": 0.37888,
+        "from": "undecided",
+        "to": "don't tenure"
+      },
+      {
+        "site": "0x142ba71c5149",
+        "created": 3929,
+        "found": 1489,
+        "ratio": 0.378977,
+        "from": "undecided",
+        "to": "don't tenure"
+      },
+      {
+        "site": "0x142ba71c50e1",
+        "created": 3930,
+        "found": 1953,
+        "ratio": 0.496947,
+        "from": "undecided",
+        "to": "don't tenure"
+      },
+      {
+        "site": "0x142ba71c9351",
+        "created": 928,
+        "found": 464,
+        "ratio": 0.5,
+        "from": "tenure",
+        "to": "tenure"
+      },
+      {
+        "site": "0x142ba71c9351",
+        "created": 928,
+        "found": 464,
+        "ratio": 0.5,
+        "from": "tenure",
+        "to": "tenure"
+      }
+    ],
+    "scavenge_count_after_1550ms": 58,
+    "imc_after_1550ms": [
+      2045
+    ],
+    "total_scavenge": 111
+  },
+  "BM": {
+    "search_phase_site_events": [
+      {
+        "site": "0x23f34c2b9a19",
+        "created": 552,
+        "found": 552,
+        "ratio": 1.0,
+        "from": "undecided",
+        "to": "maybe tenure"
+      },
+      {
+        "site": "0x23f34c2b9a19",
+        "created": 1218,
+        "found": 1218,
+        "ratio": 1.0,
+        "from": "maybe tenure",
+        "to": "maybe tenure"
+      },
+      {
+        "site": "0x23f34c2b9a19",
+        "created": 1503,
+        "found": 1503,
+        "ratio": 1.0,
+        "from": "maybe tenure",
+        "to": "tenure"
+      },
+      {
+        "site": "0x23f34c2b9a19",
+        "created": 1204,
+        "found": 1204,
+        "ratio": 1.0,
+        "from": "tenure",
+        "to": "tenure"
+      },
+      {
+        "site": "0x7f237d6f8b1",
+        "created": 1303,
+        "found": 1303,
+        "ratio": 1.0,
+        "from": "undecided",
+        "to": "tenure"
+      },
+      {
+        "site": "0x7f237d6f8e1",
+        "created": 1303,
+        "found": 1303,
+        "ratio": 1.0,
+        "from": "undecided",
+        "to": "tenure"
+      },
+      {
+        "site": "0x7f237d6f931",
+        "created": 1348,
+        "found": 1348,
+        "ratio": 1.0,
+        "from": "undecided",
+        "to": "tenure"
+      },
+      {
+        "site": "0x7f237d6f8b1",
+        "created": 31072,
+        "found": 13825,
+        "ratio": 0.444934,
+        "from": "tenure",
+        "to": "tenure"
+      },
+      {
+        "site": "0x7f237d6f8e1",
+        "created": 31072,
+        "found": 13825,
+        "ratio": 0.444934,
+        "from": "tenure",
+        "to": "tenure"
+      },
+      {
+        "site": "0x7f237d6f931",
+        "created": 31143,
+        "found": 13865,
+        "ratio": 0.445204,
+        "from": "tenure",
+        "to": "tenure"
+      },
+      {
+        "site": "0x472cc487679",
+        "created": 4840,
+        "found": 4840,
+        "ratio": 1.0,
+        "from": "undecided",
+        "to": "tenure"
+      },
+      {
+        "site": "0x472cc484d61",
+        "created": 3054,
+        "found": 3054,
+        "ratio": 1.0,
+        "from": "undecided",
+        "to": "tenure"
+      },
+      {
+        "site": "0x472cc484e19",
+        "created": 3053,
+        "found": 3053,
+        "ratio": 1.0,
+        "from": "undecided",
+        "to": "tenure"
+      },
+      {
+        "site": "0x472cc484db1",
+        "created": 3054,
+        "found": 3054,
+        "ratio": 1.0,
+        "from": "undecided",
+        "to": "tenure"
+      },
+      {
+        "site": "0x472cc484d11",
+        "created": 6827,
+        "found": 464,
+        "ratio": 0.067965,
+        "from": "undecided",
+        "to": "don't tenure"
+      },
+      {
+        "site": "0x472cc487679",
+        "created": 4284,
+        "found": 464,
+        "ratio": 0.10831,
+        "from": "tenure",
+        "to": "tenure"
+      },
+      {
+        "site": "0x472cc484d61",
+        "created": 3773,
+        "found": 464,
+        "ratio": 0.122979,
+        "from": "tenure",
+        "to": "tenure"
+      },
+      {
+        "site": "0x472cc484e19",
+        "created": 3773,
+        "found": 464,
+        "ratio": 0.122979,
+        "from": "tenure",
+        "to": "tenure"
+      },
+      {
+        "site": "0x472cc484db1",
+        "created": 3773,
+        "found": 514,
+        "ratio": 0.136231,
+        "from": "tenure",
+        "to": "tenure"
+      }
+    ],
+    "scavenge_count_after_1550ms": 45,
+    "imc_after_1550ms": [
+      1896,
+      2261
+    ],
+    "total_scavenge": 99
+  },
+  "note": "Diagnostic traces (Node 26.7.0 --trace-pretenuring-statistics --trace-gc). Not performance evidence. Search-phase lock-in is the first cluster with created~3000-5000 after corpus build. threshold=0.85 is sticky.",
+  "source_literals": {
+    "scorePostingDoc_else": [
+      "{ score, terms, match } object",
+      "terms: [sourceTerm] array",
+      "match: { [derived]: [field] } object",
+      "[field] array"
+    ],
+    "file": "src/scoring.ts scorePostingDoc else-branch and combinators[AND] a.delete"
+  }
+}
