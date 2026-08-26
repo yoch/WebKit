@@ -1,0 +1,951 @@
+{
+  "note": "Diagnostic (traced) runs, not performance evidence. M/BM used --reportCompileTimes plus verbose OSR-exit dumps. FULL/BSM used --reportCompileTimes --verboseOSR (no per-exit dump).",
+  "jsc_binary": "/tmp/ic-research-v2/unpatched-f05/bin/jsc",
+  "unpatched_lib_sha256": "c54efc1645a0fbdabe8d0eb7966e4b57f2efcf4a88f686ca5a3291eabd6642b1",
+  "compile_counts": {
+    "M": {
+      "total": 267,
+      "Baseline": 112,
+      "DFG": 109,
+      "FTL": 45,
+      "FTLForOSREntry": 1
+    },
+    "BM": {
+      "total": 300,
+      "Baseline": 116,
+      "DFG": 130,
+      "FTL": 53,
+      "FTLForOSREntry": 1
+    },
+    "BSM": {
+      "total": 318,
+      "Baseline": 119,
+      "DFG": 141,
+      "FTL": 56,
+      "FTLForOSREntry": 2
+    },
+    "FULL": {
+      "total": 341,
+      "Baseline": 124,
+      "DFG": 155,
+      "FTL": 60,
+      "FTLForOSREntry": 2
+    }
+  },
+  "scorePostingDoc_sequence": {
+    "M": [
+      {
+        "tier": "Baseline",
+        "bytes": 6912
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5632
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5632
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5632
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5632
+      },
+      {
+        "tier": "FTL",
+        "bytes": 5184
+      }
+    ],
+    "BM": [
+      {
+        "tier": "Baseline",
+        "bytes": 6912
+      },
+      {
+        "tier": "DFG",
+        "bytes": 3840
+      },
+      {
+        "tier": "DFG",
+        "bytes": 4096
+      },
+      {
+        "tier": "FTL",
+        "bytes": 3456
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5376
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5376
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5376
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5632
+      },
+      {
+        "tier": "FTL",
+        "bytes": 5184
+      }
+    ],
+    "BSM": [
+      {
+        "tier": "Baseline",
+        "bytes": 6912
+      },
+      {
+        "tier": "DFG",
+        "bytes": 3840
+      },
+      {
+        "tier": "DFG",
+        "bytes": 4096
+      },
+      {
+        "tier": "FTL",
+        "bytes": 3456
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5376
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5376
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5376
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5376
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5376
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5376
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5376
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5376
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5376
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5376
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5888
+      }
+    ],
+    "FULL": [
+      {
+        "tier": "Baseline",
+        "bytes": 6912
+      },
+      {
+        "tier": "DFG",
+        "bytes": 3840
+      },
+      {
+        "tier": "DFG",
+        "bytes": 4096
+      },
+      {
+        "tier": "FTL",
+        "bytes": 3456
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5376
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5376
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5376
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5376
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5376
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5376
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5376
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5376
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5376
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5632
+      },
+      {
+        "tier": "DFG",
+        "bytes": 5632
+      }
+    ]
+  },
+  "hot_function_sequences": {
+    "M": {
+      "scorePostingDoc": [
+        {
+          "tier": "Baseline",
+          "bytes": 6912
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5632
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5632
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5632
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5632
+        },
+        {
+          "tier": "FTL",
+          "bytes": 5184
+        }
+      ],
+      "combineResults": [
+        {
+          "tier": "Baseline",
+          "bytes": 2816
+        }
+      ],
+      "useGatedEvaluation": [
+        {
+          "tier": "Baseline",
+          "bytes": 736
+        },
+        {
+          "tier": "DFG",
+          "bytes": 1488
+        }
+      ],
+      "finalize": [
+        {
+          "tier": "Baseline",
+          "bytes": 17920
+        },
+        {
+          "tier": "DFG",
+          "bytes": 1488
+        },
+        {
+          "tier": "DFG",
+          "bytes": 2560
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5888
+        },
+        {
+          "tier": "FTL",
+          "bytes": 17024
+        }
+      ],
+      "collectDirectGroups": [
+        {
+          "tier": "Baseline",
+          "bytes": 5376
+        },
+        {
+          "tier": "DFG",
+          "bytes": 3328
+        },
+        {
+          "tier": "DFG",
+          "bytes": 3840
+        },
+        {
+          "tier": "FTL",
+          "bytes": 4448
+        }
+      ]
+    },
+    "BM": {
+      "scorePostingDoc": [
+        {
+          "tier": "Baseline",
+          "bytes": 6912
+        },
+        {
+          "tier": "DFG",
+          "bytes": 3840
+        },
+        {
+          "tier": "DFG",
+          "bytes": 4096
+        },
+        {
+          "tier": "FTL",
+          "bytes": 3456
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5376
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5376
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5376
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5632
+        },
+        {
+          "tier": "FTL",
+          "bytes": 5184
+        }
+      ],
+      "combineResults": [
+        {
+          "tier": "Baseline",
+          "bytes": 2816
+        },
+        {
+          "tier": "DFG",
+          "bytes": 960
+        },
+        {
+          "tier": "DFG",
+          "bytes": 1088
+        }
+      ],
+      "useGatedEvaluation": [
+        {
+          "tier": "Baseline",
+          "bytes": 736
+        },
+        {
+          "tier": "DFG",
+          "bytes": 480
+        }
+      ],
+      "finalize": [
+        {
+          "tier": "Baseline",
+          "bytes": 17920
+        },
+        {
+          "tier": "DFG",
+          "bytes": 1488
+        },
+        {
+          "tier": "DFG",
+          "bytes": 2560
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5888
+        },
+        {
+          "tier": "FTL",
+          "bytes": 17024
+        }
+      ],
+      "collectDirectGroups": [
+        {
+          "tier": "Baseline",
+          "bytes": 5376
+        },
+        {
+          "tier": "DFG",
+          "bytes": 3328
+        },
+        {
+          "tier": "DFG",
+          "bytes": 3584
+        },
+        {
+          "tier": "DFG",
+          "bytes": 3840
+        },
+        {
+          "tier": "FTL",
+          "bytes": 4448
+        }
+      ]
+    },
+    "BSM": {
+      "scorePostingDoc": [
+        {
+          "tier": "Baseline",
+          "bytes": 6912
+        },
+        {
+          "tier": "DFG",
+          "bytes": 3840
+        },
+        {
+          "tier": "DFG",
+          "bytes": 4096
+        },
+        {
+          "tier": "FTL",
+          "bytes": 3456
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5376
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5376
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5376
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5376
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5376
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5376
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5376
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5376
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5376
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5376
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5888
+        }
+      ],
+      "combineResults": [
+        {
+          "tier": "Baseline",
+          "bytes": 2816
+        },
+        {
+          "tier": "DFG",
+          "bytes": 960
+        },
+        {
+          "tier": "DFG",
+          "bytes": 1088
+        }
+      ],
+      "useGatedEvaluation": [
+        {
+          "tier": "Baseline",
+          "bytes": 736
+        },
+        {
+          "tier": "DFG",
+          "bytes": 480
+        },
+        {
+          "tier": "DFG",
+          "bytes": 1488
+        }
+      ],
+      "finalize": [
+        {
+          "tier": "Baseline",
+          "bytes": 17920
+        },
+        {
+          "tier": "DFG",
+          "bytes": 1488
+        },
+        {
+          "tier": "DFG",
+          "bytes": 2560
+        },
+        {
+          "tier": "FTLForOSREntry",
+          "bytes": 1248
+        },
+        {
+          "tier": "FTL",
+          "bytes": 1728
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5888
+        },
+        {
+          "tier": "FTL",
+          "bytes": 11200
+        }
+      ],
+      "collectDirectGroups": [
+        {
+          "tier": "Baseline",
+          "bytes": 5376
+        },
+        {
+          "tier": "DFG",
+          "bytes": 3584
+        },
+        {
+          "tier": "DFG",
+          "bytes": 3840
+        },
+        {
+          "tier": "FTL",
+          "bytes": 4896
+        }
+      ]
+    },
+    "FULL": {
+      "scorePostingDoc": [
+        {
+          "tier": "Baseline",
+          "bytes": 6912
+        },
+        {
+          "tier": "DFG",
+          "bytes": 3840
+        },
+        {
+          "tier": "DFG",
+          "bytes": 4096
+        },
+        {
+          "tier": "FTL",
+          "bytes": 3456
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5376
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5376
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5376
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5376
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5376
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5376
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5376
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5376
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5376
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5632
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5632
+        }
+      ],
+      "combineResults": [
+        {
+          "tier": "Baseline",
+          "bytes": 2816
+        },
+        {
+          "tier": "DFG",
+          "bytes": 960
+        },
+        {
+          "tier": "DFG",
+          "bytes": 1088
+        }
+      ],
+      "useGatedEvaluation": [
+        {
+          "tier": "Baseline",
+          "bytes": 736
+        },
+        {
+          "tier": "DFG",
+          "bytes": 480
+        },
+        {
+          "tier": "DFG",
+          "bytes": 1488
+        }
+      ],
+      "finalize": [
+        {
+          "tier": "Baseline",
+          "bytes": 17920
+        },
+        {
+          "tier": "DFG",
+          "bytes": 1488
+        },
+        {
+          "tier": "DFG",
+          "bytes": 2560
+        },
+        {
+          "tier": "FTLForOSREntry",
+          "bytes": 1248
+        },
+        {
+          "tier": "FTL",
+          "bytes": 2208
+        },
+        {
+          "tier": "DFG",
+          "bytes": 5888
+        },
+        {
+          "tier": "FTL",
+          "bytes": 11200
+        }
+      ],
+      "collectDirectGroups": [
+        {
+          "tier": "Baseline",
+          "bytes": 5376
+        },
+        {
+          "tier": "DFG",
+          "bytes": 3072
+        },
+        {
+          "tier": "DFG",
+          "bytes": 3840
+        },
+        {
+          "tier": "FTL",
+          "bytes": 4448
+        }
+      ]
+    }
+  },
+  "osr_M": {
+    "kinds": {
+      "InadequateCoverage": 30,
+      "BadType": 238,
+      "BadCache": 705,
+      "BadConstantValue": 101,
+      "BadIdent": 801
+    },
+    "by_function": {
+      "makeCorpus": {
+        "DFG InadequateCoverage bc#615": 11
+      },
+      "push": {
+        "FTL InadequateCoverage bc#77": 6,
+        "FTL InadequateCoverage bc#37": 6
+      },
+      "add": {
+        "FTL BadType bc#7": 6,
+        "DFG BadType bc#13": 1,
+        "FTL BadType bc#13": 9
+      },
+      "finalize": {
+        "DFG InadequateCoverage bc#284": 1,
+        "DFG InadequateCoverage bc#928": 1
+      },
+      "collectDirectGroups": {
+        "DFG InadequateCoverage bc#250": 5
+      },
+      "updateAvgFieldLength": {
+        "DFG BadType bc#13": 20
+      },
+      "finalizePackedRadixScratch": {
+        "DFG BadCache bc#134": 1
+      },
+      "tokenizeSearchText": {
+        "FTL BadCache bc#67": 101
+      },
+      "filter": {
+        "DFG BadCache bc#0": 101
+      },
+      "scorePostingDoc": {
+        "DFG BadConstantValue bc#155": 101,
+        "DFG BadCache bc#17": 401,
+        "DFG BadIdent bc#519": 801
+      },
+      "aggregateSegmentPostingList": {
+        "FTL BadType bc#429": 101
+      },
+      "resolveGateMaxSize": {
+        "DFG BadType bc#17": 101
+      },
+      "fieldBoostsForQuery": {
+        "DFG BadCache bc#112": 101
+      }
+    },
+    "retry_counters": {
+      "makeCorpus": [
+        0
+      ],
+      "push": [
+        0
+      ],
+      "add": [
+        0,
+        1
+      ],
+      "finalize": [
+        0,
+        2
+      ],
+      "collectDirectGroups": [
+        0
+      ],
+      "updateAvgFieldLength": [
+        0
+      ],
+      "finalizePackedRadixScratch": [
+        0
+      ],
+      "tokenizeSearchText": [
+        0
+      ],
+      "filter": [
+        0
+      ],
+      "scorePostingDoc": [
+        0,
+        2,
+        3
+      ],
+      "aggregateSegmentPostingList": [
+        0
+      ],
+      "resolveGateMaxSize": [
+        0
+      ],
+      "fieldBoostsForQuery": [
+        0
+      ]
+    }
+  },
+  "osr_BM": {
+    "kinds": {
+      "InadequateCoverage": 529,
+      "BadType": 650,
+      "BadCache": 445,
+      "BadIdent": 105
+    },
+    "by_function": {
+      "makeCorpus": {
+        "DFG InadequateCoverage bc#615": 11
+      },
+      "push": {
+        "FTL InadequateCoverage bc#77": 6,
+        "FTL InadequateCoverage bc#37": 6
+      },
+      "add": {
+        "FTL BadType bc#7": 6,
+        "DFG BadType bc#13": 1,
+        "FTL BadType bc#13": 9
+      },
+      "finalize": {
+        "DFG InadequateCoverage bc#284": 1,
+        "DFG InadequateCoverage bc#902": 1
+      },
+      "collectDirectGroups": {
+        "DFG InadequateCoverage bc#56": 101
+      },
+      "writeNode": {
+        "DFG BadCache bc#562": 101
+      },
+      "finalizePackedRadixScratch": {
+        "DFG BadType bc#322": 5,
+        "DFG BadType bc#680": 1
+      },
+      "updateAvgFieldLength": {
+        "DFG BadType bc#13": 20
+      },
+      "tokenizeSearchText": {
+        "FTL BadCache bc#67": 101
+      },
+      "filter": {
+        "DFG BadCache bc#0": 101
+      },
+      "useGatedEvaluation": {
+        "DFG InadequateCoverage bc#18": 101
+      },
+      "aggregateSegmentPostingList": {
+        "FTL BadIdent bc#429": 4,
+        "FTL BadType bc#139": 2,
+        "DFG BadType bc#139": 102,
+        "FTL BadType bc#429": 201
+      },
+      "scorePostingDoc": {
+        "FTL BadIdent bc#519": 101,
+        "DFG InadequateCoverage bc#430": 201,
+        "DFG BadCache bc#17": 41
+      },
+      "executeQuerySpecInternal": {
+        "DFG BadType bc#70": 101
+      },
+      "maxFuzzyDistance": {
+        "DFG BadType bc#4": 101
+      },
+      "aggregateTerm": {
+        "DFG BadCache bc#200": 101
+      },
+      "combineResults": {
+        "DFG InadequateCoverage bc#192": 101
+      },
+      "resolveGateMaxSize": {
+        "DFG BadType bc#17": 101
+      }
+    },
+    "retry_counters": {
+      "makeCorpus": [
+        0
+      ],
+      "push": [
+        0
+      ],
+      "add": [
+        0,
+        1
+      ],
+      "finalize": [
+        0,
+        2
+      ],
+      "collectDirectGroups": [
+        0
+      ],
+      "writeNode": [
+        0
+      ],
+      "finalizePackedRadixScratch": [
+        0,
+        1
+      ],
+      "updateAvgFieldLength": [
+        0
+      ],
+      "tokenizeSearchText": [
+        0
+      ],
+      "filter": [
+        0
+      ],
+      "useGatedEvaluation": [
+        0
+      ],
+      "aggregateSegmentPostingList": [
+        0,
+        1
+      ],
+      "scorePostingDoc": [
+        0,
+        1,
+        3
+      ],
+      "executeQuerySpecInternal": [
+        0
+      ],
+      "maxFuzzyDistance": [
+        0
+      ],
+      "aggregateTerm": [
+        0
+      ],
+      "combineResults": [
+        0
+      ],
+      "resolveGateMaxSize": [
+        0
+      ]
+    }
+  },
+  "full_first_dfg_scorePostingDoc_profile": {
+    "liveness": 0.384615,
+    "live": "10/26",
+    "fullness": 0.627907,
+    "samples": "27/26",
+    "action": "Delaying optimization because of insufficient profiling; compiles after maximumOptimizationDelay=5",
+    "first_dfg_bytes": 3840,
+    "only_ftl_bytes": 3456,
+    "never_reached_ftl_5184": true
+  },
+  "isolated_M_scorePostingDoc": {
+    "first_dfg_bytes": 5632,
+    "final_ftl_bytes": 5184,
+    "inadequate_coverage": 0
+  }
+}
